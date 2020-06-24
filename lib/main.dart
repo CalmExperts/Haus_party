@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/home_cards.dart';
+
+import 'bottom_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -87,8 +90,22 @@ class _MyHomePageState extends State<MyHomePage>
                     fontFamily: 'Varela',
                     fontSize: 42.0,
                     fontWeight: FontWeight.bold)),
-            SizedBox(height: 15.0)
+            SizedBox(height: 15.0),
+            Text('Within Alberta',
+            style: TextStyle(
+              fontSize: 15.0,
+              fontFamily: 'Varela'
+            )
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height - 50 ),
+            partyCard()
+           
           ],
-        ));
+        ),
+
+
+
+        bottomNavigationBar: BottomBar(),
+        );
   }
 }

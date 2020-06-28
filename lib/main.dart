@@ -97,8 +97,8 @@ class _MyHomePageState extends State<MyHomePage>
               fontFamily: 'Varela'
             )
             ),
-            SizedBox(height: MediaQuery.of(context).size.height - 50 ),
-            partyCard()
+            SizedBox(height: MediaQuery.of(context).size.height/3),
+            partyCard(context)
            
           ],
         ),

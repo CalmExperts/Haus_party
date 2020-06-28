@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-Widget partyCard() {
+Widget partyCard(BuildContext context) {
   return Container(
-      height: 50.0,
+      height: MediaQuery.of(context).size.height/3,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 3,
         itemBuilder: (BuildContext context, int i) => Card(
             color: Colors.blue,
+            shape: new RoundedRectangleBorder( borderRadius: new BorderRadius.all(new Radius.circular(20.0))),
             child: Container(
-                width: 150.0,
+                width: MediaQuery.of(context).size.width/1.5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[

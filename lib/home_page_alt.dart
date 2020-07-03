@@ -25,12 +25,16 @@ class AltHome extends StatelessWidget {
       body: CustomScrollView(slivers: <Widget>[
         const SliverAppBar(
           pinned: true,
-          expandedHeight: 30.0,
+          expandedHeight: 0.0,
+          automaticallyImplyLeading: false,
+          backgroundColor: Color(0xFFD3D3D3),
           flexibleSpace: FlexibleSpaceBar(
             title: Text('Upcoming Parties',
+            textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: 'Varela',
-                    fontSize: 22.0,
+                    color: Colors.black,
+                    fontSize: 25.0,
                     fontWeight: FontWeight.bold)),
           ),
         ),

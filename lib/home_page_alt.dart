@@ -30,42 +30,110 @@ class AltHome extends StatelessWidget {
             title: Text('Upcoming Parties',
                 style: TextStyle(
                     fontFamily: 'Varela',
-                    fontSize: 42.0,
+                    fontSize: 22.0,
                     fontWeight: FontWeight.bold)),
           ),
         ),
-        SizedBox(height: 15.0),
+        // SizedBox(height: 15.0),
         SliverFixedExtentList(
-            itemExtent: 100.0,
-            delegate:
-                SliverChildBuilderDelegate((BuildContext context, int index) {
-              return Card(
-                color: Colors.blue,
-                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 50.0),
+          itemExtent: MediaQuery.of(context).size.height / 2,
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Container(
+                  // height: MediaQuery.of(context).size.height,
+                  child: Card(
+                color: Color(0xFF5F54ED),
+                elevation: 100.0,
+                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0),
                 shape: new RoundedRectangleBorder(
                     borderRadius:
-                        new BorderRadius.all(new Radius.circular(20.0))),
+                        new BorderRadius.all(new Radius.circular(10.0))),
                 child: Container(
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  height: MediaQuery.of(context).size.height / 2,
+                  // width: MediaQuery.of(context).size.width / 2,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Icon(Icons.calendar_today, size: 30.0),
-                      Text('Spring Welcome Party',
-                        style: TextStyle(fontSize: 20.0)),
-                      Text('Hosted by DJ Clint',
-                        style: TextStyle(fontSize: 10.0)),
-                      Text('306 Richmond Druve',
-                        style: TextStyle(fontSize: 10.0)),
-                    ],
-                  ),
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        // Image.asset('assets/party_1.png'),
+                        SizedBox(height: 15.0),
+                        Row(
+                          children: <Widget>[
+                            SizedBox(width: 30.0),
+                            Icon(Icons.calendar_today, size: 80.0),
+                            SizedBox(width: 20.0),
+                            Column(children: <Widget>[
+                              Text('Spring Welcome Party',
+                                  style: TextStyle(
+                                      fontSize: 21.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left),
+                              SizedBox(height: 3.0),
+                              Text(
+                                'Hosted by DJ Clint',
+                                style: TextStyle(
+                                    fontSize: 10.0, color: Colors.white),
+                                textAlign: TextAlign.left,
+                              ),
+                              SizedBox(height: 3.0),
+                              Text(
+                                '306 Richmond Druve',
+                                style: TextStyle(
+                                    fontSize: 12.0, color: Colors.white),
+                                textAlign: TextAlign.left,
+                              ),
+                            ]),
+                          ],
+                        ),
+                        Row(children: <Widget>[
+                          SizedBox(width: 25.0),
+                          Column(children: <Widget>[
+                            Text('People Attending',
+                                style: TextStyle(
+                                    fontSize: 11.0, color: Colors.white),
+                                textAlign: TextAlign.left),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text('129',
+                                style: TextStyle(
+                                    fontSize: 21.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left),
+                          ]),
+                          SizedBox(width: 10.0),
+                          Column(children: <Widget>[
+                            Text('Time',
+                                style: TextStyle(
+                                    fontSize: 11.0, color: Colors.white),
+                                textAlign: TextAlign.left),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text('5-7PM',
+                                style: TextStyle(
+                                    fontSize: 21.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.left),
+                          ]),
+                          SizedBox(width: 100.0),
+                          RaisedButton(
+                              onPressed: null,
+                              elevation: 20.0,
+                              color: Colors.white,
+                              disabledColor: Colors.white,
+                              hoverElevation: 40.0,
+                              child: Text('View',
+                                  style: TextStyle(fontSize: 10.0, color: Color(0xFF5F54ED)))),
+                        ]),
+                      ]),
                 ),
-              );
+              ));
             },
-            childCount: 5,
-            ),
-            ),
+            childCount: 3,
+          ),
+        ),
       ]),
       bottomNavigationBar: BottomBar(),
     );

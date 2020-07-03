@@ -51,9 +51,14 @@ class AltHome extends StatelessWidget {
                 child: Container(
                   // width: MediaQuery.of(context).size.width / 2,
                   child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        // Image.asset('assets/party_1.png'),
+                        Expanded(
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    image: const DecorationImage(
+                                        image: AssetImage(
+                                            'assets/party_1.png'), fit: BoxFit.cover)))),
                         SizedBox(height: 15.0),
                         Row(
                           children: <Widget>[
@@ -84,6 +89,7 @@ class AltHome extends StatelessWidget {
                             ]),
                           ],
                         ),
+                        SizedBox(height: 15.0),
                         Row(children: <Widget>[
                           SizedBox(width: 25.0),
                           Column(children: <Widget>[
@@ -101,7 +107,7 @@ class AltHome extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left),
                           ]),
-                          SizedBox(width: 10.0),
+                          SizedBox(width: 20.0),
                           Column(children: <Widget>[
                             Text('Time',
                                 style: TextStyle(
@@ -117,7 +123,7 @@ class AltHome extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left),
                           ]),
-                          SizedBox(width: 100.0),
+                          SizedBox(width: 90.0),
                           RaisedButton(
                               onPressed: null,
                               elevation: 20.0,
@@ -125,8 +131,11 @@ class AltHome extends StatelessWidget {
                               disabledColor: Colors.white,
                               hoverElevation: 40.0,
                               child: Text('View',
-                                  style: TextStyle(fontSize: 10.0, color: Color(0xFF5F54ED)))),
+                                  style: TextStyle(
+                                      fontSize: 10.0,
+                                      color: Color(0xFF5F54ED)))),
                         ]),
+                        SizedBox(height: 15.0),
                       ]),
                 ),
               ));

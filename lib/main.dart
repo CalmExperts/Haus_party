@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
+import 'package:haus_party/home_page_alt.dart';
 
 import 'bottom_bar.dart';
 
@@ -71,7 +72,12 @@ class _MyHomePageState extends State<MyHomePage>
           centerTitle: true,
           leading: IconButton(
             icon: Icon(Icons.card_travel, color: Color(0xFF545D68)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => AltHome())
+              );
+            },
           ),
           title: Text('Discover',
               style: TextStyle(color: Color(0xFF545D68), fontSize: 20.0)),

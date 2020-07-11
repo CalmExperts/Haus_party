@@ -28,7 +28,9 @@ Widget partyCard(BuildContext context) {
                             SizedBox(width: 5.0),
                             Icon(Icons.calendar_today, size: 80.0),
                             SizedBox(width: 10.0),
-                            Column(children: <Widget>[
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
                               Text('Spring Welcome Party',
                                   style: TextStyle(
                                       fontSize: 18.0,
@@ -49,7 +51,7 @@ Widget partyCard(BuildContext context) {
                                     fontSize: 12.0, color: Colors.white),
                                 textAlign: TextAlign.left,
                               ),
-                            ]),
+                            ]), ,88
                           ],
                         ),
                         SizedBox(height: 15.0),

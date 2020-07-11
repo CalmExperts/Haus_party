@@ -51,7 +51,7 @@ Widget partyCard(BuildContext context) {
                                     fontSize: 12.0, color: Colors.white),
                                 textAlign: TextAlign.left,
                               ),
-                            ]), ,88
+                            ]), 
                           ],
                         ),
                         SizedBox(height: 15.0),

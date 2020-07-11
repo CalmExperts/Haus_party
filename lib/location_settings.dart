@@ -130,7 +130,10 @@ class LocationSettings extends StatelessWidget {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.2),
                       Center(
+                          child: Container(
+                        width: MediaQuery.of(context).size.width * 0.3,
                         child: RaisedButton(
+                          elevation: 10,
                           shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.all(
                                   new Radius.circular(10.0))),
@@ -145,7 +148,7 @@ class LocationSettings extends StatelessWidget {
                             ),
                           ),
                         ),
-                      )
+                      ))
                     ],
                   )
                 ],

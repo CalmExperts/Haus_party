@@ -3,6 +3,7 @@ import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
 
 import 'bottom_bar.dart';
+import 'location_settings.dart';
 
 void main() => runApp(MyApp());
 
@@ -84,7 +85,12 @@ class _MyHomePageState extends State<MyHomePage>
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.settings, color: Color(0xFF545D68)),
-                onPressed: () {})
+                onPressed: () {
+                  Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => LocationSettings())
+              );
+                })
           ],
         ),
         body: ListView(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/main.dart';
+
 
 import 'bottom_bar.dart';
 

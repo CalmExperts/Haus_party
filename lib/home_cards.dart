@@ -30,6 +30,7 @@ Widget partyCard(BuildContext context) {
                             SizedBox(width: 10.0),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                               Text('Spring Welcome Party',
                                   style: TextStyle(

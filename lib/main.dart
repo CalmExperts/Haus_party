@@ -98,13 +98,13 @@ class _MyHomePageState extends State<MyHomePage>
           Text('Upcoming Parties',
               style: TextStyle(
                   fontFamily: 'Varela',
-                  fontSize: 42.0,
+                  fontSize: 32.0,
                   fontWeight: FontWeight.bold)),
           SizedBox(height: 15.0),
           Text('Within Alberta',
               style: TextStyle(fontSize: 15.0, fontFamily: 'Varela')),
-          SizedBox(height: MediaQuery.of(context).size.height / 3.5),
-          partyCard(context)
+          SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+          PartyCard()
         ],
       ),
       bottomNavigationBar: BottomBar(),

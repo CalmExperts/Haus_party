@@ -68,12 +68,12 @@ Widget partyCard(BuildContext context) {
                             ),
                             Text('129',
                                 style: TextStyle(
-                                    fontSize: 21.0,
+                                    fontSize: 20.0,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left),
                           ]),
-                          SizedBox(width: 10.0),
+                          SizedBox(width: 8.0),
                           Column(children: <Widget>[
                             Text('Time',
                                 style: TextStyle(
@@ -89,7 +89,7 @@ Widget partyCard(BuildContext context) {
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left),
                           ]),
-                          SizedBox(width: 50.0),
+                          SizedBox(width: 20.0),
                           RaisedButton(
                               onPressed: null,
                               elevation: 0.0,

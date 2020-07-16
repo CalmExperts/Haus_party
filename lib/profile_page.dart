@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:haus_party/privacy_settings.dart';
 
 import 'bottom_bar.dart';
+import 'notif_settings.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -181,7 +182,9 @@ class ProfilePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 new BorderRadius.all(new Radius.circular(5.0))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => NotifSettings()));
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[

@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
             child: Column(children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 0.1,
-                padding: EdgeInsets.only(left: 10.0, top: 20.0, bottom: 10.0),
+                padding: EdgeInsets.only(left: 20.0, top: 25.0, bottom: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

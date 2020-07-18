@@ -8,11 +8,11 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF5F54ED),
       body: Column(
         children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height * 0.4,
-            color: Color(0xFF5F54ED),
             child: Column(children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 0.1,
@@ -41,15 +41,9 @@ class ProfilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.18,
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage('assets/profile_image.jpg'),
-                          )),
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('assets/profile_image.jpg'),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     Text(
@@ -72,13 +66,11 @@ class ProfilePage extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50.0),
-                  topRight: Radius.circular(50.0)),
+              borderRadius: BorderRadius.only( topLeft:Radius.circular(20.0), topRight:Radius.circular(20.0)),
               color: Colors.white,
             ),
-            height: MediaQuery.of(context).size.height * 0.4,
-            padding: EdgeInsets.only(left: 25.0),
+            height: MediaQuery.of(context).size.height * 0.515,
+            // padding: EdgeInsets.only(left: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -104,7 +96,7 @@ class ProfilePage extends StatelessWidget {
                     SizedBox(
                         height: MediaQuery.of(context).size.height * 0.008),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: RaisedButton(
                         color: Color(0xFF5F54ED),
@@ -148,7 +140,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
+                      width: MediaQuery.of(context).size.width * 0.80,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: RaisedButton(
                         color: Color(0xFF5F54ED),
@@ -175,7 +167,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: RaisedButton(
                         color: Color(0xFF5F54ED),
@@ -204,7 +196,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.75,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.07,
                       child: RaisedButton(
                         color: Color(0xFF5F54ED),

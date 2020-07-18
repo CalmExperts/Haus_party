@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/calendar_page.dart';
 import 'package:haus_party/main.dart';
 import 'package:haus_party/profile_page.dart';
 
@@ -46,7 +47,12 @@ class BottomBar extends StatelessWidget {
                             hoverColor: Colors.lightBlueAccent,
                             highlightColor: Color(0xFF5F54ED),
                             splashColor: Color(0xFF5F54ED),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CalendarScreen()));
+                            },
                           ),
                           IconButton(
                             icon: Icon(Icons.notifications),

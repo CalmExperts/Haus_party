@@ -78,8 +78,8 @@ class ProfilePage extends StatelessWidget {
                   child: Divider(
                     color: Colors.grey,
                     thickness: 5,
-                    indent: MediaQuery.of(context).size.width * 0.15,
-                    endIndent: MediaQuery.of(context).size.width * 0.2,
+                    indent: 80,
+                    endIndent: 80,
                   ),
                 ),
                 SizedBox(

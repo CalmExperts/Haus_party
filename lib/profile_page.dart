@@ -12,7 +12,8 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.40,
+            
             child: Column(children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 0.1,

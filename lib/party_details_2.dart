@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'bottom_bar.dart';
+
 class PartyDetails extends StatelessWidget {
   const PartyDetails({
     this.partyDateTime,
@@ -91,6 +93,9 @@ class PartyDetails extends StatelessWidget {
         ),
         ),
         // Drinks Container
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+          child:
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
           height: MediaQuery.of(context).size.height * 0.4,
@@ -149,7 +154,9 @@ class PartyDetails extends StatelessWidget {
             )
           ]),
         ),
+        ),
       ]),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

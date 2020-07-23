@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/bottom_bar.dart';
+import 'package:haus_party/party_details_2.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
 class CalendarScreen extends StatelessWidget {
-  var _calendarController;
-  @override
-  void initState() {
-    _calendarController = CalendarController();
-  }
-
-  @override
-  void dispose() {
-    _calendarController.dispose();
-    // super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +109,9 @@ class UpcomingParty extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PartyDetails(partyDateTime: partyDateTime, partyAddress: partyAddress, partyTitle: partyTitle)));
+            },
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

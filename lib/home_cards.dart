@@ -4,11 +4,11 @@ class PartyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height  * 0.48,
+      height: MediaQuery.of(context).size.height  * 0.50,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 3,
-        itemExtent: MediaQuery.of(context).size.height  * 0.48,
+        itemExtent: MediaQuery.of(context).size.height  * 0.50,
         itemBuilder: (BuildContext context, int i) => CardItem(),
       ),
     );
@@ -33,8 +33,8 @@ class CardItem extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: NetworkImage(
-                    'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg',
+                  image: AssetImage(
+                    'assets/asset-1.png',
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -60,10 +60,21 @@ class Content extends StatelessWidget {
           Row(
             children: <Widget>[
               SizedBox(width: 5.0),
-              Icon(
-                Icons.calendar_today,
-                size: 40.0,
-                color: Colors.white,
+              Container(
+                padding: const EdgeInsets.fromLTRB(10,10,10,10),
+                height: 49.0,
+                width: 49.0, 
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Text('Dec', style: TextStyle(color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold)),
+                    Text('31', style: TextStyle(color: Color(0xFF5F54ED), fontSize: 14.0, fontWeight: FontWeight.bold)),
+
+                  ]
+                )
               ),
               SizedBox(width: 10.0),
               Column(
@@ -72,28 +83,28 @@ class Content extends StatelessWidget {
                   children: <Widget>[
                     Text('Spring Welcome Party',
                         style: TextStyle(
-                            fontSize: 10.0,
+                            fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left),
                     SizedBox(height: 3.0),
                     Text(
                       'Hosted by DJ Clint',
-                      style: TextStyle(fontSize: 10.0, color: Colors.white),
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
                       textAlign: TextAlign.left,
                     ),
                     SizedBox(height: 3.0),
                     Text(
                       '306 Richmond Druve',
-                      style: TextStyle(fontSize: 7.0, color: Colors.white),
+                      style: TextStyle(fontSize: 10.0, color: Colors.white),
                       textAlign: TextAlign.left,
                     ),
                   ]),
             ],
           ),
-          SizedBox(height: 5.0),
+          SizedBox(height: 15.0),
           Row(children: <Widget>[
-            SizedBox(width: 15.0),
+            SizedBox(width: 7.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -105,7 +116,7 @@ class Content extends StatelessWidget {
                 ),
                 Text('129',
                     style: TextStyle(
-                        fontSize: 10.0,
+                        fontSize: 12.0,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left),
@@ -123,16 +134,16 @@ class Content extends StatelessWidget {
                 ),
                 Text('5-7PM',
                     style: TextStyle(
-                        fontSize: 10.0,
+                        fontSize: 12.0,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left),
               ],
             ),
-            // Spacer(),
-            SizedBox(width: 50.0),
+            Spacer(),
             Container(
               width: 65,
+              height: 30,
               child: FlatButton(
                   onPressed: (){},
                   color: Colors.white,

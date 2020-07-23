@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage>
           SizedBox(height: 15.0),
           Text('Within Alberta',
               style: TextStyle(fontSize: 15.0, fontFamily: 'Varela')),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
           PartyCard()
         ],
       ),

@@ -141,8 +141,8 @@ class PartyDesc extends StatelessWidget {
               ),
             ),
             Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                height: MediaQuery.of(context).size.height * 0.3,
+                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                height: MediaQuery.of(context).size.height * 0.2,
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: <Widget>[
@@ -161,6 +161,97 @@ class PartyDesc extends StatelessWidget {
                         style: TextStyle(color: Colors.black54)),
                   ],
                 )),
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 0,10,20),
+                  height: screenSize.height * 0.2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Row(children: <Widget>[
+                        Text("Gallery", textAlign: TextAlign.left, style: TextStyle(fontSize: 15,)),
+                      ],),
+                      // ListView(
+                      //   scrollDirection: Axis.horizontal,
+                      //   children: <Widget>[
+                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
+                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
+                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
+                      //   GalleryImage(imageUrl: "assets/asset-1.png",)
+
+
+
+                      // ],)
+                    ]
+                  ),
+                ),
+
+                Container(
+                  padding: EdgeInsets.only(left:10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("Activities"),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Text("Beer Pong"),
+                  Text("Spin the Bottle"),
+                  Text("Truth or Dare"),
+
+                  
+                ],),),
+                
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Container(
+                    height: screenSize.height * 0.2,
+                    padding: EdgeInsets.only(left:10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Dress Code"),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Text("Metro Urban"),
+               
+
+                    
+                  ],),),
+                ),
+
+                Container(
+                    height: screenSize.height * 0.2,
+                    padding: EdgeInsets.only(left:10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Invite Friends"),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        border: InputBorder.none,
+                        hintText: 'E-mail'
+                      )
+                    )
+                    
+               
+
+                    
+                  ],),),
+
           ],
         ));
   }

@@ -48,13 +48,20 @@ class CalendarScreen extends StatelessWidget {
           partyDateTime: "20",
           partyTitle: "Spring Welcome Party",
           partyHost: "DJ Clinton",
-          partyAddress: "306 Richmond Drive"
+          partyAddress: "306 Richmond Drive, Toronto"
         ),
         UpcomingParty(
           partyDateTime: "48",
           partyTitle: "Greek Fest",
           partyHost: "DJ Clinton",
-          partyAddress: "306 Adalia Close"
+          partyAddress: "306 Adalia Close,Toronto"
+        ),
+
+        UpcomingParty(
+          partyDateTime: "5",
+          partyTitle: "Freaknik",
+          partyHost: "DJ Clinton",
+          partyAddress: "30 Meek Mill Close,Philadelphia"
         ),
 
       ]),
@@ -106,6 +113,7 @@ class UpcomingParty extends StatelessWidget {
       child: Container(
           height: 53.0,
           child: RaisedButton(
+            color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),

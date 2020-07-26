@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/page_description.dart';
 
 class PartyCard extends StatelessWidget {
   @override
@@ -32,6 +33,7 @@ class CardItem extends StatelessWidget {
           Flexible(
             child: Container(
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
                 image: const DecorationImage(
                   image: AssetImage(
                     'assets/asset-1.png',
@@ -70,8 +72,8 @@ class Content extends StatelessWidget {
                 ),
                 child: Column(
                   children: <Widget>[
-                    Text('Dec', style: TextStyle(color: Colors.black, fontSize: 10.0, fontWeight: FontWeight.bold)),
-                    Text('31', style: TextStyle(color: Color(0xFF5F54ED), fontSize: 14.0, fontWeight: FontWeight.bold)),
+                    Text('Dec', style: TextStyle(color: Colors.black, fontSize: 11.0, fontWeight: FontWeight.bold)),
+                    Text('31', style: TextStyle(color: Color(0xFF5F54ED), fontSize: 13.0, fontWeight: FontWeight.bold)),
 
                   ]
                 )
@@ -145,7 +147,12 @@ class Content extends StatelessWidget {
               width: 65,
               height: 30,
               child: FlatButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PartyDesc()));
+                  },
                   color: Colors.white,
                   disabledColor: Colors.white,
                   child: Text('View',

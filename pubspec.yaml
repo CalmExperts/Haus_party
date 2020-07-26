@@ -26,6 +26,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   table_calendar: ^2.2.3
+  qr_flutter: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,19 @@ flutter:
     - assets/asset-2.png
     - assets/asset-10.png
     - assets/drink_image.png
+    - assets/ciroc_peach.png
+    - assets/dirty_martini.png
+    - assets/dusse.png
+    - assets/henessy.png
+    - assets/dom_perignon.png
+    - assets/asset-3.png
+
+
+
+
+
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

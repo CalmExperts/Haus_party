@@ -8,6 +8,7 @@ class PartyDesc extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         body: ListView(
+          // shrinkWrap: true,
           children: <Widget>[
             Stack(
               overflow: Overflow.visible,
@@ -120,18 +121,24 @@ class PartyDesc extends StatelessWidget {
                         ))),
               ],
             ),
-            Container(
-              width: screenSize.width / 4,
-              padding: EdgeInsets.only(top: 100),
-              child: RaisedButton(
-                  color: Color(0xFF5F54ED),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Text(
-                    "Reserve",
-                    style: TextStyle(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.only(top: 110.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: 100,
+                    child: RaisedButton(
+                        color: Color(0xFF5F54ED),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        child: Text(
+                          "Reserve",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {}),
                   ),
-                  onPressed: () {}),
+                ],
+              ),
             ),
             Container(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

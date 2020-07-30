@@ -162,13 +162,13 @@ class PartyDesc extends StatelessWidget {
                   ],
                 )),
                 Container(
-                  padding: EdgeInsets.fromLTRB(10, 0,10,20),
+                  padding: EdgeInsets.fromLTRB(20,10,10,20),
                   height: screenSize.height * 0.2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Row(children: <Widget>[
-                        Text("Gallery", textAlign: TextAlign.left, style: TextStyle(fontSize: 15,)),
+                        Text("Gallery", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, color: Colors.black54, fontWeight: FontWeight.bold)),
                       ],),
                       // ListView(
                       //   scrollDirection: Axis.horizontal,
@@ -186,40 +186,40 @@ class PartyDesc extends StatelessWidget {
                 ),
 
                 Container(
-                  padding: EdgeInsets.only(left:10),
+                  padding: EdgeInsets.only(left:20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Text("Activities"),
+                      Text("Activities", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   SizedBox(height: 10),
-                  Text("Beer Pong"),
-                  Text("Spin the Bottle"),
-                  Text("Truth or Dare"),
+                  Text("Beer Pong", style: TextStyle(color: Colors.black54)),
+                  Text("Spin the Bottle", style: TextStyle(color: Colors.black54)),
+                  Text("Truth or Dare", style: TextStyle(color: Colors.black54)),
 
                   
                 ],),),
                 
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: Container(
                     height: screenSize.height * 0.2,
-                    padding: EdgeInsets.only(left:10),
+                    padding: EdgeInsets.only(left:20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text("Dress Code"),
+                        Text("Dress Code", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
                       ],
                     ),
                     SizedBox(height: 10),
-                    Text("Metro Urban"),
+                    Text("Metro Urban", style: TextStyle(color: Colors.black54)),
                
 
                     
@@ -227,24 +227,35 @@ class PartyDesc extends StatelessWidget {
                 ),
 
                 Container(
-                    height: screenSize.height * 0.2,
-                    padding: EdgeInsets.only(left:10),
+                    height: screenSize.height * 0.15,
+                    padding: EdgeInsets.only(left:20, right: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text("Invite Friends"),
+                        Text("Invite Friends", style: TextStyle(color: Colors.black54)),
                       ],
                     ),
                     SizedBox(height: 10),
                     TextField(
                       decoration: InputDecoration(
                         fillColor: Colors.white,
-                        border: InputBorder.none,
-                        hintText: 'E-mail'
-                      )
+                        focusColor: Colors.white,
+                        hoverColor: Colors.grey,
+                        border: OutlineInputBorder(),
+                        hintText: 'E-mail',
+                        suffixIcon: Icon(Icons.file_upload, color: Colors.black)
+                      ),
+                      // onSubmitted: () {},
+                      keyboardType: TextInputType.emailAddress,
+                      cursorColor: Colors.black, 
+                      cursorRadius: Radius.zero,
+                      cursorWidth: 2.0,
+                      keyboardAppearance: Brightness.light,
+                      showCursor: true,
+                      textAlign: TextAlign.left,
                     )
                     
                

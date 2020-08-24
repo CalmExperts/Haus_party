@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/card_details.dart';
 import 'package:haus_party/privacy_settings.dart';
+import 'package:haus_party/profile_settings.dart';
 
 import 'bottom_bar.dart';
 import 'notif_settings.dart';
@@ -30,7 +32,9 @@ class ProfilePage extends StatelessWidget {
                     ),
                     IconButton(
                       icon: Icon(Icons.more_vert),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileSettings()));
+                      },
                       iconSize: 20.0,
                     )
                   ],
@@ -104,7 +108,12 @@ class ProfilePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 new BorderRadius.all(new Radius.circular(5.0))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CardDetails()));
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[

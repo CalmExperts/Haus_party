@@ -13,9 +13,9 @@ class BottomBar extends StatelessWidget {
         child: Container(
             height: 50.0,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25.0),
-                    topRight: Radius.circular(25.0)),
+                // borderRadius: BorderRadius.only(
+                //     topLeft: Radius.circular(25.0),
+                //     topRight: Radius.circular(25.0)),
                 color: Colors.white),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

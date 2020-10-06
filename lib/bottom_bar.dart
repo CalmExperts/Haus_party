@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:haus_party/calendar_page.dart';
 import 'package:haus_party/main.dart';
 import 'package:haus_party/profile_page.dart';
+import 'package:haus_party/updates.dart';
 
 class BottomBar extends StatelessWidget {
   @override
@@ -61,7 +62,12 @@ class BottomBar extends StatelessWidget {
                             highlightColor: Color(0xFF5F54ED),
                             hoverColor: Colors.lightBlueAccent,
                             splashColor: Color(0xFF5F54ED),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UpdateScreen()));
+                            },
                           ),
                           IconButton(
                             icon: Icon(Icons.person),

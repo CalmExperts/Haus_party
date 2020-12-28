@@ -35,7 +35,9 @@ class PartyDesc extends StatelessWidget {
                             color: Color(0xFF5F54ED),
                             size: 20,
                           ),
-                          onPressed: () {})),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          })),
                 ),
                 Positioned(
                     top: 200,

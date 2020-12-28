@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
+import 'package:haus_party/routing.dart';
 
 import 'bottom_bar.dart';
 import 'location_settings.dart';
@@ -13,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Haus Party',
+      initialRoute: '/auth',
+      routes: routes,
       theme: ThemeData(
         // This is the theme of your application.
         //

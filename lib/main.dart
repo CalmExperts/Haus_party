@@ -1,7 +1,13 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
 import 'package:haus_party/routing.dart';
+import 'package:haus_party/service/authProvider.dart';
+import 'package:haus_party/util/userProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'bottom_bar.dart';
 import 'location_settings.dart';
@@ -12,23 +18,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Haus Party',
-      initialRoute: '/auth',
-      routes: routes,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Haus Party',
+        initialRoute: '/auth',
+        routes: routes,
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'Haus Party'),
       ),
-      home: MyHomePage(title: 'Haus Party'),
     );
   }
 }
@@ -82,7 +94,9 @@ class _MyHomePageState extends State<MyHomePage>
           },
         ),
         title: Text('Discover',
-            style: TextStyle(color: Color(0xFF545D68), fontSize: 20.0)),
+            style: GoogleFonts.sofia(
+              fontWeight: FontWeight.normal,
+              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 16.0)),),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.settings, color: Color(0xFF545D68)),
@@ -95,22 +109,82 @@ class _MyHomePageState extends State<MyHomePage>
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.only(left: 20.0),
-        children: <Widget>[
-          SizedBox(height: 15.0),
-          Text('Upcoming Parties',
-              style: TextStyle(
-                  fontFamily: 'Varela',
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold)),
-          SizedBox(height: 15.0),
-          Text('Within Alberta',
-              style: TextStyle(fontSize: 15.0, fontFamily: 'Varela')),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
-          PartyCard()
+        children: [
+          Padding(
+              padding: EdgeInsets.only(left: 20.0),
+              child: Text(
+                'Upcoming Parties',
+                style: GoogleFonts.rubik(
+                    textStyle:
+                        TextStyle(fontSize: 28.0,
+                        )),
+              )),
+          Padding(
+            padding: EdgeInsets.only(left: 22.0),
+            child: Text(
+              'Within Alberta',
+              style: GoogleFonts.sofia(
+                color: Color(0xFF5F54ED),
+                  textStyle: TextStyle(fontSize: 14.0,
+                  )),
+            ),
+          ),
+          SizedBox(height: 2.0,),
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: <Widget>[
+              Positioned(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.70,
+                  width: MediaQuery.of(context).size.width,
+                  child: MapWidget(),
+                ),
+              ),
+              PartyCard(),
+              // Positioned(bottom: 40.0, left: 5.0),
+            ],
+          ),
         ],
       ),
       bottomNavigationBar: BottomBar(),
     );
   }
+}
+
+class MapWidget extends StatefulWidget {
+  @override
+  State<MapWidget> createState() => MapWidgetState();
+}
+
+class MapWidgetState extends State<MapWidget> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+    );
+  }
+
+  // Future<void> _goToTheLake() async {
+  //   final GoogleMapController controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  // }
 }

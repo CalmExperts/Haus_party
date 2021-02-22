@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:haus_party/page_description.dart';
 
 class PartyCard extends StatelessWidget {
@@ -84,21 +85,27 @@ class Content extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text('Spring Welcome Party',
-                        style: TextStyle(
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
                             fontSize: 15.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
+                        ),
                         textAlign: TextAlign.left),
                     SizedBox(height: 3.0),
                     Text(
                       'Hosted by DJ Clint',
-                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                      style: GoogleFonts.rubik(
+                        textStyle: TextStyle(fontSize: 12.0, color: Colors.white),
+                      ),
                       textAlign: TextAlign.left,
                     ),
                     SizedBox(height: 3.0),
                     Text(
                       '306 Richmond Druve',
-                      style: TextStyle(fontSize: 10.0, color: Colors.white),
+                      style: GoogleFonts.sofia(
+                        textStyle: TextStyle(fontSize: 10.0, color: Colors.white)
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ]),

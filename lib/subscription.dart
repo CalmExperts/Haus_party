@@ -39,41 +39,138 @@ class SubscriptionPage extends StatelessWidget {
                 )
               ],
             ),
-            Positioned(
-                top: 150.0,
-                left: 50.0,
-                child: Container(
-                    height: 30,
-                    width: 80,
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[200],
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        // offset: Offset(2,2), // changes position of shadow
-                      ),
-                    ], borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                    child: Column(
+            Container(
+                // padding: EdgeInsets.only(top: 10.0),
+                child: ClipPath(
+              clipper: CustomTriangleClipper(),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.8175,
+                decoration: BoxDecoration(color: Color(0xFF5F54ED)),
+              ),
+            )),
+          ])),
+          Positioned(
+              top: 120.0,
+              left: 140.0,
+              child: Container(
+                  height: 35,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(width: 0.1, color: Colors.grey),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[200],
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          // offset: Offset(2,2), // changes position of shadow
+                        ),
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Premium",
-                          style: GoogleFonts.rubik(
-                            textStyle: TextStyle(color: Color(0xFF5F54ED)),
-                            fontSize: 15.0,
-                          )),
+                            style: GoogleFonts.rubik(
+                              textStyle: TextStyle(color: Color(0xFF5F54ED)),
+                              fontSize: 20.0,
+                            )),
                       ]))),
-            Container(
-                // padding: EdgeInsets.only(top: 10.0),
-                child: ClipPath(
-                  clipper: CustomTriangleClipper(),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.765,
-                    decoration: BoxDecoration(color: Color(0xFF5F54ED)),
-                  ),
+          Positioned(
+            top: 200,
+            left: 50,
+            child: Container(
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: Column(
+                  children: [
+                    Padding(
+                        padding: EdgeInsets.only(left: 30.0),
+                        child: Row(
+                          children: [
+                            Text("\$10",
+                                style: GoogleFonts.lato(
+                                    color: Colors.white, fontSize: 40.0)),
+                            Text("/month",
+                                style: GoogleFonts.lato(
+                                    color: Colors.white, fontSize: 20.0))
+                          ],
+                        )),
+                    Text("Premium membership gives the following benefits",
+                        style: GoogleFonts.lato(
+                            color: Colors.white, fontSize: 12.0)),
+                  ],
                 )),
-          ]))
+          ),
+          Positioned(
+            bottom: 200,
+            left: 50,
+            child: Container(
+              child: Column(
+                children: [
+                  SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.check, color: Colors.black, size: 20.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text("All Access Pass to Parties",
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 15.0,
+                            )),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.check, color: Colors.black, size: 20.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text("Early bird updates",
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 15.0,
+                            )),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.check, color: Colors.black, size: 20.0),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text("Free Bus ride to Party Venues",
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 15.0,
+                            )),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 100,
+            left: 120,
+            child: RaisedButton(
+              elevation: 15.0,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+              color: Colors.white,
+              // mouseCursor: ,
+              child: Text("Yes I'm In",
+                  style: GoogleFonts.lato(
+                      color: Color(0xFF5F54ED), fontSize: 15.0)),
+              onPressed: () {},
+            )),
         ]));
   }
 }

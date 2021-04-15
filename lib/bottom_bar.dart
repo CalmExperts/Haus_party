@@ -12,7 +12,7 @@ class BottomBar extends StatelessWidget {
         elevation: 10.0,
         clipBehavior: Clip.antiAlias,
         child: Container(
-            height: 50.0,
+            height: 48.0,
             decoration: BoxDecoration(
                 // borderRadius: BorderRadius.only(
                 //     topLeft: Radius.circular(25.0),
@@ -52,11 +52,14 @@ class BottomBar extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CalendarScreen()));
+                                      builder: (context) => CalendarScreen()
+
+                                      //alert()
+                                      ));
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.notifications),
+                            icon: Icon(Icons.messenger_outline_sharp),
                             color: Colors.black,
                             focusColor: Color(0xFF5F54ED),
                             highlightColor: Color(0xFF5F54ED),
@@ -70,7 +73,7 @@ class BottomBar extends StatelessWidget {
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.person),
+                            icon: Icon(Icons.person_outline_sharp),
                             color: Colors.black,
                             focusColor: Color(0xFF5F54ED),
                             highlightColor: Color(0xFF5F54ED),

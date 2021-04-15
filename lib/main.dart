@@ -5,9 +5,14 @@ import 'package:haus_party/home_page_alt.dart';
 import 'package:haus_party/routing.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/util/userProvider.dart';
+import 'package:haus_party/widgets/datepicker_widget.dart';
+import 'package:haus_party/widgets/dropdown_widget.dart';
+import 'package:haus_party/widgets/only_slyde_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'bottom_bar.dart';
 import 'location_settings.dart';
@@ -24,6 +29,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate
+        ],
+        supportedLocales: [Locale("en", "US")],
         title: 'Haus Party',
         initialRoute: '/auth',
         routes: routes,
@@ -39,7 +49,9 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(title: 'Haus Party'),
+        home: MyHomePage(
+          title: 'Haus Party',
+        ),
       ),
     );
   }
@@ -73,6 +85,9 @@ class _MyHomePageState extends State<MyHomePage>
     _tabController = TabController(length: 3, vsync: this);
   }
 
+  // List listItem = ["Rio de Janeiro", "São Paulo", "Recife", "Florianópolis"];
+  // String valueChoose;
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -81,6 +96,8 @@ class _MyHomePageState extends State<MyHomePage>
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    DateTime _dateTime;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -93,58 +110,139 @@ class _MyHomePageState extends State<MyHomePage>
                 context, MaterialPageRoute(builder: (context) => AltHome()));
           },
         ),
-        title: Text('Discover',
-            style: GoogleFonts.sofia(
+        title: Text(
+          'Discover',
+          style: GoogleFonts.sofia(
               fontWeight: FontWeight.normal,
-              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 16.0)),),
+              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 16.0)),
+        ),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.settings, color: Color(0xFF545D68)),
+              icon: Icon(Icons.settings_input_component_rounded,
+                  color: Color(0xFF545D68)),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LocationSettings()));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                // builder: (context) => LocationSettings()));
+                //
+                //
+
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        backgroundColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Container(
+                          color: Colors.transparent,
+                          height: 400,
+                          child: Padding(
+                              padding: EdgeInsets.all(6.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  DropDownWidget(),
+                                  SizedBox(height: 16),
+                                  DatePickerWidget(),
+                                  SizedBox(height: 20),
+                                  Text("Enter Search Radius",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18)),
+                                  SizedBox(height: 20),
+                                  OnlySlidePicker(),
+                                  SizedBox(height: 20),
+                                  Center(
+                                      child: Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.35,
+                                    height: 48,
+                                    child: RaisedButton(
+                                      elevation: 10,
+                                      shape: new RoundedRectangleBorder(
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(8.0))),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      color: Color(0xFFFFFFFF),
+                                      child: Text(
+                                        "Continue",
+                                        style: TextStyle(
+                                          color: Color(0xFF5F54ED),
+                                        ),
+                                      ),
+                                    ),
+                                  ))
+                                ],
+                              )),
+                        ),
+                      );
+                    });
               })
         ],
       ),
-      body: ListView(
-        children: [
-          Padding(
-              padding: EdgeInsets.only(left: 20.0),
-              child: Text(
-                'Upcoming Parties',
-                style: GoogleFonts.rubik(
-                    textStyle:
-                        TextStyle(fontSize: 28.0,
-                        )),
-              )),
-          Padding(
-            padding: EdgeInsets.only(left: 22.0),
-            child: Text(
-              'Within Alberta',
-              style: GoogleFonts.sofia(
-                color: Color(0xFF5F54ED),
-                  textStyle: TextStyle(fontSize: 14.0,
-                  )),
-            ),
-          ),
-          SizedBox(height: 2.0,),
-          Stack(
-            alignment: AlignmentDirectional.bottomCenter,
+      body: Container(
+        color: Colors.transparent,
+        child: Container(
+          child: Stack(
+            // alignment: AlignmentDirectional.bottomCenter,
+
             children: <Widget>[
               Positioned(
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.70,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.82,
                   width: MediaQuery.of(context).size.width,
                   child: MapWidget(),
                 ),
               ),
-              PartyCard(),
-              // Positioned(bottom: 40.0, left: 5.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Container(
+                  color: Colors.transparent,
+                  height: 80,
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Upcoming Parties',
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    fontSize: 28.0,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Within Alberta',
+                            style: GoogleFonts.sofia(
+                                color: Color(0xFF5F54ED),
+                                textStyle: TextStyle(
+                                  fontSize: 16.0,
+                                )),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 188.0),
+                child: PartyCard(),
+              ),
             ],
           ),
-        ],
+        ),
       ),
       bottomNavigationBar: BottomBar(),
     );
@@ -174,6 +272,8 @@ class MapWidgetState extends State<MapWidget> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
+        // myLocationEnabled: false,
+        zoomControlsEnabled: false,
         mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {

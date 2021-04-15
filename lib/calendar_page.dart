@@ -37,33 +37,29 @@ class CalendarScreen extends StatelessWidget {
           child: Text(
             "Upcoming Parties",
             style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 15.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                ),
+              fontFamily: 'Montserrat',
+              fontSize: 15.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
         UpcomingParty(
-          partyDateTime: "20",
-          partyTitle: "Spring Welcome Party",
-          partyHost: "DJ Clinton",
-          partyAddress: "306 Richmond Drive, Toronto"
-        ),
+            partyDateTime: "20",
+            partyTitle: "Spring Welcome Party",
+            partyHost: "DJ Clinton",
+            partyAddress: "306 Richmond Drive, Toronto"),
         UpcomingParty(
-          partyDateTime: "48",
-          partyTitle: "Greek Fest",
-          partyHost: "DJ Clinton",
-          partyAddress: "306 Adalia Close,Toronto"
-        ),
+            partyDateTime: "48",
+            partyTitle: "Greek Fest",
+            partyHost: "DJ Clinton",
+            partyAddress: "306 Adalia Close,Toronto"),
 
         UpcomingParty(
-          partyDateTime: "5",
-          partyTitle: "Freaknik",
-          partyHost: "DJ Clinton",
-          partyAddress: "30 Meek Mill Close,Philadelphia"
-        ),
-
+            partyDateTime: "5",
+            partyTitle: "Freaknik",
+            partyHost: "DJ Clinton",
+            partyAddress: "30 Meek Mill Close,Philadelphia"),
       ]),
       bottomNavigationBar: BottomBar(),
     );
@@ -97,14 +93,12 @@ class UpcomingParty extends StatelessWidget {
     this.partyTitle,
     this.partyHost,
     this.partyAddress,
-    
   });
 
   final String partyAddress;
   final String partyHost;
   final String partyTitle;
   final String partyDateTime;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +112,13 @@ class UpcomingParty extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => PartyDetails(partyDateTime: partyDateTime, partyAddress: partyAddress, partyTitle: partyTitle)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PartyDetails(
+                          partyDateTime: partyDateTime,
+                          partyAddress: partyAddress,
+                          partyTitle: partyTitle)));
             },
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: Row(
@@ -152,7 +152,6 @@ class UpcomingParty extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 11.0,
                         ),
-                        
                       ),
                       SizedBox(
                         height: 1.0,
@@ -160,10 +159,9 @@ class UpcomingParty extends StatelessWidget {
                       Text(
                         "Host - " + partyHost,
                         style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 6.0,
-                          fontWeight: FontWeight.bold
-                        ),
+                            color: Colors.grey,
+                            fontSize: 6.0,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 3.0,
@@ -176,11 +174,10 @@ class UpcomingParty extends StatelessWidget {
                         ),
                       )
                     ])),
-                    // Padding(
-                    //   child: 
-                    // )
-                    Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
-                    
+                // Padding(
+                //   child:
+                // )
+                Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
               ],
             ),
           )),

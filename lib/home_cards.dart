@@ -6,12 +6,14 @@ class PartyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.50,
+     padding: EdgeInsets.only(bottom:16),
+      
+      height: MediaQuery.of(context).size.height * 0.5,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: BouncingScrollPhysics(),
         itemCount: 3,
-        itemExtent: MediaQuery.of(context).size.height * 0.533,
+        itemExtent: MediaQuery.of(context).size.width ,
         itemBuilder: (BuildContext context, int i) => CardItem(),
       ),
     );
@@ -25,8 +27,9 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 30, 16, 4),
+    return 
+    Padding(
+      padding: const EdgeInsets.fromLTRB(8, 0, 08, 0),
       child: Card(
         // color: Colors.red,
         color: Color(0xFF5F54ED),
@@ -54,7 +57,7 @@ class CardItem extends StatelessWidget {
               ),
             ),
           ),
-          Flexible(child: Content())
+          Container(child: Content())
         ]),
       ),
     );

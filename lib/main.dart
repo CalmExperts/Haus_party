@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
@@ -17,7 +18,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'bottom_bar.dart';
 import 'location_settings.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+
+void main() {
+  runApp(DevicePreview(builder: (_) => MyApp(),
+  enabled: true,
+  ));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -49,6 +56,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
+              builder: DevicePreview.appBuilder,
+      locale: DevicePreview.locale(context),
         home: MyHomePage(
           title: 'Haus Party',
         ),
@@ -236,14 +245,16 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 188.0),
-                child: PartyCard(),
-              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                
+                child: PartyCard()),
+                
             ],
           ),
         ),
       ),
+
       bottomNavigationBar: BottomBar(),
     );
   }

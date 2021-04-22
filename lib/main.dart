@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:device_preview/device_preview.dart';
+// import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
@@ -20,10 +20,16 @@ import 'location_settings.dart';
 
 // void main() => runApp(MyApp());
 
+// void main() {
+//   runApp(DevicePreview(builder: (_) => MyApp(),
+//   enabled: true,
+//   ));
+// }
+//
 void main() {
-  runApp(DevicePreview(builder: (_) => MyApp(),
-  enabled: true,
-  ));
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -56,8 +62,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-              builder: DevicePreview.appBuilder,
-      locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
+        // locale: DevicePreview.locale(context),
         home: MyHomePage(
           title: 'Haus Party',
         ),
@@ -134,8 +140,6 @@ class _MyHomePageState extends State<MyHomePage>
                 //     context,
                 //     MaterialPageRoute(
                 // builder: (context) => LocationSettings()));
-                //
-                //
 
                 showDialog(
                     context: context,
@@ -245,16 +249,11 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                
-                child: PartyCard()),
-                
+              Align(alignment: Alignment.bottomCenter, child: PartyCard()),
             ],
           ),
         ),
       ),
-
       bottomNavigationBar: BottomBar(),
     );
   }

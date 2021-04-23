@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haus_party/login_page/birthday_page.dart';
+import 'package:haus_party/login_page/terms_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
+import 'package:haus_party/widgets/datepicker_widget.dart';
 
-class LoginScreen extends StatefulWidget {
+class BirthDayPage extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _BirthDayPageState createState() => _BirthDayPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _BirthDayPageState extends State<BirthDayPage> {
   bool _rememberMe = false;
   bool _isComposingName = false;
   bool _isComposingEmail = false;
@@ -179,6 +180,23 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Widget _aboveText() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+      child: Container(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          'Enter DOB',
+          style: TextStyle(
+            color: Colors.grey,
+            // fontFamily: 'OpenSans',
+            fontSize: 14.0,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildRememberMeCheckbox() {
     return Container(
       height: 20.0,
@@ -218,8 +236,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       child: TextButton(
         // elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
-        // onPressed: () => Navigator.pushReplacementNamed(context, '/sub'),
+        // onPressed: () => print('Login Button Pressed'),
+        onPressed: () => Navigator.pushReplacementNamed(context, '/sub'),
 
         // padding: EdgeInsets.all(15.0),
         // shape: RoundedRectangleBorder(
@@ -252,16 +270,16 @@ class _LoginScreenState extends State<LoginScreen> {
           child: RaisedButton(
             // elevation: 5.0,
             // onPressed: () => print('Sign UP Button Pressed'),
-            onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => BirthDayPage())),
 
+            onPressed: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => TermsPage())),
             padding: EdgeInsets.all(15.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.0),
             ),
             color: Color(0xFF5F54ED),
             child: Text(
-              'SIGN UP',
+              'CONFIRM',
               style: TextStyle(
                 // color: Color(0xFF527DAA),
                 color: Colors.white,
@@ -419,7 +437,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Let\'s Get Started!',
+                        'One Last Step!',
                         style: TextStyle(
                           color: Colors.black,
                           // fontFamily: 'OpenSans',
@@ -427,7 +445,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Text(
-                        'Create on account to get started',
+                        'We need to verify that you are 18+',
                         style: TextStyle(
                           color: Colors.grey,
                           // fontFamily: 'OpenSans',
@@ -435,23 +453,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 30.0),
-                      _buildName(),
-                      _buildEmailTF(),
+                      // _buildName(),
+                      // _buildEmailTF(),
                       // SizedBox(
                       //   height: 30.0,
                       // ),
-                      _buildPasswordTF(),
+                      // _buildPasswordTF(),
                       // _buildPasswordTF(),
                       // _buildForgotPasswordBtn(),
                       // _buildRememberMeCheckbox(),
                       // _buildSignInWithText(),
                       // _buildSocialBtnRow(),
                       // _buildSignupBtn(),
+                      _aboveText(),
+                      DatePickerLogin(),
                       SizedBox(height: 20.0),
 
                       _buildSignUpBtn(),
 
-                      _buildLoginBtn(),
+                      // _buildLoginBtn(),
                     ],
                   ),
                 ),

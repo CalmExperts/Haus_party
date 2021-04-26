@@ -1,5 +1,29 @@
 import 'package:flutter/material.dart';
 
+class HorizontalView extends StatefulWidget {
+  @override
+  _HorizontalViewState createState() => _HorizontalViewState();
+}
+
+class _HorizontalViewState extends State<HorizontalView> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        // padding: EdgeInsets.symmetric(horizontal: 8),
+        physics: BouncingScrollPhysics(),
+        itemCount: 6,
+        // itemExtent: MediaQuery.of(context).size.width,
+        itemExtent: 160,
+
+        itemBuilder: (BuildContext context, int i) => GalleryImage(),
+      ),
+    );
+  }
+}
+
 class PartyDesc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,38 +38,41 @@ class PartyDesc extends StatelessWidget {
               overflow: Overflow.visible,
               children: <Widget>[
                 Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.3,
                     width: MediaQuery.of(context).size.width,
                     child: Image(
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/asset-3.png"))),
+                        image: AssetImage("assets/asset-1.png"))),
                 Positioned(
                   top: 20,
                   left: 20,
                   child: Container(
-                      height: 40,
-                      width: 40,
+                      height: 45,
+                      width: 45,
                       // color: Colors.white,
                       child: FloatingActionButton(
                           backgroundColor: Colors.white,
                           shape: CircleBorder(),
                           elevation: 20,
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: Color(0xFF5F54ED),
-                            size: 20,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              color: Color(0xFF5F54ED),
+                              size: 26,
+                            ),
                           ),
                           onPressed: () {
                             Navigator.pop(context);
                           })),
                 ),
                 Positioned(
-                    top: 200,
-                    left: 55,
+                    top: 160,
+                    left: MediaQuery.of(context).size.width * 0.1,
                     child: Container(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        height: MediaQuery.of(context).size.height * 0.225,
-                        width: MediaQuery.of(context).size.width * 0.7,
+                        height: MediaQuery.of(context).size.height * 0.232,
+                        width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Colors.white,
@@ -124,18 +151,20 @@ class PartyDesc extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 110.0),
+              padding: const EdgeInsets.fromLTRB(0, 135, 0, 16),
               child: Column(
                 children: <Widget>[
                   Container(
-                    width: 100,
+                    width: 120,
                     child: RaisedButton(
+                        padding: EdgeInsets.all(12),
                         color: Color(0xFF5F54ED),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
                         child: Text(
                           "Reserve",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         onPressed: () {}),
                   ),
@@ -143,143 +172,201 @@ class PartyDesc extends StatelessWidget {
               ),
             ),
             Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                height: MediaQuery.of(context).size.height * 0.2,
-                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.fromLTRB(36, 0, 40, 0),
+                // height: MediaQuery.of(context).size.height * 0.2,
                 child: Column(
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Icon(Icons.info, color: Colors.black38),
-                        SizedBox(width: 10),
+                        Icon(
+                          Icons.info,
+                          color: Colors.black,
+                          size: 32,
+                        ),
+                        SizedBox(width: 2),
                         Text("Description",
-                            style: TextStyle(
-                                color: Colors.black54, fontSize: 15.0))
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 22.0))
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                        "The Spring Welcome Party 2020 is brought to you by DJ Clint. Come party to the best of afrobeats and make new friends",
-                        style: TextStyle(color: Colors.black54)),
+                    SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                          "The Spring Welcome Party 2020 is brought to you by DJ Clint. Come party to the best of afrobeats and make new friends",
+                          style:
+                              TextStyle(color: Colors.black54, fontSize: 18)),
+                    ),
+                    SizedBox(height: 16),
                   ],
                 )),
-                Container(
-                  padding: EdgeInsets.fromLTRB(20,10,10,20),
-                  height: screenSize.height * 0.2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Row(children: <Widget>[
-                        Text("Gallery", textAlign: TextAlign.left, style: TextStyle(fontSize: 15, color: Colors.black54, fontWeight: FontWeight.bold)),
-                      ],),
-                      // ListView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   children: <Widget>[
-                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
-                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
-                      //   GalleryImage(imageUrl: "assets/asset-1.png",),
-                      //   GalleryImage(imageUrl: "assets/asset-1.png",)
-
-
-
-                      // ],)
-                    ]
-                  ),
-                ),
-
-                Container(
-                  padding: EdgeInsets.only(left:20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(16, 8, 2, 8),
+              // height: screenSize.height * 0.3,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: Text("Gallery",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.black,
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    HorizontalView(),
+                    SizedBox(
+                      height: 16,
+                    ),
+                  ]),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 40),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Text("Activities", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
+                      Text("Activities",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22)),
                     ],
                   ),
                   SizedBox(height: 10),
-                  Text("Beer Pong", style: TextStyle(color: Colors.black54)),
-                  Text("Spin the Bottle", style: TextStyle(color: Colors.black54)),
-                  Text("Truth or Dare", style: TextStyle(color: Colors.black54)),
-
-                  
-                ],),),
-                
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: Container(
-                    height: screenSize.height * 0.2,
-                    padding: EdgeInsets.only(left:20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
+                  Text("Beer Pong",
+                      style: TextStyle(color: Colors.black54, fontSize: 18)),
+                  Text("Spin the Bottle",
+                      style: TextStyle(color: Colors.black54, fontSize: 18)),
+                  Text("Truth or Dare",
+                      style: TextStyle(color: Colors.black54, fontSize: 18)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Container(
+                // height: screenSize.height * 0.2,
+                padding: EdgeInsets.only(left: 40),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text("Dress Code", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
+                        Text("Dress Code",
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22)),
                       ],
                     ),
                     SizedBox(height: 10),
-                    Text("Metro Urban", style: TextStyle(color: Colors.black54)),
-               
-
-                    
-                  ],),),
+                    Text("Metro Urban",
+                        style: TextStyle(color: Colors.black54, fontSize: 18)),
+                  ],
                 ),
-
-                Container(
-                    height: screenSize.height * 0.15,
-                    padding: EdgeInsets.only(left:20, right: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text("Invite Friends", style: TextStyle(color: Colors.black54)),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(40, 40, 0, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("People Attending(129)",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22)),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  HorizontalView(),
+                ],
+              ),
+            ),
+            Container(
+              // height: screenSize.height * 0.15,
+              padding:
+                  EdgeInsets.only(left: 40, right: 20, top: 40, bottom: 40),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("Invite Friends",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700)),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    decoration: InputDecoration(
                         fillColor: Colors.white,
                         focusColor: Colors.white,
                         hoverColor: Colors.grey,
                         border: OutlineInputBorder(),
                         hintText: 'E-mail',
-                        suffixIcon: Icon(Icons.file_upload, color: Colors.black)
-                      ),
-                      // onSubmitted: () {},
-                      keyboardType: TextInputType.emailAddress,
-                      cursorColor: Colors.black, 
-                      cursorRadius: Radius.zero,
-                      cursorWidth: 2.0,
-                      keyboardAppearance: Brightness.light,
-                      showCursor: true,
-                      textAlign: TextAlign.left,
-                    )
-                    
-               
-
-                    
-                  ],),),
-
+                        suffixIcon:
+                            Icon(Icons.file_upload, color: Colors.black)),
+                    // onSubmitted: () {},
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.black,
+                    cursorRadius: Radius.zero,
+                    cursorWidth: 2.0,
+                    keyboardAppearance: Brightness.light,
+                    showCursor: true,
+                    textAlign: TextAlign.left,
+                  )
+                ],
+              ),
+            ),
           ],
         ));
   }
 }
 
 class GalleryImage extends StatelessWidget {
-  const GalleryImage({
-    this.imageUrl,
-  });
+  // const GalleryImage({
+  //   this.imageUrl,
+  // });
 
-  final String imageUrl;
+  // final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Image(
-        height: 100,
-        image: AssetImage(imageUrl.isEmpty ? "assets/drink_image" : imageUrl));
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Colors.red,
+      ),
+      height: 65,
+      width: 65,
+      margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
+      child: Image.asset(
+        // "assets/backgroundNewLogisn.png",
+        'assets/drink_image.png',
+
+        height: 65,
+        width: 65,
+        fit: BoxFit.contain,
+        // height: 1000.0,
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'bottom_bar.dart';
 import 'home_cards.dart';
@@ -12,14 +13,21 @@ class AltHome extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.location_on, color: Color(0xFF545D68)),
+          icon: Icon(
+            Icons.location_on_outlined,
+            color: Color(0xFF5F54ED),
+            size: 38,
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: Text(
           'Discover',
-          style: TextStyle(color: Color(0xFF545D68), fontSize: 20.0),
+          // style: TextStyle(color: Color(0xFF545D68), fontSize: 20.0),
+          style: GoogleFonts.sofia(
+              fontWeight: FontWeight.normal,
+              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 26.0)),
         ),
       ),
       body: Container(
@@ -34,6 +42,7 @@ class AltHome extends StatelessWidget {
                 title: Text('Upcoming Parties',
                     textAlign: TextAlign.left,
                     style: TextStyle(
+                        letterSpacing: 1.5,
                         fontFamily: 'Varela',
                         color: Colors.black,
                         fontSize: 25.0,
@@ -46,7 +55,7 @@ class AltHome extends StatelessWidget {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Container(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                       height: MediaQuery.of(context).size.height / 2,
                       child: CardItem());
                 },

@@ -17,7 +17,13 @@ class _InitialPageState extends State<InitialPage> {
 
   Widget _finalButtons() {
     return Column(
-      children: [_buildSignUpBtn(), _buildLoginBtn],
+      children: [
+        _buildSignUpBtn(),
+        SizedBox(
+          height: 8,
+        ),
+        _buildLoginBtn
+      ],
     );
   }
 
@@ -241,21 +247,22 @@ class _InitialPageState extends State<InitialPage> {
   Widget get _buildLoginBtn {
     return Column(
       children: [
-        SizedBox(height: 12.0),
-        Container(
-          // padding: EdgeInsets.symmetric(vertical: 8),
-          height: 60.0,
-          width: double.infinity,
-          child: RaisedButton(
-            // elevation: 5.0,
-            onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LoginScreen())),
+        TextButton(
+          onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginScreen())),
 
-            padding: EdgeInsets.all(15.0),
-            shape: RoundedRectangleBorder(
+          // elevation: 5.0,
+
+          child: Container(
+            alignment: Alignment.center,
+            height: 60.0,
+            width: double.infinity,
+            // width: double.infinity,
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
+              color: Color(0xFF8275e0),
             ),
-            color: Color(0xFF8275e0),
             child: Text(
               'Create an Account',
               style: TextStyle(
@@ -269,7 +276,6 @@ class _InitialPageState extends State<InitialPage> {
             ),
           ),
         ),
-        SizedBox(height: 12.0),
       ],
     );
   }
@@ -277,19 +283,20 @@ class _InitialPageState extends State<InitialPage> {
   Widget _buildSignUpBtn() {
     return Column(
       children: [
-        SizedBox(height: 12.0),
-        Container(
-          // padding: EdgeInsets.symmetric(vertical: 8),
-          height: 60.0,
-          width: double.infinity,
-          child: RaisedButton(
-            // elevation: 5.0,
-            onPressed: () => print('Sign UP Button Pressed'),
-            padding: EdgeInsets.all(15.0),
-            shape: RoundedRectangleBorder(
+        TextButton(
+          onPressed: () => print('Sign UP Button Pressed'),
+          // elevation: 5.0,
+
+          child: Container(
+            alignment: Alignment.center,
+            height: 60.0,
+            width: double.infinity,
+            // width: double.infinity,
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
+              color: Colors.white,
             ),
-            color: Colors.white,
             child: Text(
               'Sign in with Google',
               style: TextStyle(
@@ -303,7 +310,6 @@ class _InitialPageState extends State<InitialPage> {
             ),
           ),
         ),
-        SizedBox(height: 12.0),
       ],
     );
   }
@@ -420,7 +426,7 @@ class _InitialPageState extends State<InitialPage> {
               ),
               Container(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 40.0,
+                  horizontal: 32.0,
                   vertical: 20.0,
                 ),
                 height: double.infinity,

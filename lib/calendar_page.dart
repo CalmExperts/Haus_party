@@ -12,11 +12,15 @@ class CalendarScreen extends StatelessWidget {
       body: ListView(children: <Widget>[
         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
         Container(
-          height: MediaQuery.of(context).size.height * 0.05,
+          // height: MediaQuery.of(context).size.height * 0.05,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.date_range, color: Colors.white),
+              Icon(
+                Icons.date_range,
+                color: Colors.white,
+                size: 38,
+              ),
             ],
           ),
         ),
@@ -24,7 +28,7 @@ class CalendarScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
           child: Container(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            height: MediaQuery.of(context).size.height * 0.58,
+            // height: 300,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -38,7 +42,7 @@ class CalendarScreen extends StatelessWidget {
             "Upcoming Parties",
             style: TextStyle(
               fontFamily: 'Montserrat',
-              fontSize: 15.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -103,14 +107,16 @@ class UpcomingParty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-      child: Container(
-          height: 53.0,
-          child: RaisedButton(
+        padding: const EdgeInsets.fromLTRB(20, 2, 20, 16),
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.0),
             color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
+          ),
+          height: 75.0,
+          child: TextButton(
             onPressed: () {
               Navigator.push(
                   context,
@@ -120,67 +126,148 @@ class UpcomingParty extends StatelessWidget {
                           partyAddress: partyAddress,
                           partyTitle: partyTitle)));
             },
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(
-                      partyDateTime,
-                      style: TextStyle(
-                        color: Color(0xFF5F54ED),
-                        fontSize: 18.0,
-                      ),
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          partyDateTime,
+                          style: TextStyle(
+                            color: Color(0xFF5F54ED),
+                            fontSize: 38.0,
+                          ),
+                        ),
+                        Text(
+                          "Hours to Go",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 3.0),
-                    Text(
-                      "Hours to Go",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 7.0,
-                      ),
-                    ),
+                    Container(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                partyTitle,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                "Host - " + partyHost,
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 10.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                partyAddress,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 10.0,
+                                ),
+                              )
+                            ])),
+                    // Padding(
+                    //   child:
+                    // )
+                    Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
                   ],
                 ),
-                Container(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: Column(children: <Widget>[
-                      Text(
-                        partyTitle,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11.0,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.0,
-                      ),
-                      Text(
-                        "Host - " + partyHost,
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 6.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 3.0,
-                      ),
-                      Text(
-                        partyAddress,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 8.0,
-                        ),
-                      )
-                    ])),
-                // Padding(
-                //   child:
-                // )
-                Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
               ],
             ),
-          )),
-    );
+          ),
+
+          // RaisedButton(
+          //   color: Colors.white,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.all(Radius.circular(16)),
+          //   ),
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) => PartyDetails(
+          //                 partyDateTime: partyDateTime,
+          //                 partyAddress: partyAddress,
+          //                 partyTitle: partyTitle)));
+          //   },
+          //   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: <Widget>[
+          //       Column(
+          //         children: <Widget>[
+          //           Text(
+          //             partyDateTime,
+          //             style: TextStyle(
+          //               color: Color(0xFF5F54ED),
+          //               fontSize: 18.0,
+          //             ),
+          //           ),
+          //           SizedBox(height: 3.0),
+          //           Text(
+          //             "Hours to Go",
+          //             style: TextStyle(
+          //               color: Colors.grey,
+          //               fontSize: 7.0,
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //       Container(
+          //           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          //           child: Column(children: <Widget>[
+          //             Text(
+          //               partyTitle,
+          //               style: TextStyle(
+          //                 color: Colors.black,
+          //                 fontSize: 11.0,
+          //               ),
+          //             ),
+          //             SizedBox(
+          //               height: 1.0,
+          //             ),
+          //             Text(
+          //               "Host - " + partyHost,
+          //               style: TextStyle(
+          //                   color: Colors.grey,
+          //                   fontSize: 6.0,
+          //                   fontWeight: FontWeight.bold),
+          //             ),
+          //             SizedBox(
+          //               height: 3.0,
+          //             ),
+          //             Text(
+          //               partyAddress,
+          //               style: TextStyle(
+          //                 color: Colors.black,
+          //                 fontSize: 8.0,
+          //               ),
+          //             )
+          //           ])),
+          //       // Padding(
+          //       //   child:
+          //       // )
+          //       Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
+          //     ],
+          //   ),
+          // )),
+        ));
   }
 }

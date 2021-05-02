@@ -39,7 +39,7 @@ class AltHome extends StatelessWidget {
               automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text('Upcoming Parties2',
+                title: Text('Upcoming Parties',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         letterSpacing: 1.5,

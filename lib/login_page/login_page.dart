@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haus_party/login_page/birthday_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
+import 'package:haus_party/login_page/widgets/button_large.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -210,6 +211,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       // padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 160,
+      // padding: EdgeInsets.all(4.0),
+      height: 50.0,
+
       decoration: BoxDecoration(
         border: Border.all(
           color: Color(0xFF5F54ED),
@@ -219,13 +223,6 @@ class _LoginScreenState extends State<LoginScreen> {
       child: TextButton(
         // elevation: 5.0,
         onPressed: () => print('Login Button Pressed'),
-        // onPressed: () => Navigator.pushReplacementNamed(context, '/sub'),
-
-        // padding: EdgeInsets.all(15.0),
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.circular(30.0),
-        // ),
-        // color: Colors.white,
 
         child: Text(
           'LOGIN',
@@ -242,39 +239,32 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildSignUpBtn() {
-    return Column(
-      children: [
-        SizedBox(height: 12.0),
-        Container(
-          // padding: EdgeInsets.symmetric(vertical: 8),
-          height: 60.0,
-          width: double.infinity,
-          child: RaisedButton(
-            // elevation: 5.0,
-            // onPressed: () => print('Sign UP Button Pressed'),
-            onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => BirthDayPage())),
-
-            padding: EdgeInsets.all(15.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            color: Color(0xFF5F54ED),
-            child: Text(
-              'SIGN UP',
-              style: TextStyle(
-                // color: Color(0xFF527DAA),
-                color: Colors.white,
-                letterSpacing: 1.5,
-                fontSize: 18.0,
-                // fontWeight: FontWeight.bold,
-                // fontFamily: 'OpenSans',
-              ),
-            ),
+    return Container(
+      // padding: EdgeInsets.symmetric(vertical: 8),
+      height: 60.0,
+      width: 260,
+      // width: double.infinity,
+      // padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color: Color(0xFF5F54ED),
+      ),
+      child: TextButton(
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BirthDayPage())),
+        child: Text(
+          'SIGN UP',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            // color: Color(0xFF527DAA),
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            // fontWeight: FontWeight.bold,
+            // fontFamily: 'OpenSans',
           ),
         ),
-        SizedBox(height: 12.0),
-      ],
+      ),
     );
   }
 
@@ -393,19 +383,6 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                // decoration: BoxDecoration(
-                //   gradient: LinearGradient(
-                //     begin: Alignment.topCenter,
-                //     end: Alignment.bottomCenter,
-                //     colors: [
-                //       Color(0xFF73AEF5),
-                //       Color(0xFF61A4F1),
-                //       Color(0xFF478DE0),
-                //       Color(0xFF398AE5),
-                //     ],
-                //     stops: [0.1, 0.4, 0.7, 0.9],
-                //   ),
-                // ),
               ),
               Container(
                 height: double.infinity,
@@ -437,19 +414,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 30.0),
                       _buildName(),
                       _buildEmailTF(),
-                      // SizedBox(
-                      //   height: 30.0,
-                      // ),
+
                       _buildPasswordTF(),
-                      // _buildPasswordTF(),
-                      // _buildForgotPasswordBtn(),
-                      // _buildRememberMeCheckbox(),
-                      // _buildSignInWithText(),
-                      // _buildSocialBtnRow(),
-                      // _buildSignupBtn(),
+
                       SizedBox(height: 20.0),
 
-                      _buildSignUpBtn(),
+                      // _buildSignUpBtn(),
+
+                      ButtonLarge(
+                          buttonTitle: 'SIGN UP',
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BirthDayPage()))),
+
+                      SizedBox(height: 20.0),
 
                       _buildLoginBtn(),
                     ],

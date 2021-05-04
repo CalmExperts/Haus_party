@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
+import 'package:haus_party/login_page/widgets/responsives/horizontal_card.dart';
 import 'package:haus_party/routing.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/util/userProvider.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'bottom_bar.dart';
 import 'location_settings.dart';
+import 'login_page/widgets/responsives/vertical_card.dart';
 
 // void main() => runApp(MyApp());
 
@@ -106,6 +108,115 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
+    _dialogHorizontal() {
+      return Container(
+        color: Colors.transparent,
+        child: Padding(
+            padding: EdgeInsets.all(2.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DropDownWidget(),
+                SizedBox(height: 8),
+                DatePickerWidget(),
+                SizedBox(height: 8),
+                Text("Enter Search Radius",
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+                SizedBox(height: 2),
+                OnlySlidePicker(),
+                SizedBox(height: 8),
+                Container(
+                    width: 200,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(
+                          fontSize: 18,
+                          backgroundColor: Colors.white,
+                          color: Color(0xFF5F54ED),
+                        ),
+                      ),
+                    ))
+              ],
+            )),
+      );
+    }
+
+    _dialogVertical() {
+      return Container(
+        color: Colors.transparent,
+        height: 400,
+        child: Padding(
+            padding: EdgeInsets.all(6.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DropDownWidget(),
+                SizedBox(height: 16),
+                DatePickerWidget(),
+                SizedBox(height: 20),
+                Text("Enter Search Radius",
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+                SizedBox(height: 20),
+                OnlySlidePicker(),
+                SizedBox(height: 20),
+                Center(
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      height: 48,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(8))),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          'Continue',
+                          style: TextStyle(
+                            fontSize: 18,
+                            backgroundColor: Colors.white,
+                            color: Color(0xFF5F54ED),
+                          ),
+                        ),
+                      )),
+
+                  //     child: Container(
+                  //   width: MediaQuery.of(context).size.width *
+                  //       0.35,
+                  //   height: 48,
+                  //   child: RaisedButton(
+                  //     elevation: 10,
+                  //     shape: new RoundedRectangleBorder(
+                  //         borderRadius: new BorderRadius.all(
+                  //             new Radius.circular(8.0))),
+                  //     onPressed: () {
+                  //       Navigator.pop(context);
+                  //     },
+                  //     color: Color(0xFFFFFFFF),
+                  //     child: Text(
+                  //       "Continue",
+                  //       style: TextStyle(
+                  //         color: Color(0xFF5F54ED),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // )
+                )
+              ],
+            )),
+      );
+    }
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -130,7 +241,7 @@ class _MyHomePageState extends State<MyHomePage>
           'Discover',
           style: GoogleFonts.sofia(
               fontWeight: FontWeight.normal,
-              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 16.0)),
+              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 26.0)),
         ),
         actions: <Widget>[
           IconButton(
@@ -146,55 +257,17 @@ class _MyHomePageState extends State<MyHomePage>
                     context: context,
                     builder: (context) {
                       return Dialog(
-                        backgroundColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Container(
-                          color: Colors.transparent,
-                          height: 400,
-                          child: Padding(
-                              padding: EdgeInsets.all(6.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  DropDownWidget(),
-                                  SizedBox(height: 16),
-                                  DatePickerWidget(),
-                                  SizedBox(height: 20),
-                                  Text("Enter Search Radius",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18)),
-                                  SizedBox(height: 20),
-                                  OnlySlidePicker(),
-                                  SizedBox(height: 20),
-                                  Center(
-                                      child: Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.35,
-                                    height: 48,
-                                    child: RaisedButton(
-                                      elevation: 10,
-                                      shape: new RoundedRectangleBorder(
-                                          borderRadius: new BorderRadius.all(
-                                              new Radius.circular(8.0))),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      color: Color(0xFFFFFFFF),
-                                      child: Text(
-                                        "Continue",
-                                        style: TextStyle(
-                                          color: Color(0xFF5F54ED),
-                                        ),
-                                      ),
-                                    ),
-                                  ))
-                                ],
-                              )),
-                        ),
-                      );
+                          backgroundColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: LayoutBuilder(builder: (context, constraints) {
+                            if (constraints.maxWidth < 500) {
+                              return _dialogVertical();
+                            } else {
+                              return _dialogHorizontal();
+                            }
+                          }));
                     });
               })
         ],
@@ -250,7 +323,15 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ),
               ),
-              Align(alignment: Alignment.bottomCenter, child: PartyCard()),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    if (constraints.maxWidth < 500) {
+                      return VerticalCard();
+                    } else {
+                      return HorizontalCard();
+                    }
+                  })),
             ],
           ),
         ),

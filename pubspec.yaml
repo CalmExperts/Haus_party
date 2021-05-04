@@ -67,6 +67,7 @@ flutter:
     - assets/party_background.jpg
     - assets/backgroundNewLogin.png
     - assets/backgroundInital.png
+    - assets/mapBack.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

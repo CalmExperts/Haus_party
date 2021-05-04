@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haus_party/login_page/widgets/button_editable.dart';
 import 'package:haus_party/model/dummy_data.dart';
 import 'package:haus_party/pages/congrats_page.dart';
 import 'package:haus_party/pages/drinkPage/category_item.dart';
@@ -8,6 +9,10 @@ import '../../bottom_bar.dart';
 import '../../home_cards.dart';
 
 class DrinkPage extends StatefulWidget {
+  final Function theOnPress;
+
+  const DrinkPage({Key key, this.theOnPress}) : super(key: key);
+
   @override
   _DrinkPageState createState() => _DrinkPageState();
 }
@@ -30,28 +35,76 @@ class _DrinkPageState extends State<DrinkPage> {
                   // height: 80.0,
                   width: 200,
                   child: Center(
-                      child: Container(
-                    child: RaisedButton(
-                      elevation: 10,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius:
-                              new BorderRadius.all(new Radius.circular(8.0))),
+                    child: ButtonEditable(
+                      buttonTitle: 'Continue',
+                      theWidth: 108,
+                      theHeight: 40,
+                      theBorderRadius: 8,
+                      sizeText: 18,
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => CongratsPage()));
                       },
-                      color: Color(0xFF5F54ED),
-                      child: Text(
-                        "Continue",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
-                  )))
+                    // child: Container(
+                    //     width: 108,
+                    //     height: 38,
+                    //     decoration: BoxDecoration(
+                    //         color: Color(0xFF5F54ED),
+                    //         boxShadow: [
+                    //           BoxShadow(
+                    //             color: Colors.grey[800],
+                    //             blurRadius: 2.0,
+                    //             spreadRadius: 0.0,
+                    //             offset: Offset(
+                    //                 2.0, 2.0), // shadow direction: bottom right
+                    //           )
+                    //         ],
+                    //         borderRadius: BorderRadius.all(Radius.circular(8))),
+                    //     child: TextButton(
+                    //       onPressed: () {
+                    //         Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(
+                    //                 builder: (context) => CongratsPage()));
+                    //       },
+                    //       child: Text(
+                    //         'Continue',
+                    //         style: TextStyle(
+                    //           fontSize: 18,
+                    //           // backgroundColor: Colors.white,
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //     )),
+
+                    //----
+                    //     child: Container(
+
+                    //   child: RaisedButton(
+                    //     elevation: 10,
+                    //     shape: new RoundedRectangleBorder(
+                    //         borderRadius:
+                    //             new BorderRadius.all(new Radius.circular(8.0))),
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => CongratsPage()));
+                    //     },
+                    //     color: Color(0xFF5F54ED),
+                    //     child: Text(
+                    //       "XContinue",
+                    //       style: TextStyle(
+                    //         fontSize: 16,
+                    //         color: Colors.white,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // )
+                  ))
             ])));
   }
 
@@ -242,30 +295,49 @@ class _DrinkPageState extends State<DrinkPage> {
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 26, 0, 0),
-                                    child: Container(
-                                      width: 90,
-                                      height: 36,
-                                      child: RaisedButton(
-                                        elevation: 10,
-                                        shape: new RoundedRectangleBorder(
-                                            borderRadius: new BorderRadius.all(
-                                                new Radius.circular(8.0))),
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DrinkPage()));
-                                        },
-                                        color: Color(0xFF5F54ED),
-                                        child: Text(
-                                          "Add",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.white,
-                                          ),
+                                    child: Column(
+                                      children: [
+                                        ButtonEditable(
+                                          buttonTitle: 'Add',
+                                          theWidth: 90,
+                                          theHeight: 36,
+                                          theBorderRadius: 8,
+                                          sizeText: 14,
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CongratsPage()));
+                                          },
                                         ),
-                                      ),
+                                        // Container(
+                                        //   width: 90,
+                                        //   height: 36,
+                                        //   child: RaisedButton(
+                                        //     elevation: 10,
+                                        //     shape: new RoundedRectangleBorder(
+                                        //         borderRadius: new BorderRadius
+                                        //                 .all(
+                                        //             new Radius.circular(8.0))),
+                                        // onPressed: () {
+                                        //   Navigator.push(
+                                        //       context,
+                                        //       MaterialPageRoute(
+                                        //           builder: (context) =>
+                                        //               DrinkPage()));
+                                        // },
+                                        //     color: Color(0xFF5F54ED),
+                                        //     child: Text(
+                                        //       "Add",
+                                        //       style: TextStyle(
+                                        //         fontSize: 14,
+                                        //         color: Colors.white,
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                      ],
                                     ),
                                   ),
                                 ],

@@ -12,7 +12,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(8))),

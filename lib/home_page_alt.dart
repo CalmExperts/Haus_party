@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'bottom_bar.dart';
 import 'home_cards.dart';
+import 'login_page/widgets/responsives/horizontal_card.dart';
+import 'login_page/widgets/responsives/vertical_card.dart';
 
 class AltHome extends StatelessWidget {
   @override
@@ -57,7 +59,13 @@ class AltHome extends StatelessWidget {
                   return Container(
                       padding: const EdgeInsets.fromLTRB(8, 16, 8, 8),
                       height: MediaQuery.of(context).size.height / 2,
-                      child: CardItem());
+                      child: LayoutBuilder(builder: (context, constraints) {
+                        if (constraints.maxWidth < 500) {
+                          return VerticalCardItem();
+                        } else {
+                          return HorizontalCardItem();
+                        }
+                      }));
                 },
                 childCount: 3,
               ),

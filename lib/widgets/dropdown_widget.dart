@@ -13,7 +13,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(6.0),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(8)),
       child: DropdownButton(

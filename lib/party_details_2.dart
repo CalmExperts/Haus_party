@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/pages/LocalPages/bus_page.dart';
+import 'package:haus_party/pages/LocalPages/location_page.dart';
+import 'package:haus_party/pages/drinkPage/drink_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 
 import 'bottom_bar.dart';
 import 'drinks_sale.dart';
+import 'login_page/widgets/button_editable.dart';
 
 class PartyDetails extends StatelessWidget {
   const PartyDetails({
@@ -110,7 +114,7 @@ class PartyDetails extends StatelessWidget {
         //LOCATION CONTAINER
         Container(
           width: MediaQuery.of(context).size.width * 0.7,
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 2),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -150,14 +154,23 @@ class PartyDetails extends StatelessWidget {
               Container(
                 height: 120,
                 width: MediaQuery.of(context).size.width * 0.7,
-                color: Colors.green,
-                child: Text(
-                  'MAP HERE',
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(85.0),
+                    bottomLeft: Radius.circular(85.0),
+                  ),
+                  child: Image.asset(
+                    // "assets/backgroundNewLogisn.png",
+                    'assets/mapBack.png',
+                    fit: BoxFit.cover,
+                    height: 80.0,
+                    width: 120.0,
+                  ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 32, 0, 8),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 2),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -167,10 +180,20 @@ class PartyDetails extends StatelessWidget {
                       size: 22,
                       color: Color(0xFF5F54ED),
                     ),
-                    Text(
-                      'Tap Map for Directions',
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LocationPage()));
+                      },
+                      child: Text(
+                        'Tap Map for Directions',
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
@@ -189,7 +212,7 @@ class PartyDetails extends StatelessWidget {
         //BUS CONTAINER
         Container(
           width: MediaQuery.of(context).size.width * 0.7,
-          padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 2),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -229,13 +252,29 @@ class PartyDetails extends StatelessWidget {
               Container(
                 height: 120,
                 width: MediaQuery.of(context).size.width * 0.7,
-                color: Colors.green,
-                child: Text(
-                  'MAP HERE',
+                // decoration: BoxDecoration(
+                //   color: Colors.green,
+                // borderRadius: BorderRadius.only(
+                //   topRight: Radius.circular(85.0),
+                //   bottomLeft: Radius.circular(85.0),
+                // )
+                // ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(85.0),
+                    bottomLeft: Radius.circular(85.0),
+                  ),
+                  child: Image.asset(
+                    // "assets/backgroundNewLogisn.png",
+                    'assets/mapBack.png',
+                    fit: BoxFit.cover,
+                    height: 80.0,
+                    width: 120.0,
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 32, 0, 8),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 2),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -245,10 +284,18 @@ class PartyDetails extends StatelessWidget {
                       size: 22,
                       color: Color(0xFF5F54ED),
                     ),
-                    Text(
-                      'Tap Map for Directions',
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => BusPage()));
+                      },
+                      child: Text(
+                        'Tap Map for Directions',
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
@@ -365,23 +412,36 @@ class PartyDetails extends StatelessWidget {
                       SizedBox(
                         height: 16,
                       ),
-                      RaisedButton(
-                          // padding: ,
-                          color: Color(0xFF5F54ED),
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DrinkSales()));
-                          },
-                          child: Text(
-                            "Order More",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 10.0),
-                          )),
+                      ButtonEditable(
+                        buttonTitle: 'Order More',
+                        theWidth: 100,
+                        theHeight: 38,
+                        theBorderRadius: 8,
+                        sizeText: 16,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DrinkPage()));
+                        },
+                      ),
+                      // RaisedButton(
+                      //     // padding: ,
+                      //     color: Color(0xFF5F54ED),
+                      //     shape: RoundedRectangleBorder(
+                      //         borderRadius:
+                      //             BorderRadius.all(Radius.circular(10))),
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => DrinkSales()));
+                      //     },
+                      //     child: Text(
+                      //       "Order More",
+                      //       style:
+                      //           TextStyle(color: Colors.white, fontSize: 10.0),
+                      //     )),
                     ],
                   ))
               // FlatButton(

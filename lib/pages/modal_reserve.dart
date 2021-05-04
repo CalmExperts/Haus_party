@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/pages/drinkPage/drink_page.dart';
 
+import 'congrats_page.dart';
+
 class ModalReserve extends StatefulWidget {
   @override
   _ModalReserveState createState() => _ModalReserveState();
@@ -196,25 +198,25 @@ class _ModalReserveState extends State<ModalReserve> {
                                       fontSize: 12.0,
                                     )),
                               ),
-                              RaisedButton(
-                                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                                color: Color(0xFF5F54ED),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
-                                child: Text(
-                                  "Continue",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ModalReserve()));
-                                },
-                              ),
+                              // RaisedButton(
+                              //   padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                              //   color: Color(0xFF5F54ED),
+                              //   shape: RoundedRectangleBorder(
+                              //       borderRadius:
+                              //           BorderRadius.all(Radius.circular(8))),
+                              //   child: Text(
+                              //     "Continue",
+                              //     style: TextStyle(
+                              //         color: Colors.white, fontSize: 16),
+                              //   ),
+                              //   onPressed: () {
+                              //     Navigator.push(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //             builder: (context) =>
+                              //                 ModalReserve()));
+                              //   },
+                              // ),
                             ],
                           ),
                         ),
@@ -455,119 +457,106 @@ class _ModalReserveState extends State<ModalReserve> {
                                     fontSize: 12.0,
                                   )),
                             ),
-                            RaisedButton(
-                              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                              color: Color(0xFF5F54ED),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                              child: Text(
-                                "Continue",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                              onPressed: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Dialog(
-                                        backgroundColor: Colors.transparent,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          height: MediaQuery.of(context)
-                                              .size
-                                              .height,
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.black
-                                                    .withOpacity(0.7),
-                                                spreadRadius: 80,
-                                                blurRadius: 25,
-                                                offset: Offset(0,
-                                                    3), // changes position of shadow
+                            Container(
+                                width: 100,
+                                height: 38,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF5F54ED),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey[800],
+                                        blurRadius: 2.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(2.0,
+                                            2.0), // shadow direction: bottom right
+                                      )
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8))),
+                                child: TextButton(
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            backgroundColor: Colors.transparent,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height,
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.7),
+                                                    spreadRadius: 80,
+                                                    blurRadius: 25,
+                                                    offset: Offset(0,
+                                                        3), // changes position of shadow
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                          // color: Colors.transparent,
-                                          // height: 400,
-                                          child: Padding(
-                                              padding: EdgeInsets.all(1.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  // DropDownWidget(),
-                                                  SizedBox(height: 16),
-                                                  // DatePickerWidget(),
-                                                  SizedBox(height: 20),
-                                                  Text("Bringing guests?",
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 28)),
-                                                  SizedBox(height: 26),
-                                                  // OnlySlidePicker(),
-                                                  Row(
+                                              // color: Colors.transparent,
+                                              // height: 400,
+                                              child: Padding(
+                                                  padding: EdgeInsets.all(1.0),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceAround,
+                                                            .center,
                                                     children: [
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          50)),
-                                                          color: Colors.grey,
-                                                        ),
-                                                        width: 60,
-                                                        height: 60,
-                                                        child: Center(
-                                                          // bottom: 60,
-                                                          child: Text("-",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  fontSize:
-                                                                      36)),
-                                                        ),
-                                                      ),
-                                                      Text("1",
+                                                      // DropDownWidget(),
+                                                      SizedBox(height: 16),
+                                                      // DatePickerWidget(),
+                                                      SizedBox(height: 20),
+                                                      Text("Bringing guests?",
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              fontSize: 48)),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
+                                                              fontSize: 28)),
+                                                      SizedBox(height: 26),
+                                                      // OnlySlidePicker(),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
                                                                       .circular(
                                                                           50)),
-                                                          color:
-                                                              Color(0xFF5F54ED),
-                                                        ),
-                                                        width: 60,
-                                                        height: 60,
-                                                        child: Center(
-                                                          // bottom: 60,
-                                                          child: Text("+",
+                                                              color:
+                                                                  Colors.grey,
+                                                            ),
+                                                            width: 60,
+                                                            height: 60,
+                                                            child: Center(
+                                                              // bottom: 60,
+                                                              child: Text("-",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          36)),
+                                                            ),
+                                                          ),
+                                                          Text("1",
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
@@ -575,77 +564,346 @@ class _ModalReserveState extends State<ModalReserve> {
                                                                       FontWeight
                                                                           .w700,
                                                                   fontSize:
-                                                                      26)),
+                                                                      48)),
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          50)),
+                                                              color: Color(
+                                                                  0xFF5F54ED),
+                                                            ),
+                                                            width: 60,
+                                                            height: 60,
+                                                            child: Center(
+                                                              // bottom: 60,
+                                                              child: Text("+",
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      fontSize:
+                                                                          26)),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(height: 140),
+                                                      Center(
+                                                        child: Container(
+                                                          height: 50,
+                                                          width: 120,
+
+                                                          // padding:
+                                                          //     EdgeInsets.fromLTRB(
+                                                          //         32, 32, 32, 32),
+                                                          //
+                                                          child: Container(
+                                                              width: 140,
+                                                              height: 60,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFF5F54ED),
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          color:
+                                                                              Colors.grey[800],
+                                                                          blurRadius:
+                                                                              2.0,
+                                                                          spreadRadius:
+                                                                              0.0,
+                                                                          offset: Offset(
+                                                                              2.0,
+                                                                              2.0), // shadow direction: bottom right
+                                                                        )
+                                                                      ],
+                                                                      borderRadius:
+                                                                          BorderRadius.all(
+                                                                              Radius.circular(8))),
+                                                              child: TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              DrinkPage()));
+                                                                },
+                                                                child: Text(
+                                                                  'Continue',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    // backgroundColor: Colors.white,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              )),
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(height: 140),
-                                                  Center(
-                                                    child: Container(
-                                                      height: 50,
-                                                      width: 120,
 
-                                                      // padding:
-                                                      //     EdgeInsets.fromLTRB(
-                                                      //         32, 32, 32, 32),
-                                                      child: RaisedButton(
-                                                        elevation: 10,
-                                                        shape: new RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                new BorderRadius
-                                                                    .all(new Radius
-                                                                        .circular(
-                                                                    8.0))),
-                                                        onPressed: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          DrinkPage()));
-                                                        },
-                                                        color:
-                                                            Color(0xFF5F54ED),
+                                                      // RaisedButton(
+                                                      //   elevation: 10,
+                                                      //   shape: new RoundedRectangleBorder(
+                                                      //       borderRadius:
+                                                      //           new BorderRadius
+                                                      //               .all(new Radius
+                                                      //                   .circular(
+                                                      //               8.0))),
+                                                      //   onPressed: () {
+                                                      //     Navigator.push(
+                                                      //         context,
+                                                      //         MaterialPageRoute(
+                                                      //             builder:
+                                                      //                 (context) =>
+                                                      //                     DrinkPage()));
+                                                      //   },
+                                                      //   color:
+                                                      //       Color(0xFF5F54ED),
+                                                      //   child: Text(
+                                                      //     "Continue",
+                                                      //     style: TextStyle(
+                                                      //       fontSize: 18,
+                                                      //       color: Colors.white,
+                                                      //     ),
+                                                      //   ),
+                                                      // ),
+                                                      SizedBox(
+                                                        height: 32,
+                                                      ),
+                                                      TextButton(
                                                         child: Text(
-                                                          "Continue",
+                                                          'Skip',
                                                           style: TextStyle(
-                                                            fontSize: 18,
+                                                            // color: Color(0xFF527DAA),
                                                             color: Colors.white,
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .underline,
+                                                            // decorationStyle: TextDecorationStyle.solid,
+                                                            decorationThickness:
+                                                                3,
+
+                                                            letterSpacing: 1.5,
+                                                            fontSize: 18.0,
+                                                            // fontWeight: FontWeight.bold,
+                                                            // fontFamily: 'OpenSans',
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 32,
-                                                  ),
-                                                  TextButton(
-                                                    child: Text(
-                                                      'Skip',
-                                                      style: TextStyle(
-                                                        // color: Color(0xFF527DAA),
-                                                        color: Colors.white,
-                                                        decoration:
-                                                            TextDecoration
-                                                                .underline,
-                                                        // decorationStyle: TextDecorationStyle.solid,
-                                                        decorationThickness: 3,
+                                                    ],
+                                                  )),
+                                            ),
+                                          );
+                                        });
+                                  },
+                                  child: Text(
+                                    'Continue',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      // backgroundColor: Colors.white,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )),
 
-                                                        letterSpacing: 1.5,
-                                                        fontSize: 18.0,
-                                                        // fontWeight: FontWeight.bold,
-                                                        // fontFamily: 'OpenSans',
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                      );
-                                    });
-                              },
-                            ),
+                            // RaisedButton(
+                            //   padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                            //   color: Color(0xFF5F54ED),
+                            //   shape: RoundedRectangleBorder(
+                            //       borderRadius:
+                            //           BorderRadius.all(Radius.circular(8))),
+                            //   child: Text(
+                            //     "Continue",
+                            //     style: TextStyle(
+                            //         color: Colors.white, fontSize: 16),
+                            //   ),
+                            //   onPressed: () {
+                            //     showDialog(
+                            //         context: context,
+                            //         builder: (context) {
+                            //           return Dialog(
+                            //             backgroundColor: Colors.transparent,
+                            //             shape: RoundedRectangleBorder(
+                            //               borderRadius:
+                            //                   BorderRadius.circular(20.0),
+                            //             ),
+                            //             child: Container(
+                            //               width:
+                            //                   MediaQuery.of(context).size.width,
+                            //               height: MediaQuery.of(context)
+                            //                   .size
+                            //                   .height,
+                            //               decoration: BoxDecoration(
+                            //                 boxShadow: [
+                            //                   BoxShadow(
+                            //                     color: Colors.black
+                            //                         .withOpacity(0.7),
+                            //                     spreadRadius: 80,
+                            //                     blurRadius: 25,
+                            //                     offset: Offset(0,
+                            //                         3), // changes position of shadow
+                            //                   ),
+                            //                 ],
+                            //               ),
+                            //               // color: Colors.transparent,
+                            //               // height: 400,
+                            //               child: Padding(
+                            //                   padding: EdgeInsets.all(1.0),
+                            //                   child: Column(
+                            //                     crossAxisAlignment:
+                            //                         CrossAxisAlignment.center,
+                            //                     mainAxisAlignment:
+                            //                         MainAxisAlignment.center,
+                            //                     children: [
+                            //                       // DropDownWidget(),
+                            //                       SizedBox(height: 16),
+                            //                       // DatePickerWidget(),
+                            //                       SizedBox(height: 20),
+                            //                       Text("Bringing guests?",
+                            //                           style: TextStyle(
+                            //                               color: Colors.white,
+                            //                               fontSize: 28)),
+                            //                       SizedBox(height: 26),
+                            //                       // OnlySlidePicker(),
+                            //                       Row(
+                            //                         mainAxisAlignment:
+                            //                             MainAxisAlignment
+                            //                                 .spaceAround,
+                            //                         children: [
+                            //                           Container(
+                            //                             decoration:
+                            //                                 BoxDecoration(
+                            //                               borderRadius:
+                            //                                   BorderRadius.all(
+                            //                                       Radius
+                            //                                           .circular(
+                            //                                               50)),
+                            //                               color: Colors.grey,
+                            //                             ),
+                            //                             width: 60,
+                            //                             height: 60,
+                            //                             child: Center(
+                            //                               // bottom: 60,
+                            //                               child: Text("-",
+                            //                                   style: TextStyle(
+                            //                                       color: Colors
+                            //                                           .white,
+                            //                                       fontWeight:
+                            //                                           FontWeight
+                            //                                               .w700,
+                            //                                       fontSize:
+                            //                                           36)),
+                            //                             ),
+                            //                           ),
+                            //                           Text("1",
+                            //                               style: TextStyle(
+                            //                                   color:
+                            //                                       Colors.white,
+                            //                                   fontWeight:
+                            //                                       FontWeight
+                            //                                           .w700,
+                            //                                   fontSize: 48)),
+                            //                           Container(
+                            //                             decoration:
+                            //                                 BoxDecoration(
+                            //                               borderRadius:
+                            //                                   BorderRadius.all(
+                            //                                       Radius
+                            //                                           .circular(
+                            //                                               50)),
+                            //                               color:
+                            //                                   Color(0xFF5F54ED),
+                            //                             ),
+                            //                             width: 60,
+                            //                             height: 60,
+                            //                             child: Center(
+                            //                               // bottom: 60,
+                            //                               child: Text("+",
+                            //                                   style: TextStyle(
+                            //                                       color: Colors
+                            //                                           .white,
+                            //                                       fontWeight:
+                            //                                           FontWeight
+                            //                                               .w700,
+                            //                                       fontSize:
+                            //                                           26)),
+                            //                             ),
+                            //                           ),
+                            //                         ],
+                            //                       ),
+                            //                       SizedBox(height: 140),
+                            //                       Center(
+                            //                         child: Container(
+                            //                           height: 50,
+                            //                           width: 120,
+
+                            //                           // padding:
+                            //                           //     EdgeInsets.fromLTRB(
+                            //                           //         32, 32, 32, 32),
+                            //                           child: RaisedButton(
+                            //                             elevation: 10,
+                            //                             shape: new RoundedRectangleBorder(
+                            //                                 borderRadius:
+                            //                                     new BorderRadius
+                            //                                         .all(new Radius
+                            //                                             .circular(
+                            //                                         8.0))),
+                            //                             onPressed: () {
+                            //                               Navigator.push(
+                            //                                   context,
+                            //                                   MaterialPageRoute(
+                            //                                       builder:
+                            //                                           (context) =>
+                            //                                               DrinkPage()));
+                            //                             },
+                            //                             color:
+                            //                                 Color(0xFF5F54ED),
+                            //                             child: Text(
+                            //                               "Continue",
+                            //                               style: TextStyle(
+                            //                                 fontSize: 18,
+                            //                                 color: Colors.white,
+                            //                               ),
+                            //                             ),
+                            //                           ),
+                            //                         ),
+                            //                       ),
+                            //                       SizedBox(
+                            //                         height: 32,
+                            //                       ),
+                            //                       TextButton(
+                            //                         child: Text(
+                            //                           'Skip',
+                            //                           style: TextStyle(
+                            //                             // color: Color(0xFF527DAA),
+                            //                             color: Colors.white,
+                            //                             decoration:
+                            //                                 TextDecoration
+                            //                                     .underline,
+                            //                             // decorationStyle: TextDecorationStyle.solid,
+                            //                             decorationThickness: 3,
+
+                            //                             letterSpacing: 1.5,
+                            //                             fontSize: 18.0,
+                            //                             // fontWeight: FontWeight.bold,
+                            //                             // fontFamily: 'OpenSans',
+                            //                           ),
+                            //                         ),
+                            //                       ),
+                            //                     ],
+                            //                   )),
+                            //             ),
+                            //           );
+                            //         });
+                            //   },
+                            // ),
                           ],
                         ),
                       ),

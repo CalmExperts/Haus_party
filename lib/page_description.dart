@@ -100,11 +100,10 @@ class PartyDesc extends StatelessWidget {
               Positioned(
                   top: 160,
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.258,
 
                   // left: MediaQuery.of(context).size.width * 0.1,
                   child: Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 30),
                       margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
                       // width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
@@ -209,24 +208,56 @@ class PartyDesc extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  width: 120,
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(12),
-                    color: Color(0xFF5F54ED),
-                    shape: RoundedRectangleBorder(
+                    width: 120,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF5F54ED),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[800],
+                            blurRadius: 2.0,
+                            spreadRadius: 0.0,
+                            offset: Offset(
+                                2.0, 2.0), // shadow direction: bottom right
+                          )
+                        ],
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Text(
-                      "Reserve",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ModalReserve()));
-                    },
-                  ),
-                ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ModalReserve()));
+                      },
+                      child: Text(
+                        'Reserve',
+                        style: TextStyle(
+                          fontSize: 18,
+                          // backgroundColor: Colors.white,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )),
+
+                // Container(
+                //   width: 120,
+                //   child: RaisedButton(
+                //     padding: EdgeInsets.all(12),
+                //     color: Color(0xFF5F54ED),
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.all(Radius.circular(10))),
+                //     child: Text(
+                //       "Reserve",
+                //       style: TextStyle(color: Colors.white, fontSize: 20),
+                //     ),
+                // onPressed: () {
+                //   Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //           builder: (context) => ModalReserve()));
+                // },
+                //   ),
+                // ),
               ],
             ),
           ),

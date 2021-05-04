@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/calendar_page.dart';
+import 'package:haus_party/login_page/widgets/button_editable.dart';
 import 'package:haus_party/pages/drinkPage/drink_page.dart';
 
 class CongratsPage extends StatefulWidget {
@@ -109,55 +110,22 @@ class _CongratsPageState extends State<CongratsPage> {
                               height: 160,
                             ),
                             Container(
-                              width: 280,
-                              height: 50,
-                              child: RaisedButton(
-                                elevation: 10,
-                                shape: new RoundedRectangleBorder(
-                                    borderRadius: new BorderRadius.all(
-                                        new Radius.circular(8.0))),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CongratsPage()));
-                                },
-                                color: Colors.grey,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 8.0),
-                                      child: Icon(
-                                        Icons.share_outlined,
-                                        color: Colors.white,
-                                        size: 28,
-                                      ),
-                                    ),
-                                    Text(
-                                      "Tell Friends",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 26.0),
-                              child: Container(
                                 width: 280,
                                 height: 50,
-                                child: RaisedButton(
-                                  elevation: 10,
-                                  shape: new RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(8.0))),
+                                decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey[800],
+                                        blurRadius: 2.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(2.0,
+                                            2.0), // shadow direction: bottom right
+                                      )
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8))),
+                                child: TextButton(
                                   onPressed: () {
                                     Navigator.push(
                                         context,
@@ -165,16 +133,110 @@ class _CongratsPageState extends State<CongratsPage> {
                                             builder: (context) =>
                                                 CalendarScreen()));
                                   },
-                                  color: Color(0xFF5F54ED),
-                                  child: Text(
-                                    "Done",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8.0),
+                                        child: Icon(
+                                          Icons.share_outlined,
+                                          color: Colors.white,
+                                          size: 28,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Tell Friends",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
+                                )),
+                            // Container(
+                            //   width: 280,
+                            //   height: 50,
+                            //   child: RaisedButton(
+                            //     elevation: 10,
+                            //     shape: new RoundedRectangleBorder(
+                            //         borderRadius: new BorderRadius.all(
+                            //             new Radius.circular(8.0))),
+                            //     onPressed: () {
+                            //       Navigator.push(
+                            //           context,
+                            //           MaterialPageRoute(
+                            //               builder: (context) =>
+                            //                   CongratsPage()));
+                            //     },
+                            //     color: Colors.grey,
+                            //     child: Row(
+                            //       mainAxisAlignment: MainAxisAlignment.center,
+                            //       children: [
+                            //         Padding(
+                            //           padding:
+                            //               const EdgeInsets.only(right: 8.0),
+                            //           child: Icon(
+                            //             Icons.share_outlined,
+                            //             color: Colors.white,
+                            //             size: 28,
+                            //           ),
+                            //         ),
+                            //         Text(
+                            //           "Tell Friends",
+                            //           style: TextStyle(
+                            //             fontSize: 16,
+                            //             color: Colors.white,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 26.0),
+
+                              child: ButtonEditable(
+                                buttonTitle: 'Done',
+                                theWidth: 280,
+                                theHeight: 50,
+                                theBorderRadius: 8,
+                                sizeText: 18,
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CalendarScreen()));
+                                },
                               ),
+                              // child: Container(
+                              //   width: 280,
+                              //   height: 50,
+                              //   child: RaisedButton(
+                              //     elevation: 10,
+                              //     shape: new RoundedRectangleBorder(
+                              //         borderRadius: new BorderRadius.all(
+                              //             new Radius.circular(8.0))),
+                              //     onPressed: () {
+                              //       Navigator.push(
+                              //           context,
+                              //           MaterialPageRoute(
+                              //               builder: (context) =>
+                              //                   CalendarScreen()));
+                              //     },
+                              //     color: Color(0xFF5F54ED),
+                              //     child: Text(
+                              //       "Done",
+                              //       style: TextStyle(
+                              //         fontSize: 16,
+                              //         color: Colors.white,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ),
                           ],
                         ),

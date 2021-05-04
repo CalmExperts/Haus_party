@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:haus_party/page_description.dart';
 
-class PartyCard extends StatelessWidget {
+class VerticalCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,14 +13,14 @@ class PartyCard extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         itemCount: 3,
         itemExtent: MediaQuery.of(context).size.width,
-        itemBuilder: (BuildContext context, int i) => CardItem(),
+        itemBuilder: (BuildContext context, int i) => VerticalCardItem(),
       ),
     );
   }
 }
 
-class CardItem extends StatelessWidget {
-  const CardItem({
+class VerticalCardItem extends StatelessWidget {
+  const VerticalCardItem({
     Key key,
   }) : super(key: key);
 
@@ -185,17 +185,6 @@ class Content extends StatelessWidget {
                       color: Color(0xFF5F54ED),
                     ),
                   ),
-
-                  // FlatButton(
-                  //     onPressed: () {
-                  //       Navigator.push(context,
-                  //           MaterialPageRoute(builder: (context) => PartyDesc()));
-                  //     },
-                  //     color: Colors.white,
-                  //     disabledColor: Colors.white,
-                  //     child: Text('View',
-                  //         style:
-                  //             TextStyle(fontSize: 14.0, color: Color(0xFF5F54ED)))),
                 )),
             SizedBox(width: 16.0),
           ]),

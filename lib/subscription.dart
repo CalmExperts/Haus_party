@@ -159,18 +159,19 @@ class SubscriptionPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 100,
-            left: 120,
-            child: RaisedButton(
-              elevation: 15.0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-              color: Colors.white,
-              // mouseCursor: ,
-              child: Text("Yes I'm In",
-                  style: GoogleFonts.lato(
-                      color: Color(0xFF5F54ED), fontSize: 15.0)),
-              onPressed: () {},
-            )),
+              bottom: 100,
+              left: 120,
+              child: RaisedButton(
+                elevation: 15.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                color: Colors.white,
+                // mouseCursor: ,
+                child: Text("Yes I'm In",
+                    style: GoogleFonts.lato(
+                        color: Color(0xFF5F54ED), fontSize: 15.0)),
+                onPressed: () {},
+              )),
         ]));
   }
 }

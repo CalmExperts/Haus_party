@@ -189,28 +189,6 @@ class _MyHomePageState extends State<MyHomePage>
                           ),
                         ),
                       )),
-
-                  //     child: Container(
-                  //   width: MediaQuery.of(context).size.width *
-                  //       0.35,
-                  //   height: 48,
-                  //   child: RaisedButton(
-                  //     elevation: 10,
-                  //     shape: new RoundedRectangleBorder(
-                  //         borderRadius: new BorderRadius.all(
-                  //             new Radius.circular(8.0))),
-                  //     onPressed: () {
-                  //       Navigator.pop(context);
-                  //     },
-                  //     color: Color(0xFFFFFFFF),
-                  //     child: Text(
-                  //       "Continue",
-                  //       style: TextStyle(
-                  //         color: Color(0xFF5F54ED),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // )
                 )
               ],
             )),

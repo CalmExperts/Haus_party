@@ -68,12 +68,23 @@ class PartyDesc extends StatelessWidget {
           Stack(
             overflow: Overflow.visible,
             children: <Widget>[
-              Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width,
-                  child: Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/asset-1.png"))),
+              LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth < 500) {
+                  return Container(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image(
+                          fit: BoxFit.cover,
+                          image: AssetImage("assets/asset-1.png")));
+                } else {
+                  return Container(
+                      height: 208,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assets/asset-1.png")));
+                }
+              }),
               Positioned(
                 top: 20,
                 left: 20,
@@ -102,164 +113,250 @@ class PartyDesc extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
 
                   // left: MediaQuery.of(context).size.width * 0.1,
-                  child: Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 30),
-                      margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                      // width: MediaQuery.of(context).size.width * 0.8,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text("Spring Welcome Party",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Montserrat")),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Text("Hosted By: DJ Clint",
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.grey)),
-                              ),
-                              SizedBox(height: 8),
-                              Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1,
-                                  // width: 20,
-                                  child: Row(children: <Widget>[
-                                    Container(
-                                      padding: EdgeInsets.only(top: 5.0),
-                                      width: 60,
-                                      height: 70,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: Colors.grey[200],
-                                      ),
-                                      child: Column(
-                                        children: <Widget>[
-                                          Text("Dec",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Color(0xFF5F54ED),
-                                              )),
-                                          Text("22",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold))
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Column(children: <Widget>[
-                                      Row(
-                                        children: <Widget>[
-                                          Text(
-                                            "306 Rchmond Drive",
-                                            style: TextStyle(fontSize: 14),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 12,
-                                      ),
-                                      Row(
-                                        children: <Widget>[
-                                          Icon(Icons.person,
-                                              color: Color(0xFF5F54ED)),
-                                          Text("129"),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Icon(Icons.access_time,
-                                              color: Color(0xFF5F54ED)),
-                                          Text("5 - 7 PM"),
-                                        ],
-                                      )
-                                    ])
-                                  ])),
-                            ],
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    if (constraints.maxWidth < 500) {
+                      return Container(
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 30),
+                          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                          // width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            color: Colors.white,
                           ),
-                        ],
-                      ))),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text("Spring Welcome Party",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "Montserrat")),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text("Hosted By: DJ Clint",
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.grey)),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 10, 0, 0),
+                                      // height:
+                                      //     MediaQuery.of(context).size.height * 0.1,
+                                      // width: 20,
+                                      child: Row(children: <Widget>[
+                                        Container(
+                                          width: 60,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            color: Colors.grey[200],
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Text("Dec",
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Color(0xFF5F54ED),
+                                                  )),
+                                              Text("22",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 20.0,
+                                                      fontWeight:
+                                                          FontWeight.bold))
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Column(children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Text(
+                                                "306 Rchmond Drive",
+                                                style: TextStyle(fontSize: 14),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 12,
+                                          ),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.person,
+                                                  color: Color(0xFF5F54ED)),
+                                              Text("129"),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Icon(Icons.access_time,
+                                                  color: Color(0xFF5F54ED)),
+                                              Text("5 - 7 PM"),
+                                            ],
+                                          )
+                                        ])
+                                      ])),
+                                ],
+                              ),
+                            ],
+                          ));
+                    } else {
+                      return Container(
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 30),
+                          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                          // width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text("Spring Welcome Party",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "Montserrat")),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text("Hosted By: DJ Clint",
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.grey)),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 10, 0, 0),
+                                      // height:
+                                      //     MediaQuery.of(context).size.height * 0.1,
+                                      // width: 20,
+                                      child: Row(children: <Widget>[
+                                        Container(
+                                          width: 60,
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            color: Colors.grey[200],
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Text("Dec",
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: Color(0xFF5F54ED),
+                                                  )),
+                                              Text("22",
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 20.0,
+                                                      fontWeight:
+                                                          FontWeight.bold))
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Column(children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Text(
+                                                "306 Rchmond Drive",
+                                                style: TextStyle(fontSize: 14),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 12,
+                                          ),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(Icons.person,
+                                                  color: Color(0xFF5F54ED)),
+                                              Text("129"),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Icon(Icons.access_time,
+                                                  color: Color(0xFF5F54ED)),
+                                              Text("5 - 7 PM"),
+                                            ],
+                                          )
+                                        ])
+                                      ])),
+                                ],
+                              ),
+                            ],
+                          ));
+                    }
+                  }))
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 155, 0, 16),
-            child: Column(
-              children: <Widget>[
-                Container(
-                    width: 120,
-                    height: 48,
-                    decoration: BoxDecoration(
-                        color: Color(0xFF5F54ED),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey[800],
-                            blurRadius: 2.0,
-                            spreadRadius: 0.0,
-                            offset: Offset(
-                                2.0, 2.0), // shadow direction: bottom right
-                          )
-                        ],
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ModalReserve()));
-                      },
-                      child: Text(
-                        'Reserve',
-                        style: TextStyle(
-                          fontSize: 18,
-                          // backgroundColor: Colors.white,
-                          color: Colors.white,
-                        ),
+          Column(
+            children: <Widget>[
+              Container(
+                  margin: EdgeInsets.fromLTRB(0, 160, 0, 32),
+                  width: 120,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF5F54ED),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[800],
+                          blurRadius: 2.0,
+                          spreadRadius: 0.0,
+                          offset: Offset(
+                              2.0, 2.0), // shadow direction: bottom right
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ModalReserve()));
+                    },
+                    child: Text(
+                      'Reserve',
+                      style: TextStyle(
+                        fontSize: 18,
+                        // backgroundColor: Colors.white,
+                        color: Colors.white,
                       ),
-                    )),
-
-                // Container(
-                //   width: 120,
-                //   child: RaisedButton(
-                //     padding: EdgeInsets.all(12),
-                //     color: Color(0xFF5F54ED),
-                //     shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.all(Radius.circular(10))),
-                //     child: Text(
-                //       "Reserve",
-                //       style: TextStyle(color: Colors.white, fontSize: 20),
-                //     ),
-                // onPressed: () {
-                //   Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //           builder: (context) => ModalReserve()));
-                // },
-                //   ),
-                // ),
-              ],
-            ),
+                    ),
+                  )),
+            ],
           ),
           Container(
               margin: EdgeInsets.fromLTRB(36, 0, 40, 0),

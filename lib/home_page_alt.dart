@@ -40,6 +40,7 @@ class AltHome extends StatelessWidget {
               expandedHeight: 0.0,
               automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
+              toolbarHeight: 40,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text('Upcoming Parties',
                     textAlign: TextAlign.left,

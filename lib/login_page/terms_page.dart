@@ -28,6 +28,9 @@ class _TermsPageState extends State<TermsPage> {
           height: 60.0,
           width: double.infinity,
           child: TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
             child: Text(
               'DON\'T AGREE',
               style: TextStyle(

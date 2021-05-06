@@ -110,89 +110,276 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     _dialogHorizontal() {
       return Container(
-        color: Colors.transparent,
-        child: Padding(
-            padding: EdgeInsets.all(2.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DropDownWidget(),
-                SizedBox(height: 8),
-                DatePickerWidget(),
-                SizedBox(height: 8),
-                Text("Enter Search Radius",
-                    style: TextStyle(color: Colors.white, fontSize: 18)),
-                SizedBox(height: 2),
-                OnlySlidePicker(),
-                SizedBox(height: 8),
-                Container(
-                    width: 200,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(8))),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Continue',
-                        style: TextStyle(
-                          fontSize: 18,
-                          backgroundColor: Colors.white,
-                          color: Color(0xFF5F54ED),
-                        ),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.7),
+                spreadRadius: 80,
+                blurRadius: 25,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          // color: Colors.transparent,
+          // height: 400,
+          child: Padding(
+              padding: EdgeInsets.all(1.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // DropDownWidget(),
+                  // DatePickerWidget(),
+
+                  Row(
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          onPressed: () => Navigator.pop(context),
+                          icon: Icon(
+                            Icons.cancel_outlined,
+                            color: Colors.white,
+                            size: 26,
+                          ),
+                        )
+                      ]),
+                  SizedBox(),
+
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(child: DropDownWidget()),
+                          SizedBox(
+                            width: 32,
+                          ),
+                          Expanded(child: DatePickerWidget()),
+                        ],
                       ),
-                    ))
-              ],
-            )),
-      );
+                      // SizedBox(height: 20),
+                      SizedBox(height: 20),
+
+                      // SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: Text("Enter Search Radius",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18)),
+                          ),
+                          OnlySlidePicker(),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+
+                  // SizedBox(),
+
+                  Column(
+                    children: [
+                      Container(
+                          width: 260,
+                          height: 48,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8))),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Continue',
+                              style: TextStyle(
+                                fontSize: 18,
+                                backgroundColor: Colors.white,
+                                color: Color(0xFF5F54ED),
+                              ),
+                            ),
+                          )),
+                    ],
+                  )
+                ],
+              )));
+
+//---------- certo acima
+
+      // return Container(
+      //   color: Colors.transparent,
+      //   child: Padding(
+      //       padding: EdgeInsets.all(2.0),
+      //       child: Column(
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         children: [
+      //           DropDownWidget(),
+      //           SizedBox(height: 8),
+      //           DatePickerWidget(),
+      //           SizedBox(height: 8),
+      //           Text("Enter Search Radius",
+      //               style: TextStyle(color: Colors.white, fontSize: 18)),
+      //           SizedBox(height: 2),
+      //           OnlySlidePicker(),
+      //           SizedBox(height: 8),
+      //           Container(
+      //               width: 200,
+      //               height: 40,
+      //               decoration: BoxDecoration(
+      //                   color: Colors.white,
+      //                   borderRadius: BorderRadius.all(Radius.circular(8))),
+      //               child: TextButton(
+      //                 onPressed: () {
+      //                   Navigator.pop(context);
+      //                 },
+      //                 child: Text(
+      //                   'Continue',
+      //                   style: TextStyle(
+      //                     fontSize: 18,
+      //                     backgroundColor: Colors.white,
+      //                     color: Color(0xFF5F54ED),
+      //                   ),
+      //                 ),
+      //               ))
+      //         ],
+      //       )),
+      // );
     }
 
     _dialogVertical() {
       return Container(
-        color: Colors.transparent,
-        height: 400,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.7),
+              spreadRadius: 80,
+              blurRadius: 25,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        // color: Colors.transparent,
+        // height: 400,
         child: Padding(
-            padding: EdgeInsets.all(6.0),
+            padding: EdgeInsets.all(1.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DropDownWidget(),
-                SizedBox(height: 16),
-                DatePickerWidget(),
-                SizedBox(height: 20),
-                Text("Enter Search Radius",
-                    style: TextStyle(color: Colors.white, fontSize: 18)),
-                SizedBox(height: 20),
-                OnlySlidePicker(),
-                SizedBox(height: 20),
-                Center(
-                  child: Container(
-                      width: MediaQuery.of(context).size.width * 0.35,
-                      height: 48,
-                      decoration: BoxDecoration(
+                // DropDownWidget(),
+                // DatePickerWidget(),
+
+                Row(
+                    // crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(
+                          Icons.cancel_outlined,
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(8))),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          'Continue',
-                          style: TextStyle(
-                            fontSize: 18,
-                            backgroundColor: Colors.white,
-                            color: Color(0xFF5F54ED),
-                          ),
+                          size: 26,
                         ),
-                      )),
+                      )
+                    ]),
+
+                Column(
+                  children: [
+                    DropDownWidget(),
+                    SizedBox(height: 20),
+                    DatePickerWidget(),
+                    SizedBox(height: 20),
+                    Text("Enter Search Radius",
+                        style: TextStyle(color: Colors.white, fontSize: 18)),
+                    SizedBox(height: 20),
+                    OnlySlidePicker(),
+                    // SizedBox(height: 20),
+                  ],
+                ),
+
+                // SizedBox(),
+
+                Column(
+                  children: [
+                    Container(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        height: 48,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Continue',
+                            style: TextStyle(
+                              fontSize: 18,
+                              backgroundColor: Colors.white,
+                              color: Color(0xFF5F54ED),
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: 16,
+                    ),
+                  ],
                 )
               ],
             )),
       );
+
+      //------------------------------------ acima new
+
+      // return Container(
+      //   color: Colors.transparent,
+      //   height: 400,
+      //   child: Padding(
+      //       padding: EdgeInsets.all(6.0),
+      //       child: Column(
+      //         crossAxisAlignment: CrossAxisAlignment.start,
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         children: [
+      //           DropDownWidget(),
+      //           SizedBox(height: 16),
+      //           DatePickerWidget(),
+      //           SizedBox(height: 20),
+      //           Text("Enter Search Radius",
+      //               style: TextStyle(color: Colors.white, fontSize: 18)),
+      //           SizedBox(height: 20),
+      //           OnlySlidePicker(),
+      //           SizedBox(height: 20),
+      //           Center(
+      //             child: Container(
+      //                 width: MediaQuery.of(context).size.width * 0.35,
+      //                 height: 48,
+      //                 decoration: BoxDecoration(
+      //                     color: Colors.white,
+      //                     borderRadius: BorderRadius.all(Radius.circular(8))),
+      //           child: TextButton(
+      //             onPressed: () {
+      //               Navigator.pop(context);
+      //             },
+      //             child: Text(
+      //               'Continue',
+      //               style: TextStyle(
+      //                 fontSize: 18,
+      //                 backgroundColor: Colors.white,
+      //                 color: Color(0xFF5F54ED),
+      //               ),
+      //             ),
+      //           )),
+      //     )
+      //   ],
+      // )),
+      // );
     }
 
     // This method is rerun every time setState is called, for instance as done
@@ -232,6 +419,7 @@ class _MyHomePageState extends State<MyHomePage>
                 // builder: (context) => LocationSettings()));
 
                 showDialog(
+                    barrierDismissible: false,
                     context: context,
                     builder: (context) {
                       return Dialog(

@@ -198,25 +198,6 @@ class _ModalReserveState extends State<ModalReserve> {
                                       fontSize: 12.0,
                                     )),
                               ),
-                              // RaisedButton(
-                              //   padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                              //   color: Color(0xFF5F54ED),
-                              //   shape: RoundedRectangleBorder(
-                              //       borderRadius:
-                              //           BorderRadius.all(Radius.circular(8))),
-                              //   child: Text(
-                              //     "Continue",
-                              //     style: TextStyle(
-                              //         color: Colors.white, fontSize: 16),
-                              //   ),
-                              //   onPressed: () {
-                              //     Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //             builder: (context) =>
-                              //                 ModalReserve()));
-                              //   },
-                              // ),
                             ],
                           ),
                         ),
@@ -374,6 +355,7 @@ class _ModalReserveState extends State<ModalReserve> {
                   height: 32,
                 ),
                 TextButton(
+                  onPressed: () => Navigator.pop(context),
                   child: Text(
                     'Skip',
                     style: TextStyle(
@@ -730,6 +712,7 @@ class _ModalReserveState extends State<ModalReserve> {
                                 child: TextButton(
                                   onPressed: () {
                                     showDialog(
+                                        barrierDismissible: false,
                                         context: context,
                                         builder: (context) {
                                           return Dialog(

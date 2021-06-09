@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/bottom_bar.dart';
 
 
 class UpdateScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class UpdateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+
       body: ListView(
         children: <Widget>[
           Container(
@@ -20,7 +22,7 @@ class UpdateScreen extends StatelessWidget {
                 FloatingActionButton(
                   backgroundColor: Colors.white,
                   onPressed: () {
-                    Navigator.pop(context);
+                    //Navigator.pop(context);
                   },
                   child: Icon(Icons.arrow_back_ios, color: Color(0xFF5F54ED))
                 ), 
@@ -32,6 +34,9 @@ class UpdateScreen extends StatelessWidget {
             )
         ]
       ),
+
+      bottomNavigationBar: BottomBar(),
+
     );
 
   }

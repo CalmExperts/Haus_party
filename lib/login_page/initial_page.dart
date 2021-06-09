@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haus_party/login_page/login_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
+import 'package:haus_party/main.dart';
 
 class InitialPage extends StatefulWidget {
   @override
@@ -19,10 +20,10 @@ class _InitialPageState extends State<InitialPage> {
     return Column(
       children: [
         _buildSignUpBtn(),
-        SizedBox(
-          height: 8,
-        ),
-        _buildLoginBtn
+        SizedBox(height: 8,),
+        _buildLoginBtn,
+        SizedBox(height: 8,),
+        _signUpButton(),
       ],
     );
   }
@@ -248,11 +249,19 @@ class _InitialPageState extends State<InitialPage> {
     return Column(
       children: [
         TextButton(
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => LoginScreen())),
-
-          // elevation: 5.0,
-
+          /*onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyHomePage())
+            );
+          },*/
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => MyHomePage()
+                ),
+                    (Route<dynamic> route) => false
+            );
+          },
           child: Container(
             alignment: Alignment.center,
             height: 60.0,
@@ -264,7 +273,7 @@ class _InitialPageState extends State<InitialPage> {
               color: Color(0xFF8275e0),
             ),
             child: Text(
-              'Create an Account',
+              'Sign in with E-mail',
               style: TextStyle(
                 // color: Color(0xFF527DAA),
                 color: Colors.white,
@@ -311,6 +320,25 @@ class _InitialPageState extends State<InitialPage> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _signUpButton() {
+    return GestureDetector(
+      child: Text(
+        'Don\'t have an account? Sign up.',
+        style: TextStyle(
+          // color: Color(0xFF527DAA),
+          color: Colors.white,
+          letterSpacing: 1.5,
+          fontSize: 16.0,
+          // fontWeight: FontWeight.bold,
+          // fontFamily: 'OpenSans',
+        ),
+      ),
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginScreen())
+      ),
     );
   }
 

@@ -185,31 +185,39 @@ class PartyDesc extends StatelessWidget {
                                         SizedBox(
                                           width: 20,
                                         ),
-                                        Column(children: <Widget>[
-                                          Row(
-                                            children: <Widget>[
-                                              Text(
-                                                "306 Rchmond Drive",
-                                                style: TextStyle(fontSize: 14),
-                                              )
-                                            ],
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+
+                                          Text(
+                                            "306 Rchmond Drive",
+                                            style: TextStyle(fontSize: 14),
                                           ),
-                                          SizedBox(
-                                            height: 12,
-                                          ),
+
+                                          SizedBox(height: 12,),
+
                                           Row(
-                                            children: <Widget>[
+                                            children: [
+
                                               Icon(Icons.person,
                                                   color: Color(0xFF5F54ED)),
+
+                                              SizedBox(width: 3,),
+
                                               Text("129"),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
+
+                                              SizedBox(width: 20,),
+
                                               Icon(Icons.access_time,
                                                   color: Color(0xFF5F54ED)),
-                                              Text("5 - 7 PM"),
+
+                                              SizedBox(width: 5,),
+
+                                              Text("5 - 7 p.m."),
+
                                             ],
                                           )
+
                                         ])
                                       ])),
                                 ],
@@ -322,8 +330,11 @@ class PartyDesc extends StatelessWidget {
                   }))
             ],
           ),
-          Column(
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+
               Container(
                   margin: EdgeInsets.fromLTRB(0, 160, 0, 32),
                   width: 120,
@@ -340,26 +351,65 @@ class PartyDesc extends StatelessWidget {
                         )
                       ],
                       borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ModalReserve()));
-                    },
-                    child: Text(
-                      'Reserve',
-                      style: TextStyle(
-                        fontSize: 18,
-                        // backgroundColor: Colors.white,
-                        color: Colors.white,
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ModalReserve()));
+                        },
+                        child: Text(
+                          'Reserve',
+                          style: TextStyle(
+                            fontSize: 18,
+                            // backgroundColor: Colors.white,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ),
-                  )),
+                    ],
+                  )
+              ),
+
+              Container(
+                  margin: EdgeInsets.fromLTRB(0, 160, 0, 32),
+                  width: 140,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF5F54ED),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey[800],
+                          blurRadius: 2.0,
+                          spreadRadius: 0.0,
+                          offset: Offset(
+                              2.0, 2.0), // shadow direction: bottom right
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Invite Friends',
+                          style: TextStyle(
+                            fontSize: 18,
+                            // backgroundColor: Colors.white,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+              ),
+
             ],
           ),
           Container(
-              margin: EdgeInsets.fromLTRB(36, 0, 40, 0),
+              margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
               // height: MediaQuery.of(context).size.height * 0.2,
               child: Column(
                 children: <Widget>[
@@ -486,7 +536,10 @@ class PartyDesc extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+
+          SizedBox(height: 50),
+
+          /*Container(
             // height: screenSize.height * 0.15,
             padding: EdgeInsets.only(left: 40, right: 20, top: 40, bottom: 40),
             child: Column(
@@ -539,7 +592,8 @@ class PartyDesc extends StatelessWidget {
                 )
               ],
             ),
-          ),
+          ),*/
+
         ],
       ),
       bottomNavigationBar: BottomBar(),

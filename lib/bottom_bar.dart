@@ -35,10 +35,12 @@ class BottomBar extends StatelessWidget {
                             highlightColor: Color(0xFF5F54ED),
                             splashColor: Color(0xFF5F54ED),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
+                              Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => MyHomePage()));
+                                      builder: (context) => MyHomePage()
+                                  ),
+                                      (Route<dynamic> route) => false
+                              );
                             },
                           ),
                           IconButton(
@@ -49,13 +51,12 @@ class BottomBar extends StatelessWidget {
                             highlightColor: Color(0xFF5F54ED),
                             splashColor: Color(0xFF5F54ED),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
+                              Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
                                       builder: (context) => CalendarScreen()
-
-                                      //alert()
-                                      ));
+                                  ),
+                                      (Route<dynamic> route) => false
+                              );
                             },
                           ),
                           IconButton(
@@ -66,10 +67,12 @@ class BottomBar extends StatelessWidget {
                             hoverColor: Colors.lightBlueAccent,
                             splashColor: Color(0xFF5F54ED),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
+                              Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => UpdateScreen()));
+                                      builder: (context) => UpdateScreen()
+                                  ),
+                                      (Route<dynamic> route) => false
+                              );
                             },
                           ),
                           IconButton(
@@ -80,10 +83,12 @@ class BottomBar extends StatelessWidget {
                             splashColor: Color(0xFF5F54ED),
                             hoverColor: Colors.lightBlueAccent,
                             onPressed: () {
-                              Navigator.push(
-                                  context,
+                              Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => ProfilePage()));
+                                      builder: (context) => ProfilePage()
+                                  ),
+                                      (Route<dynamic> route) => false
+                              );
                             },
                           ),
                         ],

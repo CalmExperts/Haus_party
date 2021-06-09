@@ -28,35 +28,42 @@ class VerticalCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 0, 08, 0),
-      child: Card(
-        // color: Colors.red,
-        color: Color(0xFF5F54ED),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        child: Column(children: <Widget>[
-          Flexible(
-            child: Container(
-              // height: 128,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => PartyDesc()));
+        },
+        child: Card(
+          // color: Colors.red,
+          color: Color(0xFF5F54ED),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          child: Column(children: <Widget>[
+            Flexible(
+              child: Container(
+                // height: 128,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
 
-                //
+                  //
 
-                // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                //
-                image: const DecorationImage(
-                  image: AssetImage(
-                    'assets/profile_image.jpg',
+                  // borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  //
+                  image: const DecorationImage(
+                    image: AssetImage(
+                      //'assets/profile_image.jpg',
+                      'assets/asset-1.png',
+                    ),
+                    fit: BoxFit.cover,
                   ),
-                  fit: BoxFit.cover,
                 ),
               ),
             ),
-          ),
-          Container(child: Content())
-        ]),
+            Container(child: Content())
+          ]),
+        ),
       ),
     );
   }
@@ -82,113 +89,129 @@ class Content extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
-                  child: Column(children: <Widget>[
+                  child: Column(children: [
+
                     Text('Dec',
                         style: TextStyle(
                             color: Color(0xFF5F54ED),
                             fontSize: 18.0,
-                            fontWeight: FontWeight.w300)),
+                            fontWeight: FontWeight.w400)
+                    ),
+
                     Text('30',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 26.0,
-                            fontWeight: FontWeight.w600)),
+                            fontWeight: FontWeight.w600)
+                    ),
+
                   ])),
+
               SizedBox(width: 16.0),
+
               Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                  children: [
+
                     Text('Spring Welcome Party',
                         style: GoogleFonts.rubik(
                           textStyle: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 17,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
-                        textAlign: TextAlign.left),
+                        textAlign: TextAlign.left
+                    ),
+
                     SizedBox(height: 3.0),
+
                     Text(
                       'Hosted by DJ Clint',
                       style: GoogleFonts.rubik(
                         textStyle:
-                            TextStyle(fontSize: 12.0, color: Colors.white),
+                            TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       textAlign: TextAlign.left,
                     ),
+
                     SizedBox(height: 3.0),
+
                     Text(
                       '306 Richmond Druve',
                       style: GoogleFonts.sofia(
                           textStyle:
-                              TextStyle(fontSize: 10.0, color: Colors.white)),
+                              TextStyle(fontSize: 13, color: Colors.white)),
                       textAlign: TextAlign.left,
                     ),
+
                   ]),
             ],
           ),
+
           SizedBox(height: 16.0),
-          Row(children: <Widget>[
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+
             SizedBox(width: 8.0),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Text(
+                    'People Attending',
+                    style: TextStyle(fontSize: 13, color: Colors.white),
+                    textAlign: TextAlign.left
+                ),
+                
+                SizedBox(height: 5.0,),
+
+                Text(
+                    '129',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left
+                ),
+
+              ],
+            ),
+
+            SizedBox(width: 48),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('People Attending',
-                    style: TextStyle(fontSize: 10.0, color: Colors.white),
-                    textAlign: TextAlign.left),
-                SizedBox(
-                  height: 5.0,
+
+                Text(
+                    'Time',
+                    style: TextStyle(fontSize: 13, color: Colors.white),
+                    textAlign: TextAlign.left
                 ),
-                Text('129',
+
+                SizedBox(height: 5.0,),
+
+                Text(
+                    '5 - 7 p.m.',
                     style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left),
-              ],
-            ),
-            SizedBox(width: 16.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Time',
-                    style: TextStyle(fontSize: 10.0, color: Colors.white),
-                    textAlign: TextAlign.left),
-                SizedBox(
-                  height: 5.0,
+                    textAlign: TextAlign.left
                 ),
-                Text('5-7PM',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left),
+
               ],
             ),
-            Spacer(),
-            Container(
-                width: 65,
-                height: 35,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(4))),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => PartyDesc()));
-                  },
-                  child: Text(
-                    'View',
-                    style: TextStyle(
-                      fontSize: 14,
-                      backgroundColor: Colors.white,
-                      color: Color(0xFF5F54ED),
-                    ),
-                  ),
-                )),
-            SizedBox(width: 16.0),
+
           ]),
+
           SizedBox(height: 4.0),
+
         ],
       ),
     );

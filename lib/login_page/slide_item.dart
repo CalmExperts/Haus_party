@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/login_page/model/slide.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
+import 'package:haus_party/main.dart';
 
 class SlideItem extends StatelessWidget {
   final int index;
@@ -101,8 +102,15 @@ class SlideItem extends StatelessWidget {
                 theWidth: double.infinity,
                 theBorderRadius: 4,
                 theHeight: 60,
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, '/sub'),
+                /*onPressed: () =>
+                    Navigator.pushReplacementNamed(context, '/sub'),*/
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => MyHomePage()
+                      ),
+                          (Route<dynamic> route) => false
+                  );},
               )
               //
               // Container(

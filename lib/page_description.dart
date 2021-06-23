@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/bottom_bar.dart';
 import 'package:haus_party/pages/modal_reserve.dart';
+import 'package:share/share.dart';
 
 class HorizontalView extends StatefulWidget {
   @override
@@ -392,7 +393,12 @@ class PartyDesc extends StatelessWidget {
                   child: Column(
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Share.share(
+                              'https://www.google.com/webhp?hl=pt-BR&sa=X&ved=0ahUKEwjGp_DG8bDwAhXJqJUCHbb7B2UQPAgI',
+                              subject: 'House Party'
+                          );
+                        },
                         child: Text(
                           'Invite Friends',
                           style: TextStyle(

@@ -711,7 +711,9 @@ class _ModalReserveState extends State<ModalReserve> {
                                         BorderRadius.all(Radius.circular(8))),
                                 child: TextButton(
                                   onPressed: () {
-                                    showDialog(
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) => CongratsPage()));
+                                    /*showDialog(
                                         barrierDismissible: false,
                                         context: context,
                                         builder: (context) {
@@ -731,7 +733,7 @@ class _ModalReserveState extends State<ModalReserve> {
                                                   return _horizontalDialog();
                                                 }
                                               }));
-                                        });
+                                        });*/
                                   },
                                   child: Text(
                                     'Continue',

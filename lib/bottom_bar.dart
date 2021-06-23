@@ -25,7 +25,7 @@ class BottomBar extends StatelessWidget {
                       height: 50.0,
                       width: MediaQuery.of(context).size.width,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           IconButton(
                             icon: Icon(Icons.my_location),
@@ -59,7 +59,7 @@ class BottomBar extends StatelessWidget {
                               );
                             },
                           ),
-                          IconButton(
+                          /*IconButton(
                             icon: Icon(Icons.messenger_outline_sharp),
                             color: Colors.black,
                             focusColor: Color(0xFF5F54ED),
@@ -74,7 +74,7 @@ class BottomBar extends StatelessWidget {
                                       (Route<dynamic> route) => false
                               );
                             },
-                          ),
+                          ),*/
                           IconButton(
                             icon: Icon(Icons.person_outline_sharp),
                             color: Colors.black,

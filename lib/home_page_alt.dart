@@ -72,7 +72,7 @@ class AltHome extends StatelessWidget {
               ),
             ),
           ])),
-      bottomNavigationBar: BottomBar(),
+      //bottomNavigationBar: BottomBar(),
     );
   }
 }

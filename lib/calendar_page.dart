@@ -65,7 +65,7 @@ class CalendarScreen extends StatelessWidget {
             partyHost: "DJ Clinton",
             partyAddress: "30 Meek Mill Close,Philadelphia"),
       ]),
-      bottomNavigationBar: BottomBar(),
+      //bottomNavigationBar: BottomBar(),
     );
   }
 }
@@ -132,61 +132,74 @@ class UpcomingParty extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          partyDateTime,
-                          style: TextStyle(
-                            color: Color(0xFF5F54ED),
-                            fontSize: 38.0,
-                          ),
+
+                    Row(
+                      children: [
+
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              partyDateTime,
+                              style: TextStyle(
+                                color: Color(0xFF5F54ED),
+                                fontSize: 38.0,
+                              ),
+                            ),
+                            Text(
+                              "Hours to Go",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 10.0,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "Hours to Go",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 10.0,
-                          ),
+
+                        SizedBox(width: 10,),
+
+                        Container(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    partyTitle,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    "Host - " + partyHost,
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    partyAddress,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 10.0,
+                                    ),
+                                  )
+                                ]
+                            )
                         ),
                       ],
                     ),
-                    Container(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                partyTitle,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                "Host - " + partyHost,
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 10.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                partyAddress,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 10.0,
-                                ),
-                              )
-                            ])),
                     // Padding(
                     //   child:
                     // )
+
                     Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
+
                   ],
                 ),
               ],

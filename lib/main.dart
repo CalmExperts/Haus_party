@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate
         ],
         supportedLocales: [Locale("en", "US")],
+        debugShowCheckedModeBanner: false,
         title: 'Haus Party',
         initialRoute: '/auth',
         routes: routes,
@@ -502,7 +503,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      //bottomNavigationBar: BottomBar(),
     );
   }
 }

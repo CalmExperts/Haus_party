@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/login_page/login_page.dart';
+import 'package:haus_party/login_page/login_view.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/main.dart';
 
@@ -15,6 +17,8 @@ class _InitialPageState extends State<InitialPage> {
   bool _isComposingEmail = false;
   bool _isComposingPasswordOne = false;
   bool _isComposingPasswordTwo = false;
+
+  LoginController loginController = LoginController();
 
   Widget _finalButtons() {
     return Column(
@@ -245,56 +249,14 @@ class _InitialPageState extends State<InitialPage> {
     );
   }
 
-  Widget get _buildLoginBtn {
-    return Column(
-      children: [
-        TextButton(
-          /*onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyHomePage())
-            );
-          },*/
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                    builder: (context) => MyHomePage()
-                ),
-                    (Route<dynamic> route) => false
-            );
-          },
-          child: Container(
-            alignment: Alignment.center,
-            height: 60.0,
-            width: double.infinity,
-            // width: double.infinity,
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
-              color: Color(0xFF8275e0),
-            ),
-            child: Text(
-              'Sign in with E-mail',
-              style: TextStyle(
-                // color: Color(0xFF527DAA),
-                color: Colors.white,
-                letterSpacing: 1.5,
-                fontSize: 16.0,
-                // fontWeight: FontWeight.bold,
-                // fontFamily: 'OpenSans',
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildSignUpBtn() {
     return Column(
       children: [
         TextButton(
-          onPressed: () => print('Sign UP Button Pressed'),
-          // elevation: 5.0,
+          onPressed: () {},
+          /*onPressed: () {
+            loginController.signupUser();
+          },*/
 
           child: Container(
             alignment: Alignment.center,
@@ -311,6 +273,50 @@ class _InitialPageState extends State<InitialPage> {
               style: TextStyle(
                 // color: Color(0xFF527DAA),
                 color: Color(0xFF5F54ED),
+                letterSpacing: 1.5,
+                fontSize: 16.0,
+                // fontWeight: FontWeight.bold,
+                // fontFamily: 'OpenSans',
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget get _buildLoginBtn {
+    return Column(
+      children: [
+        TextButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LoginView())
+            );
+          },
+          /*onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => MyHomePage()
+                ),
+                    (Route<dynamic> route) => false
+            );
+          },*/
+          child: Container(
+            alignment: Alignment.center,
+            height: 60.0,
+            width: double.infinity,
+            // width: double.infinity,
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+              color: Color(0xFF8275e0),
+            ),
+            child: Text(
+              'Sign in with E-mail',
+              style: TextStyle(
+                // color: Color(0xFF527DAA),
+                color: Colors.white,
                 letterSpacing: 1.5,
                 fontSize: 16.0,
                 // fontWeight: FontWeight.bold,

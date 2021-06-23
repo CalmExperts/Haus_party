@@ -3,13 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:haus_party/login_page/birthday_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
+import 'package:haus_party/main.dart';
+import 'package:haus_party/nav_bar.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginView extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginViewState createState() => _LoginViewState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginViewState extends State<LoginView> {
   bool _rememberMe = false;
   bool _isComposingName = false;
   bool _isComposingEmail = false;
@@ -128,36 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: _isComposingPasswordOne ? Colors.black : Colors.grey,
               ),
               hintText: 'Enter your Password',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-        SizedBox(height: 12.0),
-
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            onChanged: (text) {
-              setState(() {
-                _isComposingPasswordTwo = text.isNotEmpty;
-              });
-            },
-            textAlignVertical: TextAlignVertical.center,
-            obscureText: true,
-            style: TextStyle(
-              color: Colors.black,
-              // fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              // contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock_outlined,
-                color: _isComposingPasswordTwo ? Colors.black : Colors.grey,
-              ),
-              hintText: 'Re-enter your Password',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -318,13 +290,13 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           _buildSocialBtn(
-            () => print('Login with Facebook'),
+                () => print('Login with Facebook'),
             AssetImage(
               'assets/asset-2.png',
             ),
           ),
           _buildSocialBtn(
-            () => print('Login with Google'),
+                () => print('Login with Google'),
             AssetImage(
               'assets/asset-1.png',
             ),
@@ -395,6 +367,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(height: 40.0),
                       Text(
                         'Let\'s Get Started!',
                         style: TextStyle(
@@ -404,31 +377,37 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Text(
-                        'Create on account to get started',
+                        'Login to your account',
                         style: TextStyle(
                           color: Colors.grey,
                           // fontFamily: 'OpenSans',
                           fontSize: 14.0,
                         ),
                       ),
-                      SizedBox(height: 40.0),
-                      _buildName(),
+                      SizedBox(height: 80.0),
+                      //_buildName(),
                       _buildEmailTF(),
 
                       _buildPasswordTF(),
 
-                      SizedBox(height: 60.0),
+                      SizedBox(height: 80.0),
 
                       // _buildSignUpBtn(),
 
                       ButtonLarge(
-                          buttonTitle: 'SIGN UP',
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BirthDayPage()))),
+                          buttonTitle: 'SIGN IN',
+                          onPressed: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    //builder: (context) => MyHomePage()
+                                    builder: (context) => NavBar()
+                                ),
+                                    (Route<dynamic> route) => false
+                            );
+                          }
+                      ),
 
-                      SizedBox(height: 20.0),
+                      //SizedBox(height: 20.0),
 
                       //_buildLoginBtn(),
                     ],

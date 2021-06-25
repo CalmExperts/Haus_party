@@ -5,8 +5,8 @@ import 'package:haus_party/model/dummy_data.dart';
 import 'package:haus_party/pages/congrats_page.dart';
 import 'package:haus_party/pages/drinkPage/category_item.dart';
 
-import '../../bottom_bar.dart';
-import '../../home_cards.dart';
+import '../../components/bottom_bar.dart';
+import '../../components/home_cards.dart';
 
 class DrinkPage extends StatefulWidget {
   final Function theOnPress;

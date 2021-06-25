@@ -1,10 +1,10 @@
 import 'dart:async';
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:haus_party/home_cards.dart';
-import 'package:haus_party/home_page_alt.dart';
+import 'package:haus_party/components/home_cards.dart';
+import 'package:haus_party/pages/home_page_alt.dart';
 import 'package:haus_party/login_page/widgets/responsives/horizontal_card.dart';
-import 'package:haus_party/routing.dart';
+import 'package:haus_party/app/routing.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/util/userProvider.dart';
 import 'package:haus_party/widgets/datepicker_login.dart';
@@ -17,8 +17,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'bottom_bar.dart';
-import 'location_settings.dart';
+import 'components/bottom_bar.dart';
+import 'pages/location_settings.dart';
 import 'login_page/widgets/responsives/vertical_card.dart';
 
 // void main() => runApp(MyApp());
@@ -298,7 +298,8 @@ class _MyHomePageState extends State<MyHomePage>
                     DatePickerWidget(),
                     SizedBox(height: 20),
                     Text("Enter Search Radius",
-                        style: TextStyle(color: Colors.white, fontSize: 18)),
+                        style:
+                            TextStyle(color: Colors.white, fontSize: 18)),
                     SizedBox(height: 20),
                     OnlySlidePicker(),
                     // SizedBox(height: 20),
@@ -314,7 +315,8 @@ class _MyHomePageState extends State<MyHomePage>
                         height: 48,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8))),
                         child: TextButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -399,15 +401,16 @@ class _MyHomePageState extends State<MyHomePage>
         leading: IconButton(
           icon: Icon(Icons.card_travel, color: Color(0xFF545D68)),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AltHome()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AltHome()));
           },
         ),
         title: Text(
           'Discover',
           style: GoogleFonts.sofia(
               fontWeight: FontWeight.normal,
-              textStyle: TextStyle(color: Color(0xFF545D68), fontSize: 26.0)),
+              textStyle:
+                  TextStyle(color: Color(0xFF545D68), fontSize: 26.0)),
         ),
         actions: <Widget>[
           IconButton(
@@ -428,7 +431,8 @@ class _MyHomePageState extends State<MyHomePage>
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          child: LayoutBuilder(builder: (context, constraints) {
+                          child: LayoutBuilder(
+                              builder: (context, constraints) {
                             if (constraints.maxWidth < 500) {
                               return _dialogVertical();
                             } else {

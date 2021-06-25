@@ -5,9 +5,9 @@ import 'package:haus_party/pages/drinkPage/drink_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 
-import 'bottom_bar.dart';
+import '../components/bottom_bar.dart';
 import 'drinks_sale.dart';
-import 'login_page/widgets/button_editable.dart';
+import '../login_page/widgets/button_editable.dart';
 
 class PartyDetails extends StatelessWidget {
   const PartyDetails({

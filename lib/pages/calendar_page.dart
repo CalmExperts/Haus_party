@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/bottom_bar.dart';
-import 'package:haus_party/party_details_2.dart';
+import 'package:haus_party/pages/party_details_2.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart' show DateFormat;
 

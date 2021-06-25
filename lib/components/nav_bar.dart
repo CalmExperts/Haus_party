@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/calendar_page.dart';
+import 'package:haus_party/pages/calendar_page.dart';
 import 'package:haus_party/main.dart';
-import 'package:haus_party/profile_page.dart';
+import 'package:haus_party/pages/profile_page.dart';
 
 class NavBar extends StatefulWidget {
   @override

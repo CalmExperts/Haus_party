@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/calendar_page.dart';
+import 'package:haus_party/pages/calendar_page.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
 import 'package:haus_party/pages/drinkPage/drink_page.dart';
 

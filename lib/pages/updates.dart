@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/bottom_bar.dart';
+import 'package:haus_party/components/bottom_bar.dart';
 
 
 class UpdateScreen extends StatelessWidget {

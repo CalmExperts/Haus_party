@@ -67,13 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.center,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
             // textAlign: TextAlign.center,
             onChanged: (text) {
               setState(() {
                 _isComposingEmail = text.isNotEmpty;
               });
             },
+
             keyboardType: TextInputType.emailAddress,
             textAlignVertical: TextAlignVertical.center,
             style: TextStyle(
@@ -125,7 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
               // contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock_open_rounded,
-                color: _isComposingPasswordOne ? Colors.black : Colors.grey,
+                color:
+                    _isComposingPasswordOne ? Colors.black : Colors.grey,
               ),
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
@@ -155,7 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
               // contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock_outlined,
-                color: _isComposingPasswordTwo ? Colors.black : Colors.grey,
+                color:
+                    _isComposingPasswordTwo ? Colors.black : Colors.grey,
               ),
               hintText: 'Re-enter your Password',
               hintStyle: kHintTextStyle,
@@ -250,8 +253,8 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Color(0xFF5F54ED),
       ),
       child: TextButton(
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => BirthDayPage())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => BirthDayPage())),
         child: Text(
           'SIGN UP',
           textAlign: TextAlign.center,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:haus_party/bottom_bar.dart';
+import 'package:haus_party/components/bottom_bar.dart';
+import 'package:haus_party/models/event.dart';
 import 'package:haus_party/pages/modal_reserve.dart';
 import 'package:share/share.dart';
 
@@ -57,10 +58,14 @@ class _SubHorizontalViewState extends State<SubHorizontalView> {
 }
 
 class PartyDesc extends StatelessWidget {
+  final EventModel event;
+
+  const PartyDesc({Key key, this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-
+    var date =
+        DateTime.fromMillisecondsSinceEpoch(event.date['_seconds'] * 1000);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: ListView(
@@ -72,18 +77,22 @@ class PartyDesc extends StatelessWidget {
               LayoutBuilder(builder: (context, constraints) {
                 if (constraints.maxWidth < 500) {
                   return Container(
-                      height: 200,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/asset-1.png")));
+                    height: 200,
+                    width: MediaQuery.of(context).size.width,
+                    child: Image(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/asset-1.png"),
+                    ),
+                  );
                 } else {
                   return Container(
-                      height: 208,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image(
-                          fit: BoxFit.fill,
-                          image: AssetImage("assets/asset-1.png")));
+                    height: 208,
+                    width: MediaQuery.of(context).size.width,
+                    child: Image(
+                      fit: BoxFit.fill,
+                      image: AssetImage("assets/asset-1.png"),
+                    ),
+                  );
                 }
               }),
               Positioned(
@@ -121,7 +130,8 @@ class PartyDesc extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
                           // width: MediaQuery.of(context).size.width * 0.8,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16)),
                             color: Colors.white,
                           ),
                           child: Column(
@@ -130,11 +140,12 @@ class PartyDesc extends StatelessWidget {
                             children: [
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
-                                    child: Text("Spring Welcome Party",
+                                    child: Text("${event.title}",
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -147,7 +158,8 @@ class PartyDesc extends StatelessWidget {
                                     padding: EdgeInsets.only(left: 10),
                                     child: Text("Hosted By: DJ Clint",
                                         style: TextStyle(
-                                            fontSize: 14, color: Colors.grey)),
+                                            fontSize: 14,
+                                            color: Colors.grey)),
                                   ),
                                   SizedBox(height: 8),
                                   Container(
@@ -172,9 +184,10 @@ class PartyDesc extends StatelessWidget {
                                               Text("Dec",
                                                   style: TextStyle(
                                                     fontSize: 15,
-                                                    color: Color(0xFF5F54ED),
+                                                    color:
+                                                        Color(0xFF5F54ED),
                                                   )),
-                                              Text("22",
+                                              Text("${date.day}",
                                                   style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 20.0,
@@ -187,39 +200,40 @@ class PartyDesc extends StatelessWidget {
                                           width: 20,
                                         ),
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-
-                                          Text(
-                                            "306 Rchmond Drive",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-
-                                          SizedBox(height: 12,),
-
-                                          Row(
-                                            children: [
-
-                                              Icon(Icons.person,
-                                                  color: Color(0xFF5F54ED)),
-
-                                              SizedBox(width: 3,),
-
-                                              Text("129"),
-
-                                              SizedBox(width: 20,),
-
-                                              Icon(Icons.access_time,
-                                                  color: Color(0xFF5F54ED)),
-
-                                              SizedBox(width: 5,),
-
-                                              Text("5 - 7 p.m."),
-
-                                            ],
-                                          )
-
-                                        ])
+                                              Text(
+                                                "${event.address.address}",
+                                                style: TextStyle(
+                                                    fontSize: 14),
+                                              ),
+                                              SizedBox(
+                                                height: 12,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.person,
+                                                      color: Color(
+                                                          0xFF5F54ED)),
+                                                  SizedBox(
+                                                    width: 3,
+                                                  ),
+                                                  Text(
+                                                      "${event.maxAttendees}"),
+                                                  SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Icon(Icons.access_time,
+                                                      color: Color(
+                                                          0xFF5F54ED)),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text("5 - 7 p.m."),
+                                                ],
+                                              )
+                                            ])
                                       ])),
                                 ],
                               ),
@@ -231,7 +245,8 @@ class PartyDesc extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
                           // width: MediaQuery.of(context).size.width * 0.8,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16)),
                             color: Colors.white,
                           ),
                           child: Column(
@@ -240,7 +255,8 @@ class PartyDesc extends StatelessWidget {
                             children: [
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
@@ -257,7 +273,8 @@ class PartyDesc extends StatelessWidget {
                                     padding: EdgeInsets.only(left: 10),
                                     child: Text("Hosted By: DJ Clint",
                                         style: TextStyle(
-                                            fontSize: 14, color: Colors.grey)),
+                                            fontSize: 14,
+                                            color: Colors.grey)),
                                   ),
                                   SizedBox(height: 8),
                                   Container(
@@ -282,9 +299,10 @@ class PartyDesc extends StatelessWidget {
                                               Text("Dec",
                                                   style: TextStyle(
                                                     fontSize: 15,
-                                                    color: Color(0xFF5F54ED),
+                                                    color:
+                                                        Color(0xFF5F54ED),
                                                   )),
-                                              Text("22",
+                                              Text("${date.day}}",
                                                   style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 20.0,
@@ -300,8 +318,9 @@ class PartyDesc extends StatelessWidget {
                                           Row(
                                             children: <Widget>[
                                               Text(
-                                                "306 Rchmond Drive",
-                                                style: TextStyle(fontSize: 14),
+                                                "${event.address.address}",
+                                                style: TextStyle(
+                                                    fontSize: 14),
                                               )
                                             ],
                                           ),
@@ -311,13 +330,15 @@ class PartyDesc extends StatelessWidget {
                                           Row(
                                             children: <Widget>[
                                               Icon(Icons.person,
-                                                  color: Color(0xFF5F54ED)),
+                                                  color:
+                                                      Color(0xFF5F54ED)),
                                               Text("129"),
                                               SizedBox(
                                                 width: 10,
                                               ),
                                               Icon(Icons.access_time,
-                                                  color: Color(0xFF5F54ED)),
+                                                  color:
+                                                      Color(0xFF5F54ED)),
                                               Text("5 - 7 PM"),
                                             ],
                                           )
@@ -335,7 +356,6 @@ class PartyDesc extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-
               Container(
                   margin: EdgeInsets.fromLTRB(0, 160, 0, 32),
                   width: 120,
@@ -371,9 +391,7 @@ class PartyDesc extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
-              ),
-
+                  )),
               Container(
                   margin: EdgeInsets.fromLTRB(0, 160, 0, 32),
                   width: 140,
@@ -396,8 +414,7 @@ class PartyDesc extends StatelessWidget {
                         onPressed: () {
                           Share.share(
                               'https://www.google.com/webhp?hl=pt-BR&sa=X&ved=0ahUKEwjGp_DG8bDwAhXJqJUCHbb7B2UQPAgI',
-                              subject: 'House Party'
-                          );
+                              subject: 'House Party');
                         },
                         child: Text(
                           'Invite Friends',
@@ -409,9 +426,7 @@ class PartyDesc extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
-              ),
-
+                  )),
             ],
           ),
           Container(
@@ -428,15 +443,16 @@ class PartyDesc extends StatelessWidget {
                       ),
                       SizedBox(width: 2),
                       Text("Description",
-                          style: TextStyle(color: Colors.black, fontSize: 22.0))
+                          style: TextStyle(
+                              color: Colors.black, fontSize: 22.0))
                     ],
                   ),
                   SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                        "The Spring Welcome Party 2020 is brought to you by DJ Clint. Come party to the best of afrobeats and make new friends",
-                        style: TextStyle(color: Colors.black54, fontSize: 18)),
+                    child: Text("${event.description}",
+                        style: TextStyle(
+                            color: Colors.black54, fontSize: 18)),
                   ),
                   SizedBox(height: 16),
                 ],
@@ -514,7 +530,8 @@ class PartyDesc extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text("Metro Urban",
-                      style: TextStyle(color: Colors.black54, fontSize: 18)),
+                      style:
+                          TextStyle(color: Colors.black54, fontSize: 18)),
                 ],
               ),
             ),
@@ -529,7 +546,8 @@ class PartyDesc extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 40.0),
-                      child: Text("People Attending(129)",
+                      child: Text(
+                          "People Attending(${event.maxAttendees})",
                           style: TextStyle(
                               color: Colors.black54,
                               fontWeight: FontWeight.bold,
@@ -542,7 +560,6 @@ class PartyDesc extends StatelessWidget {
               ],
             ),
           ),
-
           SizedBox(height: 50),
 
           /*Container(
@@ -599,7 +616,6 @@ class PartyDesc extends StatelessWidget {
               ],
             ),
           ),*/
-
         ],
       ),
       bottomNavigationBar: BottomBar(),

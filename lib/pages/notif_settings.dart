@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'labelled_switch.dart';
+import '../components/labelled_switch.dart';
 
 class NotifSettings extends StatelessWidget {
   @override

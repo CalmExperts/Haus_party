@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:haus_party/model/user.dart';
@@ -36,7 +35,7 @@ class AuthProvider with ChangeNotifier {
     _loggedInStatus = Status.Authenticating;
     notifyListeners();
 
-    Response response = await post(
+    var response = await post(
       BaseAPI.login,
       body: json.encode(loginData),
       headers: {'Content-Type': 'application/json'},
@@ -44,7 +43,6 @@ class AuthProvider with ChangeNotifier {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
-
 
       Auth token = Auth.fromJson(responseData);
       var userData = responseData['user'];
@@ -57,8 +55,7 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
 
       result = {'status': true, 'message': 'Successful', 'user': authUser};
-
-    }else {
+    } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
       result = {
@@ -67,37 +64,33 @@ class AuthProvider with ChangeNotifier {
       };
     }
     return result;
-    
   }
 
-
-  Future<Map<String, dynamic>> register(String email, String password, String firstName, String lastName, String username ) async {
-
-     final Map<String, dynamic> registrationData = {
-        'email': email,
-        'password': password,
-        'firstName': firstName,
-        'lastName': lastName,
-        'username': username,
-
-     };
+  Future<Map<String, dynamic>> register(String email, String password,
+      String firstName, String lastName, String username) async {
+    final Map<String, dynamic> registrationData = {
+      'email': email,
+      'password': password,
+      'firstName': firstName,
+      'lastName': lastName,
+      'username': username,
+    };
 
     _registeredInStatus = Status.Registering;
     notifyListeners();
 
     return await post(BaseAPI.register,
-        body: json.encode(registrationData),
-        headers: {'Content-Type': 'application/json'})
+            body: json.encode(registrationData),
+            headers: {'Content-Type': 'application/json'})
         .then(onValue)
         .catchError(onError);
   }
 
-   static Future<FutureOr> onValue(Response response) async {
+  static Future<FutureOr> onValue(Response response) async {
     var result;
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     if (response.statusCode == 201) {
-
       var userData = responseData['user'];
 
       User authUser = User.fromJson(userData);
@@ -109,7 +102,6 @@ class AuthProvider with ChangeNotifier {
         'data': authUser
       };
     } else {
-
       result = {
         'status': false,
         'message': 'Registration failed',
@@ -122,9 +114,10 @@ class AuthProvider with ChangeNotifier {
 
   static onError(error) {
     print("the error is $error.detail");
-    return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
+    return {
+      'status': false,
+      'message': 'Unsuccessful Request',
+      'data': error
+    };
   }
-
 }
-
-

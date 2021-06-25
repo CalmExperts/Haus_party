@@ -69,7 +69,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
-import 'package:haus_party/bottom_bar.dart';
+import 'package:haus_party/components/bottom_bar.dart';
 import 'package:haus_party/pages/congrats_card_page.dart';
 
 class CardDetails extends StatefulWidget {

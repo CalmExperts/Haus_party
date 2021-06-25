@@ -223,10 +223,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     AuthProvider auth = Provider.of<AuthProvider>(context);
-
+    final form = formKey.currentState;
     var doLogin = () {
-      final form = formKey.currentState;
-
       if (form.validate()) {
         form.save();
 
@@ -237,7 +235,8 @@ class _LoginFormState extends State<LoginForm> {
           if (response['status']) {
             User user = response['user'];
             print(user);
-            Provider.of<UserProvider>(context, listen: false).setUser(user);
+            Provider.of<UserProvider>(context, listen: false)
+                .setUser(user);
             Navigator.pushReplacementNamed(context, '/sub');
           } else {
             Flushbar(
@@ -270,6 +269,12 @@ class _LoginFormState extends State<LoginForm> {
                 hintText: "Enter email",
                 border: OutlineInputBorder(),
               ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return "email can't be empty";
+                }
+                return value;
+              },
             ),
             const SizedBox(height: 10.0),
             TextFormField(
@@ -292,8 +297,14 @@ class _LoginFormState extends State<LoginForm> {
               ),
               child: Text("Login"),
               onPressed: () {
+                print(form.validate());
                 // Navigator.pushReplacementNamed(context, '/');
-                Navigator.pushReplacementNamed(context, '/sub');
+                //Navigator.pushReplacementNamed(context, '/sub');
+                if (form.validate()) {
+                  Navigator.pushReplacementNamed(context, '/sub');
+                } else {
+                  //
+                }
                 // doLogin();
               },
             ),

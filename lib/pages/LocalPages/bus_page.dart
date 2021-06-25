@@ -1,10 +1,10 @@
 import 'dart:async';
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:haus_party/bottom_bar.dart';
-import 'package:haus_party/home_cards.dart';
-import 'package:haus_party/home_page_alt.dart';
-import 'package:haus_party/routing.dart';
+import 'package:haus_party/components/bottom_bar.dart';
+import 'package:haus_party/components/home_cards.dart';
+import 'package:haus_party/pages/home_page_alt.dart';
+import 'package:haus_party/app/routing.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/util/userProvider.dart';
 import 'package:haus_party/widgets/datepicker_login.dart';

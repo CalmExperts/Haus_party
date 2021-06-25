@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:haus_party/privacy_settings.dart';
-import 'package:haus_party/profile_settings.dart';
+import 'package:haus_party/pages/privacy_settings.dart';
+import 'package:haus_party/pages/profile_settings.dart';
 
-import 'bottom_bar.dart';
-import 'card_details.dart';
-import 'home_cards.dart';
-import 'login_page/widgets/buttons_profile.dart';
-import 'login_page/widgets/responsives/horizontal_card.dart';
-import 'login_page/widgets/responsives/vertical_card.dart';
+import '../components/bottom_bar.dart';
+import '../components/card_details.dart';
+import '../components/home_cards.dart';
+import '../login_page/widgets/buttons_profile.dart';
+import '../login_page/widgets/responsives/horizontal_card.dart';
+import '../login_page/widgets/responsives/vertical_card.dart';
 import 'notif_settings.dart';
 
 class ProfilePage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:haus_party/page_description.dart';
+import 'package:haus_party/pages/page_description.dart';
 
 class HorizontalCard extends StatelessWidget {
   @override

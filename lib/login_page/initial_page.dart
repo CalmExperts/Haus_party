@@ -18,8 +18,6 @@ class _InitialPageState extends State<InitialPage> {
   bool _isComposingPasswordOne = false;
   bool _isComposingPasswordTwo = false;
 
-  LoginController loginController = LoginController();
-
   Widget _finalButtons() {
     return Column(
       children: [
@@ -254,9 +252,6 @@ class _InitialPageState extends State<InitialPage> {
       children: [
         TextButton(
           onPressed: () {},
-          /*onPressed: () {
-            loginController.signupUser();
-          },*/
 
           child: Container(
             alignment: Alignment.center,

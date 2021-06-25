@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/login_page/birthday_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
@@ -10,6 +11,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  LoginController loginController = LoginController();
+
   bool _rememberMe = false;
   bool _isComposingName = false;
   bool _isComposingEmail = false;
@@ -26,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.controllerName,
             onChanged: (text) {
               setState(() {
                 _isComposingName = text.isNotEmpty;
@@ -48,7 +53,50 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: _isComposingName ? Colors.black : Colors.grey,
               ),
 
-              hintText: 'Your Name',
+              hintText: 'Your name',
+              hintStyle: kHintTextStyle,
+              focusColor: Colors.red,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLastName() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 12.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            controller: loginController.controllerLastName,
+            onChanged: (text) {
+              setState(() {
+                _isComposingName = text.isNotEmpty;
+              });
+            },
+            // textAlign: TextAlign.center,
+            keyboardType: TextInputType.emailAddress,
+            textAlignVertical: TextAlignVertical.center,
+            style: TextStyle(
+              color: Colors.black,
+              // fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              // contentPadding: EdgeInsets.only(
+              //   top: 14.0,
+              // ),
+              prefixIcon: Icon(
+                Icons.person_outline,
+                color: _isComposingName ? Colors.black : Colors.grey,
+              ),
+
+              hintText: 'Your last name',
               hintStyle: kHintTextStyle,
               focusColor: Colors.red,
             ),
@@ -68,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.controllerEmail,
             // textAlign: TextAlign.center,
             onChanged: (text) {
               setState(() {
@@ -86,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.email,
                 color: _isComposingEmail ? Colors.black : Colors.grey,
               ),
-              hintText: 'Enter your Email',
+              hintText: 'Enter your email',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -109,6 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.controllerPassword,
             onChanged: (text) {
               setState(() {
                 _isComposingPasswordOne = text.isNotEmpty;
@@ -127,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.lock_open_rounded,
                 color: _isComposingPasswordOne ? Colors.black : Colors.grey,
               ),
-              hintText: 'Enter your Password',
+              hintText: 'Enter your password',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -139,6 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: loginController.controllerConfirmPassword,
             onChanged: (text) {
               setState(() {
                 _isComposingPasswordTwo = text.isNotEmpty;
@@ -157,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icons.lock_outlined,
                 color: _isComposingPasswordTwo ? Colors.black : Colors.grey,
               ),
-              hintText: 'Re-enter your Password',
+              hintText: 'Re-enter your password',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -412,7 +463,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: 40.0),
+
                       _buildName(),
+
+                      _buildLastName(),
+
                       _buildEmailTF(),
 
                       _buildPasswordTF(),
@@ -423,10 +478,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       ButtonLarge(
                           buttonTitle: 'SIGN UP',
+                          //onPressed: () {loginController.signupUser();},
                           onPressed: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BirthDayPage()))),
+                                  builder: (context) => BirthDayPage())
+                          )
+                      ),
 
                       SizedBox(height: 20.0),
 

@@ -1,6 +1,8 @@
 import 'dart:async';
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:haus_party/controllers/login_controller.dart';
+import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/home_cards.dart';
 import 'package:haus_party/home_page_alt.dart';
 import 'package:haus_party/login_page/widgets/responsives/horizontal_card.dart';
@@ -18,6 +20,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'bottom_bar.dart';
+import 'controllers/login_controller.dart';
 import 'location_settings.dart';
 import 'login_page/widgets/responsives/vertical_card.dart';
 
@@ -102,6 +105,9 @@ class _MyHomePageState extends State<MyHomePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    LoginController().getApiEvents();
+    print('testeeeeeeeeeeeeeeeeee');
+    print(LoginController().eventsList.length.toString());
   }
 
   // List listItem = ["Rio de Janeiro", "São Paulo", "Recife", "Florianópolis"];

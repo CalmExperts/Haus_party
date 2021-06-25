@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/page_description.dart';
 
 class VerticalCard extends StatelessWidget {
+
+  LoginController loginController = LoginController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,18 +15,57 @@ class VerticalCard extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: BouncingScrollPhysics(),
-        itemCount: 3,
+        itemCount: 3,//loginController.eventsList.length,
         itemExtent: MediaQuery.of(context).size.width,
-        itemBuilder: (BuildContext context, int i) => VerticalCardItem(),
+        itemBuilder: (BuildContext context, int i) => VerticalCardItem(
+          title: 'Spring Welcome Party', //loginController.eventsList[i].title,
+          description: 'Hosted by DJ Clint', //loginController.eventsList[i].description,
+          location: '306 Richmond Druwe', //loginController.eventsList[i].location,
+          date: 'Dec', //loginController.eventsList[i].date,
+          time: '5 - 7 p.m.', //loginController.eventsList[i].time,
+          image: 'assets/asset-1.png', //loginController.eventsList[i].image,
+          dressCode: '12345', //loginController.eventsList[i].dressCode,
+          price: 12345, //loginController.eventsList[i].price.toString(),
+          maxAttendees: 129, //loginController.eventsList[i].maxAttendees.toString(),
+        ),
       ),
     );
   }
 }
 
 class VerticalCardItem extends StatelessWidget {
-  const VerticalCardItem({
+
+  final String title;
+  final String description;
+  final String location;
+  //final Address address;
+  final String date;
+  final String time;
+  final String image;
+  final String dressCode;
+  final int price;
+  final int maxAttendees;
+  //final List<Null> attendees;
+  //final List<Null> updates;
+
+  VerticalCardItem ({
+    this.title,
+    this.description,
+    this.location,
+    //this.address,
+    this.date,
+    this.time,
+    this.image,
+    this.dressCode,
+    this.price,
+    this.maxAttendees,
+    //this.attendees,
+    //this.updates,
+  });
+
+  /*const VerticalCardItem({
     Key key,
-  }) : super(key: key);
+  }) : super(key: key);*/
 
   @override
   Widget build(BuildContext context) {
@@ -51,17 +94,25 @@ class VerticalCardItem extends StatelessWidget {
 
                   // borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   //
-                  image: const DecorationImage(
+                  image: DecorationImage(
                     image: AssetImage(
-                      //'assets/profile_image.jpg',
-                      'assets/asset-1.png',
+                      this.image,
                     ),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-            Container(child: Content())
+            Container(child: Content(
+              title: this.title,
+              description: this.description,
+              location: this.location,
+              date: this.date,
+              time: this.time,
+              dressCode: this.title,
+              price: this.price,
+              maxAttendees: this.maxAttendees,
+            ))
           ]),
         ),
       ),
@@ -70,6 +121,33 @@ class VerticalCardItem extends StatelessWidget {
 }
 
 class Content extends StatelessWidget {
+
+  final String title;
+  final String description;
+  final String location;
+  //final Address address;
+  final String date;
+  final String time;
+  final String dressCode;
+  final int price;
+  final int maxAttendees;
+  //final List<Null> attendees;
+  //final List<Null> updates;
+
+  Content ({
+    this.title,
+    this.description,
+    this.location,
+    //this.address,
+    this.date,
+    this.time,
+    this.dressCode,
+    this.price,
+    this.maxAttendees,
+    //this.attendees,
+    //this.updates,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -91,14 +169,14 @@ class Content extends StatelessWidget {
                   ),
                   child: Column(children: [
 
-                    Text('Dec',
+                    Text(this.date,
                         style: TextStyle(
                             color: Color(0xFF5F54ED),
                             fontSize: 18.0,
                             fontWeight: FontWeight.w400)
                     ),
 
-                    Text('30',
+                    Text(this.date,
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 26.0,
@@ -114,7 +192,7 @@ class Content extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    Text('Spring Welcome Party',
+                    Text(this.title,
                         style: GoogleFonts.rubik(
                           textStyle: TextStyle(
                               fontSize: 17,
@@ -127,7 +205,7 @@ class Content extends StatelessWidget {
                     SizedBox(height: 3.0),
 
                     Text(
-                      'Hosted by DJ Clint',
+                      this.description,
                       style: GoogleFonts.rubik(
                         textStyle:
                             TextStyle(fontSize: 14, color: Colors.white),
@@ -138,7 +216,7 @@ class Content extends StatelessWidget {
                     SizedBox(height: 3.0),
 
                     Text(
-                      '306 Richmond Druve',
+                      this.location,
                       style: GoogleFonts.sofia(
                           textStyle:
                               TextStyle(fontSize: 13, color: Colors.white)),
@@ -171,7 +249,7 @@ class Content extends StatelessWidget {
                 SizedBox(height: 5.0,),
 
                 Text(
-                    '129',
+                    this.maxAttendees.toString(),
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -197,7 +275,7 @@ class Content extends StatelessWidget {
                 SizedBox(height: 5.0,),
 
                 Text(
-                    '5 - 7 p.m.',
+                    this.time,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,

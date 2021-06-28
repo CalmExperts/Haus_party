@@ -30,7 +30,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 //
 
 class LocationPage extends StatefulWidget {
-  LocationPage({Key key, this.title}) : super(key: key);
+  LocationPage({Key? key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -41,7 +41,7 @@ class LocationPage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String? title;
 
   @override
   _LocationPageState createState() => _LocationPageState();
@@ -49,7 +49,7 @@ class LocationPage extends StatefulWidget {
 
 class _LocationPageState extends State<LocationPage>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
 
   @override
   void initState() {

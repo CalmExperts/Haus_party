@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
 
 class CongratsCardPage extends StatelessWidget {
-  final String name;
+  final String? name;
 
-  const CongratsCardPage({Key key, this.name}) : super(key: key);
+  const CongratsCardPage({Key? key, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class CongratsCardPage extends StatelessWidget {
                                       fontSize: 22.0,
                                       fontWeight: FontWeight.w700)),
                             ),
-                            Text(name,
+                            Text(name!,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white,

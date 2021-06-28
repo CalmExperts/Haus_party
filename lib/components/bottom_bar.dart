@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/app/app.dart';
 import 'package:haus_party/pages/calendar_page.dart';
-import 'package:haus_party/main.dart';
 import 'package:haus_party/pages/profile_page.dart';
-import 'package:haus_party/pages/updates.dart';
 
 class BottomBar extends StatelessWidget {
   @override

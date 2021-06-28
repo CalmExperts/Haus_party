@@ -17,10 +17,10 @@ class PartyDetails extends StatelessWidget {
     this.partyAddress,
   });
 
-  final String partyAddress;
-  final String partyHost;
-  final String partyTitle;
-  final String partyDateTime;
+  final String? partyAddress;
+  final String? partyHost;
+  final String? partyTitle;
+  final String? partyDateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class PartyDetails extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               }),
-          title: Text(partyTitle,
+          title: Text(partyTitle!,
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,
@@ -142,7 +142,7 @@ class PartyDetails extends StatelessWidget {
                             "Location",
                             style: TextStyle(fontSize: 18.0),
                           ),
-                          Text(partyAddress,
+                          Text(partyAddress!,
                               style:
                                   TextStyle(fontSize: 12.0, color: Colors.grey))
                         ],
@@ -384,7 +384,7 @@ class PartyDetails extends StatelessWidget {
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey[800],
+                                  color: Colors.grey[800]!,
                                   blurRadius: 2.0,
                                   spreadRadius: 0.0,
                                   offset: Offset(2.0,

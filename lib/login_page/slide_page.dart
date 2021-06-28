@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:haus_party/login_page/model/slide.dart';
 import 'package:haus_party/login_page/slide_item.dart';
-import 'package:haus_party/login_page/terms_page.dart';
 import 'package:haus_party/login_page/widgets/slide_dots.dart';
 
 class SlidePage extends StatefulWidget {

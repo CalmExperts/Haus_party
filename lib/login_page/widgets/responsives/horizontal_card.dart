@@ -21,7 +21,7 @@ class HorizontalCard extends StatelessWidget {
 
 class HorizontalCardItem extends StatelessWidget {
   const HorizontalCardItem({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

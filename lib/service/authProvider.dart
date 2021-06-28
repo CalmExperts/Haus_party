@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:haus_party/model/user.dart';
+import 'package:haus_party/models/user.dart';
 import 'package:haus_party/service/authApi.dart';
 import 'package:haus_party/util/sharedPreferences.dart';
 import 'package:http/http.dart';
@@ -24,7 +24,8 @@ class AuthProvider with ChangeNotifier {
   Status get loggedInStatus => _loggedInStatus;
   Status get registeredInStatus => _registeredInStatus;
 
-  Future<Map<String, dynamic>> login(String email, String password) async {
+  Future<Map<String, dynamic>> login(
+      String? email, String? password) async {
     var result;
 
     final Map<String, dynamic> loginData = {
@@ -36,7 +37,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
 
     var response = await post(
-      BaseAPI.login,
+      Uri.parse(BaseAPI.login),
       body: json.encode(loginData),
       headers: {'Content-Type': 'application/json'},
     );
@@ -79,19 +80,19 @@ class AuthProvider with ChangeNotifier {
     _registeredInStatus = Status.Registering;
     notifyListeners();
 
-    return await post(BaseAPI.register,
+    return await (post(Uri.parse(BaseAPI.register),
             body: json.encode(registrationData),
             headers: {'Content-Type': 'application/json'})
         .then(onValue)
-        .catchError(onError);
+        .catchError(onError) as FutureOr<Map<String, dynamic>>);
   }
 
   static Future<FutureOr> onValue(Response response) async {
     var result;
-    final Map<String, dynamic> responseData = json.decode(response.body);
+    final Map<String, dynamic>? responseData = json.decode(response.body);
 
     if (response.statusCode == 201) {
-      var userData = responseData['user'];
+      var userData = responseData!['user'];
 
       User authUser = User.fromJson(userData);
 

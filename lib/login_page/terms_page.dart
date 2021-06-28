@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haus_party/login_page/slide_page.dart';
-import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
-import 'package:haus_party/widgets/datepicker_widget.dart';
 
 class TermsPage extends StatefulWidget {
   @override

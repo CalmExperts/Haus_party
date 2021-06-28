@@ -46,7 +46,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           // print(data);
           setState(() {
             dateTimeValue =
-                ("${data.day} / ${data.month} / ${data.year}").toString();
+                ("${data!.day} / ${data.month} / ${data.year}").toString();
           });
         });
   }

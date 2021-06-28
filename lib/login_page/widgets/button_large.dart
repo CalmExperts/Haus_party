@@ -1,13 +1,11 @@
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:haus_party/login_page/terms_page.dart';
 
 class ButtonLarge extends StatelessWidget {
-  final String buttonTitle;
-  final Function onPressed;
+  final String? buttonTitle;
+  final Function? onPressed;
 
   const ButtonLarge({
-    Key key,
+    Key? key,
     this.buttonTitle,
     this.onPressed,
   }) : super(key: key);
@@ -25,11 +23,11 @@ class ButtonLarge extends StatelessWidget {
         color: Color(0xFF5F54ED),
       ),
       child: TextButton(
-        onPressed: onPressed,
+        onPressed: onPressed as void Function()?,
         // onPressed: () => Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => TermsPage())),
         child: Text(
-          buttonTitle,
+          buttonTitle!,
           style: TextStyle(
             // color: Color(0xFF527DAA),
             color: Colors.white,

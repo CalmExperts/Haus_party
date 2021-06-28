@@ -1,17 +1,17 @@
 class EventModel {
-  String title;
-  String description;
-  String location;
-  Address address;
+  String? title;
+  String? description;
+  String? location;
+  Address? address;
   dynamic date;
   dynamic time;
-  String hostedby;
-  List<String> images;
-  String dressCode;
-  int price;
-  int maxAttendees;
-  List<String> attendees;
-  List<String> updates;
+  String? hostedby;
+  List<String>? images;
+  String? dressCode;
+  int? price;
+  int? maxAttendees;
+  List<String>? attendees;
+  List<String>? updates;
 
   EventModel(
       {this.title,
@@ -49,7 +49,7 @@ class EventModel {
     data['description'] = this.description;
     data['location'] = this.location;
     if (this.address != null) {
-      data['address'] = this.address.toJson();
+      data['address'] = this.address!.toJson();
     }
     data['date'] = this.date;
     data['time'] = this.time;
@@ -63,9 +63,9 @@ class EventModel {
 }
 
 class Address {
-  String address;
-  String city;
-  String country;
+  String? address;
+  String? city;
+  String? country;
 
   Address({this.address, this.city, this.country});
 

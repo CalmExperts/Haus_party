@@ -71,22 +71,25 @@ class CalendarScreen extends StatelessWidget {
 
 class CalendarScreenStateful extends StatefulWidget {
   @override
-  _CalendarScreenStatefulState createState() => _CalendarScreenStatefulState();
+  _CalendarScreenStatefulState createState() =>
+      _CalendarScreenStatefulState();
 }
 
 class _CalendarScreenStatefulState extends State<CalendarScreenStateful> {
-  CalendarController _controller;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = CalendarController();
+//    _controller = CalendarController();
   }
 
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(calendarController: _controller);
+    return TableCalendar(
+      firstDay: DateTime.now(),
+      focusedDay: DateTime.now(),
+      lastDay: DateTime.now(),
+    );
   }
 }
 
@@ -98,10 +101,10 @@ class UpcomingParty extends StatelessWidget {
     this.partyAddress,
   });
 
-  final String partyAddress;
-  final String partyHost;
-  final String partyTitle;
-  final String partyDateTime;
+  final String? partyAddress;
+  final String? partyHost;
+  final String? partyTitle;
+  final String? partyDateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -131,14 +134,12 @@ class UpcomingParty extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-
                     Row(
                       children: [
-
                         Column(
                           children: <Widget>[
                             Text(
-                              partyDateTime,
+                              partyDateTime!,
                               style: TextStyle(
                                 color: Color(0xFF5F54ED),
                                 fontSize: 38.0,
@@ -153,16 +154,18 @@ class UpcomingParty extends StatelessWidget {
                             ),
                           ],
                         ),
-
-                        SizedBox(width: 10,),
-
+                        SizedBox(
+                          width: 10,
+                        ),
                         Container(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            padding:
+                                const EdgeInsets.fromLTRB(10, 0, 10, 0),
                             child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    partyTitle,
+                                    partyTitle!,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18.0,
@@ -172,7 +175,7 @@ class UpcomingParty extends StatelessWidget {
                                     height: 5.0,
                                   ),
                                   Text(
-                                    "Host - " + partyHost,
+                                    "Host - " + partyHost!,
                                     style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 10.0,
@@ -182,15 +185,13 @@ class UpcomingParty extends StatelessWidget {
                                     height: 5.0,
                                   ),
                                   Text(
-                                    partyAddress,
+                                    partyAddress!,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 10.0,
                                     ),
                                   )
-                                ]
-                            )
-                        ),
+                                ])),
                       ],
                     ),
                     // Padding(
@@ -198,7 +199,6 @@ class UpcomingParty extends StatelessWidget {
                     // )
 
                     Icon(Icons.arrow_forward_ios, color: Color(0xFF5F54ED))
-
                   ],
                 ),
               ],

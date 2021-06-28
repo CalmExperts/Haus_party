@@ -21,11 +21,10 @@ class VerticalCard extends StatelessWidget {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
-          var result = json.decode(snapshot.data.body) as List;
+          var result = json.decode(snapshot.data!.body) as List;
 
-          var myModels = result
-              .map((value) => EventModel.fromJson(value['data']))
-              .toList();
+          var myModels =
+              result.map((value) => EventModel.fromJson(value)).toList();
           //
           return ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -45,9 +44,9 @@ class VerticalCard extends StatelessWidget {
 }
 
 class VerticalCardItem extends StatelessWidget {
-  final EventModel event;
+  final EventModel? event;
   const VerticalCardItem({
-    Key key,
+    Key? key,
     this.event,
   }) : super(key: key);
 
@@ -102,13 +101,13 @@ class VerticalCardItem extends StatelessWidget {
 }
 
 class Content extends StatelessWidget {
-  final EventModel event;
+  final EventModel? event;
 
-  const Content({Key key, this.event}) : super(key: key);
+  const Content({Key? key, this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var date = new DateTime.fromMillisecondsSinceEpoch(
-        event.date['_seconds'] * 1000);
+        event!.date['_seconds'] * 1000);
 
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -144,7 +143,7 @@ class Content extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("${event.title}",
+                    Text("${event!.title}",
                         style: GoogleFonts.rubik(
                           textStyle: TextStyle(
                               fontSize: 17,
@@ -163,7 +162,7 @@ class Content extends StatelessWidget {
                     ),
                     SizedBox(height: 3.0),
                     Text(
-                      '${event.address.address}',
+                      '${event!.address!.address}',
                       style: GoogleFonts.sofia(
                           textStyle: TextStyle(
                               fontSize: 13, color: Colors.white)),
@@ -188,7 +187,7 @@ class Content extends StatelessWidget {
                     SizedBox(
                       height: 5.0,
                     ),
-                    Text('${event.maxAttendees}',
+                    Text('${event!.maxAttendees}',
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,

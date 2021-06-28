@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haus_party/login_page/birthday_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
 import 'package:haus_party/main.dart';
 import 'package:haus_party/components/nav_bar.dart';
 import 'package:haus_party/service/authProvider.dart';
-import 'package:haus_party/service/cloud.dart';
+import 'package:haus_party/core/cloud.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -44,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
               });
             },
             validator: (value) {
-              if (value.isEmpty) {
+              if (value!.isEmpty) {
                 return "email can't be empty";
               }
               return null;
@@ -61,7 +60,7 @@ class _LoginViewState extends State<LoginView> {
                 Icons.email,
                 color: _isComposingEmail ? Colors.black : Colors.grey,
               ),
-              hintText: '',
+              hintText: 'Enter your email',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -94,8 +93,11 @@ class _LoginViewState extends State<LoginView> {
               });
             },
             validator: (value) {
-              if (value.isEmpty) {
+              if (value!.isEmpty) {
                 return "password can't be empty";
+              }
+              if (value.length < 8) {
+                return "password must be at least 8 character";
               }
               return null;
             },
@@ -191,21 +193,43 @@ class _LoginViewState extends State<LoginView> {
                         ButtonLarge(
                           buttonTitle: 'SIGN IN',
                           onPressed: () async {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    //builder: (context) => MyHomePage()
-                                    builder: (context) => NavBar()),
-                                (Route<dynamic> route) => false);
-
-                            /*if (formKey.currentState.validate()) {
+                            if (formKey.currentState!.validate()) {
                               var result = await CloudFuncs().login(
-                                  _emailController.text,
-                                  _passController.text);
+                                _emailController.text,
+                                _passController.text,
+                              );
                               print(result);
-                             
+
+                              if (result != true) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text(result),
+                                      actions: [
+                                        TextButton(
+                                          child: Text("ok"),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                              if (result == true) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    //builder: (context) => MyHomePage()
+                                    builder: (context) => NavBar(),
+                                  ),
+                                );
+                              }
                             } else {
                               //do nothing
-                            }*/
+                            }
                           },
                         ),
 

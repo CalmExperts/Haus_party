@@ -8,7 +8,7 @@ class DropDownWidget extends StatefulWidget {
 class _DropDownWidgetState extends State<DropDownWidget> {
   List listItem = ['Vancouver', 'Toronto', 'Montreal', 'Ottawa'];
 
-  String valueChoose;
+  String? valueChoose;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             ),
         style: TextStyle(color: Colors.black, fontSize: 26),
         value: valueChoose,
-        onChanged: (newValue) {
+        onChanged: (dynamic newValue) {
           setState(() {
             valueChoose = newValue;
           });

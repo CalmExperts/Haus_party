@@ -61,7 +61,7 @@ class SubscriptionPage extends StatelessWidget {
                       border: Border.all(width: 0.1, color: Colors.grey),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey[200],
+                          color: Colors.grey[200]!,
                           spreadRadius: 5,
                           blurRadius: 7,
                           // offset: Offset(2,2), // changes position of shadow

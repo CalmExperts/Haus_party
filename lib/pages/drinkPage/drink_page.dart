@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
-import 'package:haus_party/model/dummy_data.dart';
+import 'package:haus_party/models/dummy_data.dart';
 import 'package:haus_party/pages/congrats_page.dart';
-import 'package:haus_party/pages/drinkPage/category_item.dart';
 
-import '../../components/bottom_bar.dart';
-import '../../components/home_cards.dart';
 
 class DrinkPage extends StatefulWidget {
-  final Function theOnPress;
+  final Function? theOnPress;
 
-  const DrinkPage({Key key, this.theOnPress}) : super(key: key);
+  const DrinkPage({Key? key, this.theOnPress}) : super(key: key);
 
   @override
   _DrinkPageState createState() => _DrinkPageState();

@@ -52,14 +52,15 @@ class LocationSettings extends StatelessWidget {
                           value: dropdownvalue,
                           elevation: 20,
                           hint: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text("City"),
                               Icon(Icons.arrow_drop_down)
                             ],
                           ),
-                          onChanged: (String value) {
-                            return value;
+                          onChanged: (String? value) {
+                            // return value;
                           },
                           items: <String>[
                             'Vancouver',
@@ -75,17 +76,20 @@ class LocationSettings extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05),
+                          height:
+                              MediaQuery.of(context).size.height * 0.05),
                       Container(
                           width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.08,
+                          height:
+                              MediaQuery.of(context).size.height * 0.08,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.all(
                                     new Radius.circular(10.0))),
                             color: Color(0xFFFFFFFF),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text("From"),
                                 Icon(Icons.date_range)
@@ -100,17 +104,20 @@ class LocationSettings extends StatelessWidget {
                             },
                           )),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05),
+                          height:
+                              MediaQuery.of(context).size.height * 0.05),
                       Container(
                           width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.height * 0.08,
+                          height:
+                              MediaQuery.of(context).size.height * 0.08,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.all(
                                     new Radius.circular(10.0))),
                             color: Color(0xFFFFFFFF),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text("To"),
                                 Icon(
@@ -128,7 +135,8 @@ class LocationSettings extends StatelessWidget {
                             },
                           )),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.2),
+                          height:
+                              MediaQuery.of(context).size.height * 0.2),
                       Center(
                           child: Container(
                         width: MediaQuery.of(context).size.width * 0.3,

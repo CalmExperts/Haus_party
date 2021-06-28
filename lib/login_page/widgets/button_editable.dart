@@ -1,17 +1,15 @@
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:haus_party/login_page/terms_page.dart';
 
 class ButtonEditable extends StatelessWidget {
-  final String buttonTitle;
-  final Function onPressed;
-  final double theHeight;
-  final double theWidth;
-  final double theBorderRadius;
-  final double sizeText;
+  final String? buttonTitle;
+  final Function? onPressed;
+  final double? theHeight;
+  final double? theWidth;
+  final double? theBorderRadius;
+  final double? sizeText;
 
   const ButtonEditable({
-    Key key,
+    Key? key,
     this.buttonTitle,
     this.onPressed,
     this.theHeight,
@@ -29,17 +27,18 @@ class ButtonEditable extends StatelessWidget {
             color: Color(0xFF5F54ED),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey[800],
+                color: Colors.grey[800]!,
                 blurRadius: 2.0,
                 spreadRadius: 0.0,
                 offset: Offset(2.0, 2.0), // shadow direction: bottom right
               )
             ],
-            borderRadius: BorderRadius.all(Radius.circular(theBorderRadius))),
+            borderRadius:
+                BorderRadius.all(Radius.circular(theBorderRadius!))),
         child: TextButton(
-          onPressed: onPressed,
+          onPressed: onPressed as void Function()?,
           child: Text(
-            buttonTitle,
+            buttonTitle!,
             style: TextStyle(
               fontSize: sizeText,
               // backgroundColor: Colors.white,

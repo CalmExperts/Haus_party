@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haus_party/pages/calendar_page.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
-import 'package:haus_party/pages/drinkPage/drink_page.dart';
 
 class CongratsPage extends StatefulWidget {
   @override
@@ -116,7 +115,7 @@ class _CongratsPageState extends State<CongratsPage> {
                                     color: Colors.grey,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey[800],
+                                        color: Colors.grey[800]!,
                                         blurRadius: 2.0,
                                         spreadRadius: 0.0,
                                         offset: Offset(2.0,

@@ -8,9 +8,9 @@ class Slide {
   final int id;
 
   Slide({
-    @required this.title,
-    @required this.description,
-    @required this.id,
+    required this.title,
+    required this.description,
+    required this.id,
   });
 }
 

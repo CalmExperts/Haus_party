@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../components/bottom_bar.dart';
-import '../components/home_cards.dart';
 import '../login_page/widgets/responsives/horizontal_card.dart';
 import '../login_page/widgets/responsives/vertical_card.dart';
 

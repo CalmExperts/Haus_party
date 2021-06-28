@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/app/app.dart';
 import 'package:haus_party/login_page/model/slide.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
-import 'package:haus_party/main.dart';
 
 class SlideItem extends StatelessWidget {
   final int index;

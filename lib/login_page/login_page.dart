@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:haus_party/components/nav_bar.dart';
+import 'package:haus_party/core/cloud.dart';
 import 'package:haus_party/login_page/birthday_page.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
@@ -15,6 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isComposingEmail = false;
   bool _isComposingPasswordOne = false;
   bool _isComposingPasswordTwo = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController nameC = TextEditingController();
+  final TextEditingController emailC = TextEditingController();
+  final TextEditingController passwordC = TextEditingController();
+  final TextEditingController passwordR = TextEditingController();
 
   Widget _buildName() {
     return Column(
@@ -25,11 +32,18 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            controller: nameC,
             onChanged: (text) {
               setState(() {
                 _isComposingName = text.isNotEmpty;
               });
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "can't be empty";
+              }
+              return null;
             },
             // textAlign: TextAlign.center,
             keyboardType: TextInputType.emailAddress,
@@ -68,13 +82,19 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
+            controller: emailC,
             // textAlign: TextAlign.center,
             onChanged: (text) {
               setState(() {
                 _isComposingEmail = text.isNotEmpty;
               });
             },
-
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "can't be empty";
+              }
+              return null;
+            },
             keyboardType: TextInputType.emailAddress,
             textAlignVertical: TextAlignVertical.center,
             style: TextStyle(
@@ -109,7 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            controller: passwordC,
             onChanged: (text) {
               setState(() {
                 _isComposingPasswordOne = text.isNotEmpty;
@@ -121,6 +142,12 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.black,
               // fontFamily: 'OpenSans',
             ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "can't be empty";
+              }
+              return null;
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
               // contentPadding: EdgeInsets.only(top: 14.0),
@@ -140,11 +167,18 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            controller: passwordR,
             onChanged: (text) {
               setState(() {
                 _isComposingPasswordTwo = text.isNotEmpty;
               });
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "can't be empty";
+              }
+              return null;
             },
             textAlignVertical: TextAlignVertical.center,
             obscureText: true,
@@ -169,202 +203,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text(
-          'Forgot Password?',
-          style: kLabelStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRememberMeCheckbox() {
-    return Container(
-      height: 20.0,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: _rememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-            ),
-          ),
-          Text(
-            'Remember me',
-            style: kLabelStyle,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLoginBtn() {
-    return Container(
-      // padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: 160,
-      // padding: EdgeInsets.all(4.0),
-      height: 50.0,
-
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Color(0xFF5F54ED),
-        ),
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      child: TextButton(
-        // elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
-
-        child: Text(
-          'LOGIN',
-          style: TextStyle(
-            color: Colors.grey,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            // fontWeight: FontWeight.bold,
-            // fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSignUpBtn() {
-    return Container(
-      // padding: EdgeInsets.symmetric(vertical: 8),
-      height: 60.0,
-      width: 260,
-      // width: double.infinity,
-      // padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        color: Color(0xFF5F54ED),
-      ),
-      child: TextButton(
-        onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BirthDayPage())),
-        child: Text(
-          'SIGN UP',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            // color: Color(0xFF527DAA),
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            // fontWeight: FontWeight.bold,
-            // fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          '- OR -',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text(
-          'Sign in with',
-          style: kLabelStyle,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSocialBtn(
-            () => print('Login with Facebook'),
-            AssetImage(
-              'assets/asset-2.png',
-            ),
-          ),
-          _buildSocialBtn(
-            () => print('Login with Google'),
-            AssetImage(
-              'assets/asset-1.png',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSignupBtn() {
-    return GestureDetector(
-      onTap: () => print('Sign Up Button Pressed'),
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: 'Don\'t have an Account? ',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            TextSpan(
-              text: 'Sign Up',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -372,73 +210,118 @@ class _LoginScreenState extends State<LoginScreen> {
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: <Widget>[
-              Image.asset(
-                // "assets/backgroundNewLogisn.png",
-                'assets/backgroundNewLogin.png',
+          child: Form(
+            key: formKey,
+            child: Stack(
+              children: <Widget>[
+                Image.asset(
+                  // "assets/backgroundNewLogisn.png",
+                  'assets/backgroundNewLogin.png',
 
-                fit: BoxFit.cover,
-                height: double.infinity,
-                width: double.infinity,
-                // height: 1000.0,
-              ),
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Let\'s Get Started!',
-                        style: TextStyle(
-                          color: Colors.black,
-                          // fontFamily: 'OpenSans',
-                          fontSize: 32.0,
-                        ),
-                      ),
-                      Text(
-                        'Create on account to get started',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          // fontFamily: 'OpenSans',
-                          fontSize: 14.0,
-                        ),
-                      ),
-                      SizedBox(height: 40.0),
-                      _buildName(),
-                      _buildEmailTF(),
-
-                      _buildPasswordTF(),
-
-                      SizedBox(height: 60.0),
-
-                      // _buildSignUpBtn(),
-
-                      ButtonLarge(
-                          buttonTitle: 'SIGN UP',
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BirthDayPage()))),
-
-                      SizedBox(height: 20.0),
-
-                      //_buildLoginBtn(),
-                    ],
-                  ),
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  // height: 1000.0,
                 ),
-              )
-            ],
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                ),
+                Container(
+                  height: double.infinity,
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 40.0,
+                      vertical: 120.0,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Let\'s Get Started!',
+                          style: TextStyle(
+                            color: Colors.black,
+                            // fontFamily: 'OpenSans',
+                            fontSize: 32.0,
+                          ),
+                        ),
+                        Text(
+                          'Create on account to get started',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            // fontFamily: 'OpenSans',
+                            fontSize: 14.0,
+                          ),
+                        ),
+                        SizedBox(height: 40.0),
+                        _buildName(),
+                        _buildEmailTF(),
+
+                        _buildPasswordTF(),
+
+                        SizedBox(height: 60.0),
+
+                        // _buildSignUpBtn(),
+
+                        ButtonLarge(
+                          buttonTitle: 'SIGN UP',
+                          onPressed: () async {
+                            if (formKey.currentState!.validate()) {
+                              /*  Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BirthDayPage()),
+                              );
+                            */
+                              try {
+                                var result = await CloudFuncs().signUp(
+                                    email: emailC.text,
+                                    firstName: nameC.text,
+                                    lastName: nameC.text,
+                                    password: passwordC.text,
+                                    username: nameC.text);
+                                print(result);
+                                if (result != null) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      //builder: (context) => MyHomePage()
+                                      builder: (context) => NavBar(),
+                                    ),
+                                  );
+                                }
+                              } catch (e) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text("$e"),
+                                      actions: [
+                                        TextButton(
+                                          child: Text("ok"),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            }
+                          },
+                        ),
+
+                        SizedBox(height: 20.0),
+
+                        //_buildLoginBtn(),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

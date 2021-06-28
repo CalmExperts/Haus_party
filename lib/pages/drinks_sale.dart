@@ -71,9 +71,9 @@ class DrinkSales extends StatelessWidget {
 class Drink extends StatelessWidget {
   const Drink({this.drinkImage, this.drinkPrice, this.drinkName});
 
-  final String drinkImage;
-  final double drinkPrice;
-  final String drinkName;
+  final String? drinkImage;
+  final double? drinkPrice;
+  final String? drinkName;
 
   @override
   Widget build(BuildContext context) {
@@ -95,11 +95,11 @@ class Drink extends StatelessWidget {
             SizedBox(height: 30),
             Image(
               image: AssetImage(
-                  drinkImage.isEmpty ? "assets/drink_image.png" : drinkImage),
+                  drinkImage!.isEmpty ? "assets/drink_image.png" : drinkImage!),
               fit: BoxFit.fill,
               height: 80.0,
             ),
-            Text(drinkName,
+            Text(drinkName!,
                 style: TextStyle(color: Colors.black, fontSize: 10.0)),
             SizedBox(
               height: 30,

@@ -35,7 +35,7 @@ class NotifSettings extends StatelessWidget {
 }
 
 class NotifSettingsStateful extends StatefulWidget {
-  NotifSettingsStateful({Key key}) : super(key: key);
+  NotifSettingsStateful({Key? key}) : super(key: key);
 
   @override
   _NotifSettingsStatefulState createState() => _NotifSettingsStatefulState();

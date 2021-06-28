@@ -19,7 +19,7 @@ class _DatePickerLoginState extends State<DatePickerLogin> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey[200],
+                    color: Colors.grey[200]!,
                     offset: Offset(0, 2),
                     blurRadius: 6.0,
                   ),
@@ -61,7 +61,7 @@ class _DatePickerLoginState extends State<DatePickerLogin> {
             // print(data);
             setState(() {
               dateTimeValue =
-                  ("${data.day} / ${data.month} / ${data.year}").toString();
+                  ("${data!.day} / ${data.month} / ${data.year}").toString();
             });
           }),
     );

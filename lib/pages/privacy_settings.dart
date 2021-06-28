@@ -39,7 +39,7 @@ class PrivacySettings extends StatelessWidget {
 }
 
 class PrivacySettingsStateful extends StatefulWidget {
-  PrivacySettingsStateful({Key key}) : super(key: key);
+  PrivacySettingsStateful({Key? key}) : super(key: key);
 
   @override
   _PrivacySettingsStatefulState createState() => _PrivacySettingsStatefulState();

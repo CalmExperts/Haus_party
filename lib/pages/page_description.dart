@@ -58,14 +58,14 @@ class _SubHorizontalViewState extends State<SubHorizontalView> {
 }
 
 class PartyDesc extends StatelessWidget {
-  final EventModel event;
+  final EventModel? event;
 
-  const PartyDesc({Key key, this.event}) : super(key: key);
+  const PartyDesc({Key? key, this.event}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var date =
-        DateTime.fromMillisecondsSinceEpoch(event.date['_seconds'] * 1000);
+        DateTime.fromMillisecondsSinceEpoch(event!.date['_seconds'] * 1000);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: ListView(
@@ -145,7 +145,7 @@ class PartyDesc extends StatelessWidget {
                                 children: <Widget>[
                                   Padding(
                                     padding: EdgeInsets.only(left: 10),
-                                    child: Text("${event.title}",
+                                    child: Text("${event!.title}",
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -204,7 +204,7 @@ class PartyDesc extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                "${event.address.address}",
+                                                "${event!.address!.address}",
                                                 style: TextStyle(
                                                     fontSize: 14),
                                               ),
@@ -220,7 +220,7 @@ class PartyDesc extends StatelessWidget {
                                                     width: 3,
                                                   ),
                                                   Text(
-                                                      "${event.maxAttendees}"),
+                                                      "${event!.maxAttendees}"),
                                                   SizedBox(
                                                     width: 20,
                                                   ),
@@ -318,7 +318,7 @@ class PartyDesc extends StatelessWidget {
                                           Row(
                                             children: <Widget>[
                                               Text(
-                                                "${event.address.address}",
+                                                "${event!.address!.address}",
                                                 style: TextStyle(
                                                     fontSize: 14),
                                               )
@@ -364,7 +364,7 @@ class PartyDesc extends StatelessWidget {
                       color: Color(0xFF5F54ED),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey[800],
+                          color: Colors.grey[800]!,
                           blurRadius: 2.0,
                           spreadRadius: 0.0,
                           offset: Offset(
@@ -377,9 +377,12 @@ class PartyDesc extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ModalReserve()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ModalReserve(
+                                      event: event,
+                                    )),
+                          );
                         },
                         child: Text(
                           'Reserve',
@@ -400,7 +403,7 @@ class PartyDesc extends StatelessWidget {
                       color: Color(0xFF5F54ED),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey[800],
+                          color: Colors.grey[800]!,
                           blurRadius: 2.0,
                           spreadRadius: 0.0,
                           offset: Offset(
@@ -450,7 +453,7 @@ class PartyDesc extends StatelessWidget {
                   SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("${event.description}",
+                    child: Text("${event!.description}",
                         style: TextStyle(
                             color: Colors.black54, fontSize: 18)),
                   ),
@@ -547,7 +550,7 @@ class PartyDesc extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 40.0),
                       child: Text(
-                          "People Attending(${event.maxAttendees})",
+                          "People Attending(${event!.maxAttendees})",
                           style: TextStyle(
                               color: Colors.black54,
                               fontWeight: FontWeight.bold,
@@ -628,7 +631,7 @@ class GalleryImage extends StatelessWidget {
     this.subImage,
   });
 
-  final String subImage;
+  final String? subImage;
   @override
   Widget build(BuildContext context) {
     return subImage != 'sub'

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ButtonsProfile extends StatelessWidget {
-  final String buttonTitle;
-  final String buttonDescription;
-  final Function onPressed;
+  final String? buttonTitle;
+  final String? buttonDescription;
+  final Function? onPressed;
 
   const ButtonsProfile(
-      {Key key, this.buttonTitle, this.onPressed, this.buttonDescription})
+      {Key? key, this.buttonTitle, this.onPressed, this.buttonDescription})
       : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class ButtonsProfile extends StatelessWidget {
         color: Color(0xFF5F54ED),
       ),
       child: TextButton(
-        onPressed: onPressed,
+        onPressed: onPressed as void Function()?,
         // onPressed: () => Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => TermsPage())),
         child: Row(
@@ -36,7 +36,7 @@ class ButtonsProfile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  buttonTitle,
+                  buttonTitle!,
                   style: TextStyle(
                     // color: Color(0xFF527DAA),
                     color: Colors.white,
@@ -48,7 +48,7 @@ class ButtonsProfile extends StatelessWidget {
                 ),
                 buttonDescription != null
                     ? Text(
-                        buttonDescription,
+                        buttonDescription!,
                         style: TextStyle(
                           // color: Color(0xFF527DAA),
                           color: Colors.grey[400],

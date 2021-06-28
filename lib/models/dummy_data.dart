@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:haus_party/model/category.dart';
+import 'package:haus_party/models/category.dart';
 
 const DUMMY_CATEGORIES = const [
   Category(

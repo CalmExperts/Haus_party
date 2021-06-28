@@ -1,76 +1,11 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_credit_card/flutter_credit_card.dart';
-// import 'package:flutter_credit_card/credit_card_form.dart';
-// import 'package:flutter_credit_card/credit_card_model.dart';
-
-// class CardDetails extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     var size = MediaQuery.of(context).size;
-//     return Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: Colors.grey[200],
-//           leading: IconButton(
-//               icon: Icon(Icons.arrow_back),
-//               color: Colors.blue,
-//               iconSize: 15.0,
-//               onPressed: () {
-//                 Navigator.pop(context);
-//               }),
-//           title: Text("Payment",
-//               style: TextStyle(color: Colors.black, fontSize: 20)),
-//         ),
-//         body: Padding(
-//           padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-//           child: ListView(children: <Widget>[
-//             CardDetailState(),
-//             SizedBox(height: size.height * 0.05),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: <Widget>[
-//                 Container(
-//                   width: size.width * 0.3,
-//                   height: size.height * 0.07,
-//                   child: RaisedButton(
-//                     elevation: 30,
-//                     shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.all(Radius.circular(10))),
-//                     color: Color(0xFF5F54ED),
-//                     onPressed: () {},
-//                     child: Text("Add Card",
-//                         style: TextStyle(color: Colors.white, fontSize: 15)),
-//                   ),
-//                 )
-//               ],
-//             )
-//           ]),
-//         ));
-//   }
-// }
-
-// class CardDetailState extends StatefulWidget {
-//   CardDetailState({Key key}) : super(key: key);
-
-//   @override
-//   _CardDetailStateful createState() => _CardDetailStateful();
-// }
-
-// // void onCreditCardModelChange(CreditCardModel creditCardModel) {
-// //     setState(() {
-// //       cardNumber = creditCardModel.cardNumber;
-// //       expiryDate = creditCardModel.expiryDate;
-// //       cardHolderName = creditCardModel.cardHolderName;
-// //       cvvCode = creditCardModel.cvvCode;
-// //       isCvvFocused = creditCardModel.isCvvFocused;
-// //     });
-// //   }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
-import 'package:haus_party/components/bottom_bar.dart';
+import 'package:haus_party/core/cloud.dart';
+import 'package:haus_party/core/providers.dart';
 import 'package:haus_party/pages/congrats_card_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CardDetails extends StatefulWidget {
   @override
@@ -87,6 +22,7 @@ class _CardDetailsState extends State<CardDetails> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
+    final user = context.read(userProvider).data!.value;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -189,16 +125,28 @@ class _CardDetailsState extends State<CardDetails> {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      if (formKey.currentState.validate()) {
+                    onPressed: () async {
+                      print(expiryDate);
+                      if (formKey.currentState!.validate()) {
                         print('valid!');
-
-                        Navigator.push(
+                        var reuslt = await CloudFuncs().addCard(
+                            cardNumber: cardNumber,
+                            cvc: cvvCode,
+                            email: user.email,
+                            userId: user.id,
+                            expMonth: '9',
+                            expYear: '23');
+                        print(reuslt);
+                        if (reuslt != null) {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CongratsCardPage(
-                                      name: cardHolderName,
-                                    )));
+                              builder: (context) => CongratsCardPage(
+                                name: cardHolderName,
+                              ),
+                            ),
+                          );
+                        }
                       } else {
                         print('invalid!');
                       }
@@ -211,7 +159,6 @@ class _CardDetailsState extends State<CardDetails> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomBar(),
     );
   }
 

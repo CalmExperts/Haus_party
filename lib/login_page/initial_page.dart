@@ -4,7 +4,6 @@ import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/login_page/login_page.dart';
 import 'package:haus_party/login_page/login_view.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
-import 'package:haus_party/main.dart';
 
 class InitialPage extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends State<InitialPage> {
-  bool _rememberMe = false;
+  bool? _rememberMe = false;
   bool _isComposingName = false;
   bool _isComposingEmail = false;
   bool _isComposingPasswordOne = false;
@@ -23,10 +22,14 @@ class _InitialPageState extends State<InitialPage> {
   Widget _finalButtons() {
     return Column(
       children: [
-        _buildSignUpBtn(),
-        SizedBox(height: 8,),
+        //  _buildSignUpBtn(),
+        SizedBox(
+          height: 8,
+        ),
         _buildLoginBtn,
-        SizedBox(height: 8,),
+        SizedBox(
+          height: 8,
+        ),
         _signUpButton(),
       ],
     );
@@ -167,7 +170,8 @@ class _InitialPageState extends State<InitialPage> {
               // contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock_open_rounded,
-                color: _isComposingPasswordOne ? Colors.black : Colors.grey,
+                color:
+                    _isComposingPasswordOne ? Colors.black : Colors.grey,
               ),
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
@@ -197,7 +201,8 @@ class _InitialPageState extends State<InitialPage> {
               // contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock_outlined,
-                color: _isComposingPasswordTwo ? Colors.black : Colors.grey,
+                color:
+                    _isComposingPasswordTwo ? Colors.black : Colors.grey,
               ),
               hintText: 'Re-enter your Password',
               hintStyle: kHintTextStyle,
@@ -291,7 +296,8 @@ class _InitialPageState extends State<InitialPage> {
         TextButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => LoginView())
+              context,
+              MaterialPageRoute(builder: (context) => LoginView()),
             );
           },
           /*onPressed: () {
@@ -343,8 +349,7 @@ class _InitialPageState extends State<InitialPage> {
         ),
       ),
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginScreen())
-      ),
+          context, MaterialPageRoute(builder: (context) => LoginScreen())),
     );
   }
 
@@ -369,7 +374,7 @@ class _InitialPageState extends State<InitialPage> {
 
   Widget _buildSocialBtn(Function onTap, AssetImage logo) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       child: Container(
         height: 60.0,
         width: 60.0,

@@ -129,21 +129,36 @@ class _CardDetailsState extends State<CardDetails> {
                       print(expiryDate);
                       if (formKey.currentState!.validate()) {
                         print('valid!');
-                        var reuslt = await CloudFuncs().addCard(
-                            cardNumber: cardNumber,
-                            cvc: cvvCode,
-                            email: user.email,
-                            userId: user.id,
-                            expMonth: '9',
-                            expYear: '23');
-                        print(reuslt);
-                        if (reuslt != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CongratsCardPage(
-                                name: cardHolderName,
+                        try {
+                          var reuslt = await CloudFuncs().addCard(
+                              cardNumber: cardNumber,
+                              cvc: cvvCode,
+                              email: user?.email,
+                              userId: user?.id,
+                              expMonth: '9',
+                              expYear: '23');
+                          print(reuslt);
+                          if (reuslt != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CongratsCardPage(
+                                  name: cardHolderName,
+                                ),
                               ),
+                            );
+                          }
+                        } catch (e) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              content: Text("$e"),
+                              actions: [
+                                TextButton(
+                                  child: Text("ok"),
+                                  onPressed: () => Navigator.pop(context),
+                                )
+                              ],
                             ),
                           );
                         }

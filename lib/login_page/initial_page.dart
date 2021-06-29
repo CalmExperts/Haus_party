@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haus_party/controllers/login_controller.dart';
 import 'package:haus_party/login_page/login_page.dart';
 import 'package:haus_party/login_page/login_view.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
@@ -16,8 +15,6 @@ class _InitialPageState extends State<InitialPage> {
   bool _isComposingEmail = false;
   bool _isComposingPasswordOne = false;
   bool _isComposingPasswordTwo = false;
-
-  LoginController loginController = LoginController();
 
   Widget _finalButtons() {
     return Column(

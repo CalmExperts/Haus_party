@@ -130,7 +130,8 @@ class _ModalReserveState extends State<ModalReserve> {
                                     SizedBox(
                                       height: 6,
                                     ),
-                                    Text('${widget.event!.address!.address}',
+                                    Text(
+                                        '${widget.event!.address!.address}',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 12.0,
@@ -200,7 +201,7 @@ class _ModalReserveState extends State<ModalReserve> {
                                   fontSize: 50.0,
                                   fontWeight: FontWeight.w700),
                             ),
-                            if (user.data!.value.defaultCard != null)
+                            if (user.data!.value?.defaultCard != null)
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 16.0),
@@ -245,7 +246,7 @@ class _ModalReserveState extends State<ModalReserve> {
                               ),
                               child: TextButton(
                                 onPressed: () {
-                                  if (user.data!.value.defaultCard !=
+                                  if (user.data!.value?.defaultCard !=
                                           null &&
                                       cards.data!.value.length == 0) {
                                     Navigator.push(
@@ -255,15 +256,7 @@ class _ModalReserveState extends State<ModalReserve> {
                                             PaymentMethods(),
                                       ),
                                     );
-                                  } else {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CongratsPage(),
-                                      ),
-                                    );
-                                  }
+                                  } else {}
                                 },
                                 child: Text(
                                   'Pay',

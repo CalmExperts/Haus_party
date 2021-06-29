@@ -1,12 +1,15 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:haus_party/core/providers.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart';
 
 final encoding = Encoding.getByName('utf-8');
-final header = {
-  'Content-Type': 'application/json',
-  "Accept": "application/json"
-};
+final header = {'Content-Type': 'application/json'};
 /**
  * json encode
  */
@@ -14,9 +17,10 @@ String jsonBody(Map<String, dynamic> body) {
   return json.encode(body);
 }
 
-//http://10.0.2.2:5001/calmevents-7de4e/us-central1/api/v1
-String apilink =
-    "https://us-central1-calmevents-7de4e.cloudfunctions.net/api/v1/";
+//
+String apilink = !kDebugMode
+    ? "http://10.0.2.2:5001/calmevents-7de4e/us-central1/api/v1"
+    : "https://us-central1-calmevents-7de4e.cloudfunctions.net/api/v1";
 
 extension myext on String {
   // ignore: non_constant_identifier_names
@@ -25,31 +29,42 @@ extension myext on String {
 
 class CloudFuncs {
   //auth
-  Future<dynamic> login(String email, String password) async {
+  Future<dynamic> login(
+      String email, String password, BuildContext context) async {
+    var body = {"email": email, "password": password};
+    var box = Hive.box("prefs");
     try {
-      var body = {"email": email, "password": password};
-      var result = await http.post(
+      Response result = await http.post(
         'login'.API,
         headers: header,
         body: jsonBody(body),
-        encoding: encoding!,
+        encoding: encoding,
       );
       print(result.body);
       print(result.statusCode);
+      print("login".API);
       if (result.statusCode == 200) {
-        final SharedPreferences prefs =
-            await SharedPreferences.getInstance();
+        //TODO:s
+        var prov = context.read(authProvider);
         var data = json.decode(result.body);
-        var id = prefs.setString('id', data['id']);
-        var secretToken =
-            prefs.setString('secretToken', data['secretToken']);
+        var id = data['id'];
+        var token = data['secretToken'];
+        //save data
+        box.put("id", id);
+        box.put("secretToken", token);
+        //update state
+        prov.state = AuthProv(
+          id: data['id'],
+          secretToken: data['secretToken'],
+          isAuthenticated: true,
+        );
         return true;
       } else {
-        return result.body;
+        throw result.body;
       }
-    } catch (e) {
+    } on HttpException catch (e) {
       print(e);
-      throw e;
+      throw e.message;
     }
   }
 

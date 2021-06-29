@@ -89,10 +89,11 @@ class VerticalCardItem extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-                child: Content(
-              event: event,
-            ))
+            if (event != null)
+              Container(
+                  child: Content(
+                event: event,
+              ))
           ]),
         ),
       ),

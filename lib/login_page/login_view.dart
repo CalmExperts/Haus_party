@@ -194,18 +194,28 @@ class _LoginViewState extends State<LoginView> {
                           buttonTitle: 'SIGN IN',
                           onPressed: () async {
                             if (formKey.currentState!.validate()) {
-                              var result = await CloudFuncs().login(
-                                _emailController.text,
-                                _passController.text,
-                              );
-                              print(result);
-
-                              if (result != true) {
+                              try {
+                                var result = await CloudFuncs().login(
+                                  _emailController.text,
+                                  _passController.text,
+                                  context,
+                                );
+                                if (result == true) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      //builder: (context) => MyHomePage()
+                                      builder: (context) => NavBar(),
+                                    ),
+                                  );
+                                }
+                              } catch (e) {
+                                print(e);
                                 showDialog(
                                   context: context,
                                   builder: (context) {
                                     return AlertDialog(
-                                      content: Text(result),
+                                      content: Text("$e"),
                                       actions: [
                                         TextButton(
                                           child: Text("ok"),
@@ -218,17 +228,6 @@ class _LoginViewState extends State<LoginView> {
                                   },
                                 );
                               }
-                              if (result == true) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    //builder: (context) => MyHomePage()
-                                    builder: (context) => NavBar(),
-                                  ),
-                                );
-                              }
-                            } else {
-                              //do nothing
                             }
                           },
                         ),

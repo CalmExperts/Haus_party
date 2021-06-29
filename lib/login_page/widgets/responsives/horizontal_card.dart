@@ -38,7 +38,8 @@ class HorizontalCardItem extends StatelessWidget {
             // height: 128,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10)),
 
               //
 
@@ -92,7 +93,8 @@ class Content extends StatelessWidget {
                       width: 65.0,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(10)),
                       ),
                       child: Column(children: <Widget>[
                         Text('Dec',
@@ -114,7 +116,8 @@ class Content extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('People Attending',
-                          style: TextStyle(fontSize: 10.0, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 10.0, color: Colors.white),
                           textAlign: TextAlign.left),
                       SizedBox(
                         height: 5.0,
@@ -174,8 +177,8 @@ class Content extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text('Time',
-                            style:
-                                TextStyle(fontSize: 10.0, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 10.0, color: Colors.white),
                             textAlign: TextAlign.left),
                         SizedBox(
                           height: 5.0,
@@ -198,8 +201,11 @@ class Content extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(4))),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PartyDesc()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PartyDesc()),
+                      );
                     },
                     child: Text(
                       'View',
@@ -213,50 +219,6 @@ class Content extends StatelessWidget {
               SizedBox(width: 8.0),
             ],
           ),
-
-          // SizedBox(height: 16.0),
-          // Row(children: <Widget>[
-          //   SizedBox(width: 8.0),
-          //   Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: <Widget>[
-          //       Text('People Attending',
-          //           style: TextStyle(fontSize: 10.0, color: Colors.white),
-          //           textAlign: TextAlign.left),
-          //       SizedBox(
-          //         height: 5.0,
-          //       ),
-          //       Text('129',
-          //           style: TextStyle(
-          //               fontSize: 18.0,
-          //               color: Colors.white,
-          //               fontWeight: FontWeight.bold),
-          //           textAlign: TextAlign.left),
-          //     ],
-          //   ),
-          //   SizedBox(width: 16.0),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: <Widget>[
-          //     Text('Time',
-          //         style: TextStyle(fontSize: 10.0, color: Colors.white),
-          //         textAlign: TextAlign.left),
-          //     SizedBox(
-          //       height: 5.0,
-          //     ),
-          //     Text('5-7PM',
-          //         style: TextStyle(
-          //             fontSize: 20.0,
-          //             color: Colors.white,
-          //             fontWeight: FontWeight.bold),
-          //         textAlign: TextAlign.left),
-          //   ],
-          // ),
-
-          //   SizedBox(width: 16.0),
-          // ]),
-
-          // SizedBox(height: 4.0),
         ],
       ),
     );

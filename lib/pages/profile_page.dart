@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:haus_party/components/nav_bar.dart';
 import 'package:haus_party/core/providers.dart';
 import 'package:haus_party/pages/privacy_settings.dart';
+import 'package:hive/hive.dart';
 import '../login_page/widgets/buttons_profile.dart';
 import 'notif_settings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -183,16 +185,16 @@ class ProfilePage extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                         radius: 50.0,
-                        backgroundImage: user.profilePicture != null
-                            ? NetworkImage(user.profilePicture!)
+                        backgroundImage: user?.profilePicture != null
+                            ? NetworkImage(user!.profilePicture!)
                             : null,
-                        child: user.profilePicture == null
+                        child: user?.profilePicture == null
                             ? Icon(CupertinoIcons.profile_circled)
                             : null),
                     SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01),
                     Text(
-                      "${user.firstName}",
+                      "${user?.firstName}",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -202,7 +204,7 @@ class ProfilePage extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      "${user.email}",
+                      "${user?.email}",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -250,15 +252,17 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     ButtonsProfile(
-                      buttonTitle: 'Payment Mehtods',
-                      buttonDescription: user.defaultCard == null
+                      buttonTitle: 'Payment Methods',
+                      buttonDescription: user?.defaultCard == null
                           ? 'click to add card'
                           : "Visa card **** **** **** 8909",
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PaymentMethods(),
+                            builder: (context) => PaymentMethods(
+                              showAppBar: true,
+                            ),
                           ),
                         );
                       },
@@ -287,7 +291,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 8,
-                    )
+                    ),
                   ],
                 ),
               ],

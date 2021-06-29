@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:haus_party/login_page/widgets/responsives/horizontal_card.dart';
 import 'package:haus_party/login_page/widgets/responsives/vertical_card.dart';
+import 'package:haus_party/pages/auth_page.dart';
 import 'package:haus_party/pages/home_page_alt.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/util/userProvider.dart';
@@ -37,9 +38,7 @@ class MyApp extends StatelessWidget {
         ),
         // builder: DevicePreview.appBuilder,
         // locale: DevicePreview.locale(context),
-        home: MyHomePage(
-          title: 'Haus Party',
-        ),
+        home: AuthPage(),
       ),
     );
   }

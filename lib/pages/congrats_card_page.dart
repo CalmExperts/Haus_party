@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haus_party/components/nav_bar.dart';
 import 'package:haus_party/login_page/widgets/button_editable.dart';
 
 class CongratsCardPage extends StatelessWidget {
@@ -43,7 +44,8 @@ class CongratsCardPage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         color: Color(0xFF5F54ED),
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(16)),
                       ),
                       margin: EdgeInsets.fromLTRB(32, 0, 32, 64),
                       height: 400,
@@ -66,8 +68,8 @@ class CongratsCardPage extends StatelessWidget {
                               height: 16,
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0),
                               child: Text('CONGRATULATIONS',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
@@ -86,13 +88,13 @@ class CongratsCardPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 32.0, horizontal: 16),
-                              child:
-                                  Text('Your Card has been successfully added',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.grey[300],
-                                        fontSize: 14.0,
-                                      )),
+                              child: Text(
+                                  'Your Card has been successfully added',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.grey[300],
+                                    fontSize: 14.0,
+                                  )),
                             ),
                           ],
                         ),
@@ -112,7 +114,11 @@ class CongratsCardPage extends StatelessWidget {
                 theHeight: 48,
                 theBorderRadius: 8,
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return NavBar();
+                    },
+                  ));
                 },
               ),
             ),

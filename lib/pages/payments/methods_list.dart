@@ -11,7 +11,7 @@ import '../drinks_sale.dart';
 
 final cardsProvider = FutureProvider<List<CardModel>>((ref) async {
   final result = await http
-      .get(Uri.parse(apilink + 'allcards?id=CGX1IfMDXyyVZNml4vSA'));
+      .get(Uri.parse(apilink + '/allcards?id=CGX1IfMDXyyVZNml4vSA'));
   final data = json.decode(result.body) as List;
   final list = data.map((value) => CardModel.fromJson(value)).toList();
   return list;
@@ -33,67 +33,70 @@ class PaymentMethods extends StatelessWidget {
       }
     }
 
-    return Consumer(
-      builder: (context, watch, child) {
-        final list = watch(cardsProvider);
-        return Scaffold(
-          appBar: showAppBar == true
-              ? AppBar(
-                  title: Text("Payments Methods"),
-                  actions: [
-                    IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CardDetails(),
-                          ),
-                        );
-                      },
-                    )
-                  ],
-                )
-              : null,
-          body: list.maybeWhen(
-            error: (error, stackTrace) => Center(child: Text("$error")),
-            orElse: () => Center(child: CircularProgressIndicator()),
-            data: (value) {
-              return ListView.builder(
-                itemCount: value.length,
-                padding: EdgeInsets.only(left: 10, right: 10, top: 30),
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text("${value[index].brand}"),
-                    subtitle: Text("**** ${value[index].last4}"),
-                    leading: Container(
-                      width: 50,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image:
-                            NetworkImage(brandImage(value[index].brand!)),
-                      )),
-                    ),
-                    trailing: Container(
-                      height: 35,
-                      width: 35,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.blue,
-                      ),
-                      child: Icon(Icons.done, color: Colors.white),
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
+    return Consumer(builder: (context, watch, child) {
+      final list = watch(cardsProvider);
+      return Scaffold(
+        appBar: showAppBar == true
+            ? AppBar(
+                title: Text("Payments Methods"),
+                actions: [
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CardDetails(),
+                        ),
+                      );
                     },
-                  );
-                },
-              );
-            },
-          ),
-        );
-      } as Widget Function(
-          BuildContext, T Function<T>(ProviderBase<Object?, T>), Widget?),
-    );
+                  )
+                ],
+              )
+            : null,
+        body: FutureBuilder<http.Response>(
+          initialData: null,
+          future: http.get(
+              Uri.parse(apilink + '/allcards?id=CGX1IfMDXyyVZNml4vSA')),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+            final data = json.decode(snapshot.data!.body) as List;
+            final value =
+                data.map((value) => CardModel.fromJson(value)).toList();
+            return ListView.builder(
+              itemCount: value.length,
+              padding: EdgeInsets.only(left: 10, right: 10, top: 30),
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text("${value[index].brand}"),
+                  subtitle: Text("**** ${value[index].last4}"),
+                  leading: Container(
+                    width: 50,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: NetworkImage(brandImage(value[index].brand!)),
+                    )),
+                  ),
+                  trailing: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                    ),
+                    child: Icon(Icons.done, color: Colors.white),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                );
+              },
+            );
+          },
+        ),
+      );
+    });
   }
 }

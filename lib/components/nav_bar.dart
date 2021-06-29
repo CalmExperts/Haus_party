@@ -27,13 +27,9 @@ class _NavBarState extends State<NavBar> {
       final user = watch(userProvider);
       return Scaffold(
         body: user.maybeWhen(
-          error: (error, stackTrace) => Center(
-            child: Text("$error"),
-          ),
-          loading: () => Center(child: CircularProgressIndicator()),
           orElse: () => Center(child: CircularProgressIndicator()),
           data: (value) {
-            print(value.firstName);
+            print(value?.firstName);
             return Scaffold(
                 body: telas[_indiceAtual],
                 bottomNavigationBar: SafeArea(

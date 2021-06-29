@@ -147,4 +147,8 @@ class CloudFuncs {
       throw e.toString();
     }
   }
+
+  Future setCardDefault() async {
+    //
+  }
 }

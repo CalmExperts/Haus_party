@@ -1,7 +1,3 @@
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
-
 class Slide {
   final String title;
   final String description;

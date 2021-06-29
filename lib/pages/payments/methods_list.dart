@@ -7,7 +7,6 @@ import 'package:haus_party/models/card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-import '../drinks_sale.dart';
 
 final cardsProvider = FutureProvider<List<CardModel>>((ref) async {
   final result = await http

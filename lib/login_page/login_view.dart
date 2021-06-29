@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haus_party/login_page/utilities/constants.dart';
 import 'package:haus_party/login_page/widgets/button_large.dart';
-import 'package:haus_party/main.dart';
 import 'package:haus_party/components/nav_bar.dart';
 import 'package:haus_party/service/authProvider.dart';
 import 'package:haus_party/core/cloud.dart';

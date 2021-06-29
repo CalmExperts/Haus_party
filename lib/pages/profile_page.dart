@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:haus_party/components/nav_bar.dart';
 import 'package:haus_party/core/providers.dart';
 import 'package:haus_party/pages/privacy_settings.dart';
-import 'package:hive/hive.dart';
 import '../login_page/widgets/buttons_profile.dart';
 import 'notif_settings.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

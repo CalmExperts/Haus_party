@@ -2,20 +2,9 @@ import 'dart:async';
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:haus_party/components/bottom_bar.dart';
-import 'package:haus_party/components/home_cards.dart';
-import 'package:haus_party/pages/home_page_alt.dart';
-import 'package:haus_party/app/routing.dart';
-import 'package:haus_party/service/authProvider.dart';
-import 'package:haus_party/util/userProvider.dart';
-import 'package:haus_party/widgets/datepicker_login.dart';
-import 'package:haus_party/widgets/datepicker_widget.dart';
-import 'package:haus_party/widgets/dropdown_widget.dart';
-import 'package:haus_party/widgets/only_slyde_picker.dart';
-import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 // import 'bottom_bar.dart';
 // import 'location_settings.dart';

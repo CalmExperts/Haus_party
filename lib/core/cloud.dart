@@ -138,7 +138,11 @@ class CloudFuncs {
       print(result.body);
       print(result.statusCode);
       //
-      return json.decode(result.body);
+      if (result.statusCode == 200) {
+        return json.decode(result.body);
+      } else {
+        throw result.body;
+      }
     } catch (e) {
       throw e.toString();
     }

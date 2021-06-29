@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:haus_party/models/user.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:http/http.dart' as http;
